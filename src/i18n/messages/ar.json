@@ -1,0 +1,396 @@
+{
+  "home": {
+    "metadata": {
+      "title": "Ironix — تدرّب بهدف. تقدّم بالأرقام والأدلة.",
+      "description": "تطبيق التمارين الرياضية المدعوم بالذكاء الاصطناعي مع تسجيل أوفلاين فوري، تشريح العضلات ثلاثي الأبعاد، بطاقة GymID الرقمية، وبطاقات المعارك التحفيزية."
+    }
+  },
+  "nav": {
+    "features": "المميزات",
+    "splitCalculator": "محدد الجداول",
+    "comparison": "المقارنة",
+    "howItWorks": "كيف يعمل",
+    "pricing": "الأسعار",
+    "testimonials": "آراء الأبطال",
+    "faq": "الأسئلة الشائعة",
+    "download": "تحميل التطبيق"
+  },
+  "hero": {
+    "badge": "لياقة بدنية بالذكاء الاصطناعي",
+    "title": "تدرّب بهدف واضح.",
+    "titleAccent": "وتقدّم بالأدلة والأرقام.",
+    "subtitle": "سجّل كل جولة، شاهد عضلاتك بتقنية 3D التفاعلية، استمع لمدرب الذكاء الاصطناعي، وادخل جيمك بلمسة واحدة — أوفلاين 100%.",
+    "ctaDownload": "حمّل الآن مجاناً",
+    "ctaLearnMore": "اكتشف المميزات",
+    "liveWorkout": "تمرين مباشر",
+    "set": "الجولة",
+    "reps": "تكرار",
+    "weight": "الوزن",
+    "logSet": "تسجيل الجولة",
+    "restTimer": "مؤقت الراحة",
+    "startWorkout": "بدء التمرين",
+    "finishWorkout": "إنهاء التمرين"
+  },
+  "socialProof": {
+    "downloads": "+50 ألف",
+    "downloadsLabel": "تحميل",
+    "rating": "4.9",
+    "ratingLabel": "تقييم المتجر",
+    "users": "+2.6 مليون",
+    "usersLabel": "مستخدم نشط"
+  },
+  "features": {
+    "title": "أطلق أقصى إمكانياتك البدنية",
+    "subtitle": "كل ما تحتاجه للتدريب بذكاء أكبر، ورفع أوزان أثقل، وتحقيق أهدافك بسرعة فائقة.",
+    "items": {
+      "1": {
+        "title": "تسجيل أوفلاين فوري",
+        "description": "سجّل الجولات والتكرارات والأوزان بدون أي تأخير وبدون إنترنت."
+      },
+      "2": {
+        "title": "تشريح العضلات 3D",
+        "description": "خرائط حرارية مجسمة توضح شدة التمرين واستشفاء كل عضلة بدقة."
+      },
+      "3": {
+        "title": "مدرب صوتي ذكي",
+        "description": "توجيه صوتي فوري أثناء الجولات مع خطط تدريبية تتكيف معك تلقائياً."
+      },
+      "4": {
+        "title": "بطاقة GymID الرقمية",
+        "description": "ادخل ناديك الرياضي عبر رمز QR والباركود وتصاميم بطاقات حصرية."
+      },
+      "5": {
+        "title": "بطاقات المعارك والألعاب",
+        "description": "اجمع نقاط XP، وحافظ على سلسلة أيام التمرين، وشارك بطاقاتك مع أصدقائك."
+      },
+      "6": {
+        "title": "8 سمات تصميم فاخرة",
+        "description": "من مظهر Iron Dark الفولاذي إلى Cyber Neon المبهر."
+      }
+    }
+  },
+  "showcase": {
+    "title": "شاهد Ironix في الميدان",
+    "subtitle": "واجهة فائقة السرعة مصممة خصيصاً للأداء العالي وسهولة الاستخدام أثناء التمرين.",
+    "screens": {
+      "1": "نظرة عامة على لوحة التحكم تعرض التقدم اليومي وسلسلة الاستمرارية.",
+      "2": "مسجل التمارين الذكي مع واجهة بديهية ومؤقتات راحة دقيقة."
+    }
+  },
+  "splitCalculator": {
+    "badge": "محدد الجداول وحجم التمرين بالذكاء الاصطناعي",
+    "title": "احسب جدولك التدريبي",
+    "titleAccent": "الأمثل لنمو العضلات",
+    "subtitle": "اختر جدول تمرينك ومستوى خبرتك لمشاهدة توقعات الحجم العضلي وزيادة القوة لـ 12 أسبوعاً مقبلة.",
+    "step1": "1. اختر نظام التدريب",
+    "step2": "2. اختر مستوى الخبرة",
+    "blueprintTitle": "مخطط الأداء الحيوي المتوقع",
+    "gainTitle": "زيادة متوقعة في القوة القصوى (1RM)",
+    "gainDesc": "في التمارين المركبة الأساسية على مدار 12 أسبوعاً من زيادة الأحمال التدريجية.",
+    "weeklyVolume": "حجم الجولات الأسبوعي",
+    "weeklyVolumeDesc": "المنطقة المثالية لتحفيز البناء العضلي وتفادي الإجهاد.",
+    "sqliteProof": "استجابة 0ms بقاعدة بيانات محلية",
+    "sqliteProofDesc": "مزامنة سريعة عبر أجهزتك دون أي بطء في الشبكة.",
+    "ctaPlan": "توليد جدول تدريبي مخصص",
+    "daysPerWeek": "أيام / أسبوع",
+    "levels": {
+      "beginner": "مبتدئ (0-1 سنة)",
+      "intermediate": "متوسط (1-3 سنوات)",
+      "advanced": "متقدم (3+ سنوات)"
+    },
+    "splits": {
+      "ppl": {
+        "name": "دفع سحب أرجل (PPL)",
+        "desc": "نظام عالي التردد لاستهداف العضلات الأساسية مع 72 ساعة استشفاء مثالية."
+      },
+      "upper_lower": {
+        "name": "علوي / سفلي",
+        "desc": "المعيار الذهبي لتوازن القوة والكثافة العضلية العالية."
+      },
+      "full_body": {
+        "name": "جسم كامل 3x",
+        "desc": "أقصى تحفيز للألياف العضلية مع زيادة تخليق البروتين العضلي."
+      },
+      "arnold": {
+        "name": "جدول آرنولد للتضخيم",
+        "desc": "سوبر ست عضلات متقابلة (صدر+ظهر، أكتاف+ذراعين، أرجل) لضخ دم خرافي وتناسق مذهل."
+      }
+    }
+  },
+  "comparison": {
+    "badge": "مقارنة هندسية شاملة",
+    "title": "لماذا يختار الرياضيون",
+    "titleAccent": "تطبيق Ironix؟",
+    "subtitle": "شاهد تفوق Ironix على تطبيقات التمارين التقليدية الأخرى.",
+    "featureCol": "الميزة / القدرة الهندسية",
+    "ironixCol": "Ironix",
+    "hevyCol": "Hevy",
+    "strongCol": "Strong",
+    "appleCol": "Apple Fitness+",
+    "whoopCol": "Whoop",
+    "ctaTitle": "جاهز لتجربة تطبيق أسرع وأذكى؟",
+    "ctaSubtitle": "انضم إلى أكثر من 2.6 مليون رياضي يتمرنون بدون تأخير مع تشريح 3D المتطور.",
+    "ctaButton": "حمّل Ironix الآن",
+    "features": {
+      "offline": "بنية أوفلاين 100% بدون إنترنت (SQLite)",
+      "offlineIronix": "استجابة 0ms فوري",
+      "offlineHevy": "انتظار السيرفرات (شاشة تحميل)",
+      "offlineStrong": "أوفلاين جزئي",
+      "anatomy3d": "تشريح العضلات 3D وخريطة حرارية",
+      "anatomyHevy": "رسومات 2D ثابتة",
+      "aiCoach": "مدرب صوتي بالذكاء الاصطناعي وشخصيات متعددة",
+      "aiCoachApple": "فيديوهات مسجلة مسبقاً",
+      "gymId": "بطاقة النادي GymID عبر NFC والباركود",
+      "velocity": "قياس سرعة التكرار بالحساسات الحركية",
+      "i18nRtl": "دعم عالمي لـ 19 لغة مع دعم كامل للغة العربية (RTL)",
+      "i18nIronix": "19 لغة + RTL كامل",
+      "i18nHevy": "5 لغات فقط",
+      "i18nStrong": "8 لغات فقط",
+      "i18nApple": "مناطق محدودة",
+      "i18nWhoop": "إنجليزية فقط",
+      "founderPass": "عضوية مدى الحياة بدفعة واحدة",
+      "founderIronix": "مدى الحياة 89.99$ (المؤسسين)",
+      "founderSubOnly": "اشتراك شهري/سنوي فقط",
+      "battlecards": "بطاقات ملخص التمارين المشوقة",
+      "themes": "8 سمات تصميم متقنة"
+    }
+  },
+  "howItWorks": {
+    "title": "Start Training in Minutes",
+    "subtitle": "A seamless journey from downloading the app to crushing your first workout.",
+    "steps": {
+      "1": {
+        "title": "Download & Personalize",
+        "description": "Get the app and set up your profile, goals, and preferred gym locations."
+      },
+      "2": {
+        "title": "Train & Track",
+        "description": "Follow personalized plans or build your own. Log sets instantly, even offline."
+      },
+      "3": {
+        "title": "Progress & Share",
+        "description": "Visualize your gains with 3D heatmaps and share your battlecards with friends."
+      }
+    }
+  },
+  "pricing": {
+    "badge": "أسعار شفافة • بدون إعلانات إطلاقاً",
+    "title": "استثمر في",
+    "titleAccent": "أعلى أداء بدني لك",
+    "subtitle": "ابدأ مجاناً 100% مع تسجيل التمارين أوفلاين، أو افتح جميع أدوات التشريح 3D والمدرب الذكي.",
+    "monthly": "دفع شهري",
+    "annual": "دفع سنوي",
+    "saveBadge": "وفّر 42%",
+    "freeTier": {
+      "name": "الباقة الأساسية",
+      "price": "0$",
+      "period": "/ مجاناً دائماً",
+      "badge": "الأساسية",
+      "desc": "كل ما تحتاجه لتسجيل تمارينك أوفلاين بسرعة 0ms وبدون أي قيود أساسية.",
+      "features": [
+        "تسجيل أوفلاين 100% بدون إنترنت",
+        "تمارين وسجلات غير محدودة",
+        "بطاقة GymID الرقمية للنادي",
+        "مؤقت الراحة وحاسبة أوزان البار",
+        "تصدير واستيراد بيانات التمارين"
+      ]
+    },
+    "proTier": {
+      "name": "Ironix برو",
+      "priceMonthly": "4.99$",
+      "priceAnnual": "3.33$",
+      "period": "/ شهرياً",
+      "badge": "الأكثر طلباً",
+      "desc": "مدرب الذكاء الاصطناعي الكامل، الخرائط الحرارية 3D، وتحليلات التقدم المتقدمة.",
+      "features": [
+        "جميع مميزات الباقة الأساسية",
+        "تشريح العضلات 3D والخرائط الحرارية التفاعلية",
+        "المدرب الصوتي بالذكاء الاصطناعي مع شخصيات مخصصة",
+        "دخول GymID عبر NFC وثيمات بطاقات مخصصة",
+        "قياس سرعة التكرارات بمستشعرات الحركة",
+        "مزامنة سحابية غير محدودة عبر جميع أجهزتك",
+        "فتح جميع سمات التطبيق الـ 8 الفاخرة"
+      ]
+    },
+    "founderTier": {
+      "name": "عضوية المؤسسين",
+      "price": "89.99$",
+      "period": "/ لمرة واحدة مدى الحياة",
+      "badge": "إصدار محدود",
+      "desc": "ادفع مرة واحدة واحصل على وصول دائم لجميع مميزات Pro الحالية والمستقبلية مدى الحياة.",
+      "features": [
+        "وصول دائم لجميع مميزات Ironix Pro للأبد",
+        "أيقونة التطبيق والشارة الذهبية الحصرية للمؤسسين",
+        "أولوية طلب الميزات والتحديثات التجريبية",
+        "تواصل مباشر مع فريق المطورين الأساسي عبر Discord",
+        "بدون أي اشتراكات دورية نهائياً"
+      ]
+    },
+    "guarantee": "ضمان استرجاع الأموال خلال 30 يوماً • إلغاء في أي وقت • بدون رسوم خفية",
+    "getStarted": "ابدأ مجاناً الآن",
+    "startTrial": "ابدأ تجربة Pro لـ 7 أيام",
+    "getFounder": "احصل على عضوية المؤسسين"
+  },
+  "testimonials": {
+    "title": "Stories of Strength",
+    "subtitle": "Join thousands of users who have transformed their fitness journey with Ironix.",
+    "reviews": {
+      "1": {
+        "name": "Alex Johnson",
+        "role": "Powerlifter",
+        "content": "The offline logger is a game-changer. My gym has terrible reception, but Ironix never misses a beat."
+      },
+      "2": {
+        "name": "Sarah Miller",
+        "role": "Fitness Enthusiast",
+        "content": "The 3D muscle anatomy helps me understand exactly which muscles I'm targeting. Highly recommended!"
+      },
+      "3": {
+        "name": "David Chen",
+        "role": "Bodybuilder",
+        "content": "I love the battlecards and gamification. It keeps me motivated to maintain my streak every single day."
+      },
+      "4": {
+        "name": "Emma Wilson",
+        "role": "Personal Trainer",
+        "content": "I recommend Ironix to all my clients. The interface is clean, fast, and the AI coach provides solid guidance."
+      }
+    }
+  },
+  "downloadCta": {
+    "title": "جاهز لتغيير مستوى تمرينك بالكامل؟",
+    "subtitle": "حمّل Ironix اليوم وعِش مستقبل تسجيل ومتابعة اللياقة البدنية.",
+    "badges": "متوفر على iOS و Android و Huawei AppGallery"
+  },
+  "faq": {
+    "title": "الأسئلة الشائعة",
+    "questions": {
+      "1": {
+        "question": "هل تطبيق Ironix يعمل فعلاً بدون إنترنت (أوفلاين)؟",
+        "answer": "نعم 100%! يمكنك تسجيل كافة تمارينك وجولاتك وأوزانك بدون الحاجة للاتصال بالإنترنت، وتتم المزامنة تلقائياً عند توفر الشبكة."
+      },
+      "2": {
+        "question": "هل التطبيق مجاني؟",
+        "answer": "نعم، يقدم Ironix باقة مجانية أساسية مدى الحياة بدون إعلانات، مع توفر باقة Pro للميزات المتقدمة كالتشريح ثلاثي الأبعاد والمدرب الصوتي."
+      },
+      "3": {
+        "question": "ما هي المنصات المدعومة؟",
+        "answer": "يتوفر Ironix على متجر App Store (iOS) و Google Play (Android) و Huawei AppGallery."
+      },
+      "4": {
+        "question": "كيف تعمل بطاقة GymID الرقمية؟",
+        "answer": "يمكنك حفظ باركود أو رمز QR لعضويتك بالنادي داخل التطبيق أو الدخول عبر NFC بلمسة واحدة."
+      },
+      "5": {
+        "question": "هل بيانات تماريني وصحتي محمية وخاصة؟",
+        "answer": "نحن نضع خصوصيتك في المقام الأول. بياناتك محفوظة محلياً وتتحكم بالكامل بما تشاركه."
+      },
+      "6": {
+        "question": "هل يمكنني استيراد بياناتي من تطبيقات أخرى؟",
+        "answer": "نعم، ندعم استيراد سجل التمارين بسهولة عبر ملفات CSV من أشهر تطبيقات اللياقة البدنية."
+      }
+    }
+  },
+  "footer": {
+    "brand": "Ironix",
+    "tagline": "تدرّب بهدف. تقدّم بالأدلة والأرقام.",
+    "productLinks": "المنتج",
+    "companyLinks": "الشركة",
+    "legalLinks": "الشروط القانونية",
+    "newsletter": "اشترك في نشرتنا البريدية للحصول على نصائح تدريبية وتحديثات التطبيق.",
+    "copyright": "© 2026 Ironix. جميع الحقوق محفوظة.",
+    "socialLinks": "حسابات التواصل"
+  },
+  "privacy": {
+    "metadata": {
+      "title": "Privacy Policy - Ironix",
+      "description": "Privacy policy for the Ironix fitness app."
+    },
+    "title": "سياسة الخصوصية",
+    "lastUpdated": "Last Updated: August 15, 2026",
+    "sections": {
+      "1": {
+        "heading": "Information We Collect",
+        "content": "We collect information you provide directly to us, such as when you create or modify your account, request on-demand services, contact customer support, or otherwise communicate with us."
+      },
+      "2": {
+        "heading": "How We Use Information",
+        "content": "We may use the information we collect about you to provide, maintain, and improve our services, including to facilitate payments, send receipts, provide products and services you request, and develop new features."
+      },
+      "3": {
+        "heading": "Data Sharing",
+        "content": "We may share your information with our affiliates, subsidiaries, and service providers who need access to such information to carry out work on our behalf."
+      },
+      "4": {
+        "heading": "Data Security",
+        "content": "We take reasonable measures to help protect information about you from loss, theft, misuse and unauthorized access, disclosure, alteration and destruction."
+      },
+      "5": {
+        "heading": "Your Rights",
+        "content": "You may update, correct or delete information about you at any time by logging into your online account or by contacting us."
+      },
+      "6": {
+        "heading": "Children",
+        "content": "Our services are not directed to children, and we do not knowingly collect personal information from children under 13."
+      },
+      "7": {
+        "heading": "Changes",
+        "content": "We may change this privacy policy from time to time. If we make significant changes in the way we treat your personal information, or to the privacy policy, we will provide you notice through the Services or by some other means."
+      },
+      "8": {
+        "heading": "Contact Us",
+        "content": "If you have any questions about this Privacy Policy, please contact us at privacy@ironix.app."
+      }
+    }
+  },
+  "terms": {
+    "metadata": {
+      "title": "Terms of Service - Ironix",
+      "description": "Terms of Service for the Ironix fitness app."
+    },
+    "title": "شروط الاستخدام والخدمة",
+    "lastUpdated": "Last Updated: August 15, 2026",
+    "sections": {
+      "1": {
+        "heading": "Acceptance",
+        "content": "By accessing or using our Services, you agree to be bound by these Terms. If you do not agree to these Terms, you may not access or use the Services."
+      },
+      "2": {
+        "heading": "License",
+        "content": "Subject to your compliance with these Terms, Ironix grants you a limited, non-exclusive, non-sublicensable, revocable, non-transferable license to access and use the Services on your personal device."
+      },
+      "3": {
+        "heading": "User Conduct",
+        "content": "You agree not to violate any law, contract, intellectual property or other third-party right, and you are solely responsible for your conduct while using our Services."
+      },
+      "4": {
+        "heading": "Subscriptions",
+        "content": "Some parts of the Service are billed on a subscription basis. You will be billed in advance on a recurring and periodic basis."
+      },
+      "5": {
+        "heading": "Intellectual Property",
+        "content": "The Services and its original content, features, and functionality are and will remain the exclusive property of Ironix and its licensors."
+      },
+      "6": {
+        "heading": "Disclaimers",
+        "content": "Your use of the Service is at your sole risk. The Service is provided on an 'AS IS' and 'AS AVAILABLE' basis."
+      },
+      "7": {
+        "heading": "Limitation of Liability",
+        "content": "In no event shall Ironix, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, exemplary, or punitive damages."
+      },
+      "8": {
+        "heading": "Governing Law",
+        "content": "These Terms shall be governed and construed in accordance with the laws of the jurisdiction in which Ironix is established, without regard to its conflict of law provisions."
+      },
+      "9": {
+        "heading": "Changes",
+        "content": "We reserve the right, at our sole discretion, to modify or replace these Terms at any time."
+      },
+      "10": {
+        "heading": "Contact Us",
+        "content": "If you have any questions about these Terms, please contact us at legal@ironix.app."
+      }
+    }
+  }
+}

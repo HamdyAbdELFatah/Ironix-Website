@@ -1,0 +1,396 @@
+{
+  "home": {
+    "metadata": {
+      "title": "Ironix — ฝึกซ้อมอย่างมีเป้าหมาย พัฒนาด้วยข้อมูลที่พิสูจน์ได้",
+      "description": "Premium AI-powered fitness app with offline workout logging, 3D muscle anatomy, digital GymID pass, and gamified battlecards."
+    }
+  },
+  "nav": {
+    "features": "Features",
+    "splitCalculator": "Split Predictor",
+    "comparison": "Comparison",
+    "howItWorks": "How It Works",
+    "pricing": "Pricing",
+    "testimonials": "Testimonials",
+    "faq": "FAQ",
+    "download": "Download"
+  },
+  "hero": {
+    "badge": "ฟิตเนสขับเคลื่อนด้วย AI",
+    "title": "ฝึกซ้อมอย่างมีเป้าหมาย",
+    "titleAccent": "พัฒนาด้วยข้อมูลที่พิสูจน์ได้",
+    "subtitle": "บันทึกทุกเซ็ตแบบออฟไลน์ 100% ดูภาพจำลองกล้ามเนื้อ 3D พร้อมโค้ชเสียง AI และบัตรยิมดิจิทัลบนข้อมือ",
+    "ctaDownload": "ดาวน์โหลดฟรีทันที",
+    "ctaLearnMore": "ดูรายละเอียดเพิ่มเติม",
+    "liveWorkout": "Live Workout",
+    "set": "Set",
+    "reps": "Reps",
+    "weight": "Weight",
+    "logSet": "Log Set",
+    "restTimer": "Rest Timer",
+    "startWorkout": "Start Workout",
+    "finishWorkout": "Finish Workout"
+  },
+  "socialProof": {
+    "downloads": "50K+",
+    "downloadsLabel": "Downloads",
+    "rating": "4.9",
+    "ratingLabel": "App Rating",
+    "users": "2.6M+",
+    "usersLabel": "Active Users"
+  },
+  "features": {
+    "title": "Unleash Your Potential",
+    "subtitle": "Everything you need to train smarter, lift heavier, and reach your goals faster.",
+    "items": {
+      "1": {
+        "title": "Offline-First Logger",
+        "description": "Log sets, reps, weight with zero latency. Works without internet."
+      },
+      "2": {
+        "title": "3D Muscle Anatomy",
+        "description": "Interactive body heatmaps showing workout intensity and recovery."
+      },
+      "3": {
+        "title": "AI Voice Coach",
+        "description": "Real-time voice guidance during workouts with adaptive training plans."
+      },
+      "4": {
+        "title": "Digital GymID Pass",
+        "description": "Scan into your gym with QR or barcode. Customizable card skins."
+      },
+      "5": {
+        "title": "Gamification & Battlecards",
+        "description": "Earn XP, maintain streaks, and share styled workout summary cards."
+      },
+      "6": {
+        "title": "8 Premium Themes",
+        "description": "From Iron Dark to Cyber Neon. Personalize your training experience."
+      }
+    }
+  },
+  "showcase": {
+    "title": "See Ironix in Action",
+    "subtitle": "A beautifully designed interface focused on performance and usability.",
+    "screens": {
+      "1": "Dashboard overview showing daily progress and streaks.",
+      "2": "Workout logger with intuitive interface and clear rest timers."
+    }
+  },
+  "splitCalculator": {
+    "badge": "AI Hypertrophy & Volume Predictor",
+    "title": "คำนวณตารางฝึกซ้อม",
+    "titleAccent": "ที่เหมาะสมที่สุดสำหรับคุณ",
+    "subtitle": "Configure your training schedule and experience level to preview customized 3D volume targets, projected 1RM strength curves, and 0ms SQLite workout templates.",
+    "step1": "1. Select Routine Architecture",
+    "step2": "2. Training Experience",
+    "blueprintTitle": "Projected Biometric Blueprint",
+    "gainTitle": "Projected 12-Week 1RM Gain",
+    "gainDesc": "Across primary compound lifts over 12 weeks of structured progressive overload.",
+    "weeklyVolume": "Weekly Set Volume",
+    "weeklyVolumeDesc": "Optimal hypertrophy stimulus zone.",
+    "sqliteProof": "0ms Local SQLite Latency",
+    "sqliteProofDesc": "Instantly synced across your devices without cloud delays.",
+    "ctaPlan": "Generate Custom Training Split",
+    "daysPerWeek": "D / WK",
+    "levels": {
+      "beginner": "Beginner (0-1 yr)",
+      "intermediate": "Intermediate (1-3 yrs)",
+      "advanced": "Advanced (3+ yrs)"
+    },
+    "splits": {
+      "ppl": {
+        "name": "Push Pull Legs",
+        "desc": "High-frequency hypertrophy split targeting agonists & antagonists with 72h recovery windows."
+      },
+      "upper_lower": {
+        "name": "Upper / Lower",
+        "desc": "The golden standard for balanced strength progression and dense mechanical tension."
+      },
+      "full_body": {
+        "name": "Full Body 3x",
+        "desc": "Maximum motor unit recruitment per session with high systemic protein synthesis."
+      },
+      "arnold": {
+        "name": "Arnold Mass Split",
+        "desc": "Antagonistic supersets (Chest+Back, Delts+Arms, Legs) for massive pump and aesthetic taper."
+      }
+    }
+  },
+  "comparison": {
+    "badge": "Head-to-Head Architecture",
+    "title": "ทำไมนักกีฬาที่จริงจัง",
+    "titleAccent": "ถึงเลือก Ironix",
+    "subtitle": "See how Ironix compares against standard legacy workout apps.",
+    "featureCol": "Feature / Capability",
+    "ironixCol": "Ironix",
+    "hevyCol": "Hevy",
+    "strongCol": "Strong",
+    "appleCol": "Apple Fitness+",
+    "whoopCol": "Whoop",
+    "ctaTitle": "Ready for a faster, smarter tracker?",
+    "ctaSubtitle": "Join over 2.6 million athletes training with zero latency and 3D biomechanics.",
+    "ctaButton": "Download Ironix Now",
+    "features": {
+      "offline": "100% Offline SQLite Architecture",
+      "offlineIronix": "0ms Latency (Room DB)",
+      "offlineHevy": "Cloud Latency (Spinner)",
+      "offlineStrong": "Partial Offline",
+      "anatomy3d": "3D Biomechanics & Muscle Heatmap",
+      "anatomyHevy": "2D SVG Static",
+      "aiCoach": "Multi-Persona AI Voice Gym Coach",
+      "aiCoachApple": "Generic Trainer Videos",
+      "gymId": "GymID Wallet Pass (NFC & Barcode)",
+      "velocity": "Rep Velocity Accelerometer Gauge",
+      "i18nRtl": "Global Multi-Language & Native RTL",
+      "i18nIronix": "19 Locales + Full RTL",
+      "i18nHevy": "5 Locales",
+      "i18nStrong": "8 Locales",
+      "i18nApple": "Selected Regions",
+      "i18nWhoop": "English Only",
+      "founderPass": "Lifetime One-Time Purchase Pass",
+      "founderIronix": "Lifetime $89.99 (Founder)",
+      "founderSubOnly": "Monthly/Yearly Sub Only",
+      "battlecards": "Gamified Workout Battlecards",
+      "themes": "8 Handcrafted Premium Themes"
+    }
+  },
+  "howItWorks": {
+    "title": "Start Training in Minutes",
+    "subtitle": "A seamless journey from downloading the app to crushing your first workout.",
+    "steps": {
+      "1": {
+        "title": "Download & Personalize",
+        "description": "Get the app and set up your profile, goals, and preferred gym locations."
+      },
+      "2": {
+        "title": "Train & Track",
+        "description": "Follow personalized plans or build your own. Log sets instantly, even offline."
+      },
+      "3": {
+        "title": "Progress & Share",
+        "description": "Visualize your gains with 3D heatmaps and share your battlecards with friends."
+      }
+    }
+  },
+  "pricing": {
+    "badge": "Transparent Pricing • Zero Ads",
+    "title": "ลงทุนเพื่อ",
+    "titleAccent": "ประสิทธิภาพสูงสุดของคุณ",
+    "subtitle": "Start 100% free with local SQLite offline logging, or unlock the full 3D Biomechanics & AI Voice Coach suite.",
+    "monthly": "ชำระรายเดือน",
+    "annual": "ชำระรายปี",
+    "saveBadge": "ประหยัด 42%",
+    "freeTier": {
+      "name": "Core ฟรี",
+      "price": "$0",
+      "period": "/ forever",
+      "badge": "Essential",
+      "desc": "Everything you need to track workouts offline with zero latency.",
+      "features": [
+        "100% Offline SQLite Logging (0ms)",
+        "Unlimited Workout & Exercise Logs",
+        "Digital GymID Barcode Pass",
+        "Basic Rest Timers & Plate Calculator",
+        "Standard Workout History & Export"
+      ]
+    },
+    "proTier": {
+      "name": "Ironix Pro",
+      "priceMonthly": "$4.99",
+      "priceAnnual": "$3.33",
+      "period": "/ month",
+      "badge": "Most Popular",
+      "desc": "Full AI coaching, 3D anatomical heatmaps, and unrestricted analytics.",
+      "features": [
+        "Everything in Core Free",
+        "3D Interactive Muscle Biomechanics Heatmap",
+        "AI Voice Coach with Custom Personas",
+        "NFC GymID Fast Access & Card Skins",
+        "Rep Velocity Accelerometer Tracking",
+        "Cloud Sync Across Unlimited Devices",
+        "Full 8 Premium Pro Themes"
+      ]
+    },
+    "founderTier": {
+      "name": "Founder Pass ตลอดชีพ",
+      "price": "$89.99",
+      "period": "/ one-time lifetime",
+      "badge": "Limited Edition",
+      "desc": "Pay once and get lifetime access to all current and future Ironix Pro features.",
+      "features": [
+        "Lifetime Access to All Ironix Pro Features",
+        "Exclusive Founder Gold App Icon & Badge",
+        "VIP Priority Feature Requests & Beta Access",
+        "Direct Discord Access to Core Dev Team",
+        "Zero Recurring Subscriptions Ever"
+      ]
+    },
+    "guarantee": "30-Day Money-Back Guarantee • Cancel Anytime • No Hidden Fees",
+    "getStarted": "Get Started Free",
+    "startTrial": "Start 7-Day Pro Trial",
+    "getFounder": "Claim Founder Pass"
+  },
+  "testimonials": {
+    "title": "Stories of Strength",
+    "subtitle": "Join thousands of users who have transformed their fitness journey with Ironix.",
+    "reviews": {
+      "1": {
+        "name": "Alex Johnson",
+        "role": "Powerlifter",
+        "content": "The offline logger is a game-changer. My gym has terrible reception, but Ironix never misses a beat."
+      },
+      "2": {
+        "name": "Sarah Miller",
+        "role": "Fitness Enthusiast",
+        "content": "The 3D muscle anatomy helps me understand exactly which muscles I'm targeting. Highly recommended!"
+      },
+      "3": {
+        "name": "David Chen",
+        "role": "Bodybuilder",
+        "content": "I love the battlecards and gamification. It keeps me motivated to maintain my streak every single day."
+      },
+      "4": {
+        "name": "Emma Wilson",
+        "role": "Personal Trainer",
+        "content": "I recommend Ironix to all my clients. The interface is clean, fast, and the AI coach provides solid guidance."
+      }
+    }
+  },
+  "downloadCta": {
+    "title": "Ready to Transform Your Training?",
+    "subtitle": "Download Ironix today and experience the future of fitness tracking.",
+    "badges": "Available on iOS, Android, and Huawei AppGallery"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "questions": {
+      "1": {
+        "question": "Is Ironix really offline-first?",
+        "answer": "Yes! You can log your entire workout without an internet connection. Your data will sync automatically once you're back online."
+      },
+      "2": {
+        "question": "Is the app free to use?",
+        "answer": "Ironix offers a free tier with essential features. Premium features like 3D anatomy and AI voice coaching require a subscription."
+      },
+      "3": {
+        "question": "What platforms are supported?",
+        "answer": "Ironix is available on iOS, Android, and Huawei AppGallery."
+      },
+      "4": {
+        "question": "How does the Digital GymID work?",
+        "answer": "You can add your existing gym membership barcode or QR code into Ironix and use it to scan into your gym directly from the app."
+      },
+      "5": {
+        "question": "Are my workouts private?",
+        "answer": "Absolutely. We value your privacy. You have full control over what you share and who you share it with."
+      },
+      "6": {
+        "question": "Can I import my data from other apps?",
+        "answer": "Yes, we support importing workout history from major fitness apps via CSV export."
+      }
+    }
+  },
+  "footer": {
+    "brand": "Ironix",
+    "tagline": "Train with purpose. Progress with proof.",
+    "productLinks": "Product",
+    "companyLinks": "Company",
+    "legalLinks": "Legal",
+    "newsletter": "Subscribe to our newsletter for fitness tips and app updates.",
+    "copyright": "© 2026 Ironix. All rights reserved.",
+    "socialLinks": "Socials"
+  },
+  "privacy": {
+    "metadata": {
+      "title": "Privacy Policy - Ironix",
+      "description": "Privacy policy for the Ironix fitness app."
+    },
+    "title": "Privacy Policy",
+    "lastUpdated": "Last Updated: August 15, 2026",
+    "sections": {
+      "1": {
+        "heading": "Information We Collect",
+        "content": "We collect information you provide directly to us, such as when you create or modify your account, request on-demand services, contact customer support, or otherwise communicate with us."
+      },
+      "2": {
+        "heading": "How We Use Information",
+        "content": "We may use the information we collect about you to provide, maintain, and improve our services, including to facilitate payments, send receipts, provide products and services you request, and develop new features."
+      },
+      "3": {
+        "heading": "Data Sharing",
+        "content": "We may share your information with our affiliates, subsidiaries, and service providers who need access to such information to carry out work on our behalf."
+      },
+      "4": {
+        "heading": "Data Security",
+        "content": "We take reasonable measures to help protect information about you from loss, theft, misuse and unauthorized access, disclosure, alteration and destruction."
+      },
+      "5": {
+        "heading": "Your Rights",
+        "content": "You may update, correct or delete information about you at any time by logging into your online account or by contacting us."
+      },
+      "6": {
+        "heading": "Children",
+        "content": "Our services are not directed to children, and we do not knowingly collect personal information from children under 13."
+      },
+      "7": {
+        "heading": "Changes",
+        "content": "We may change this privacy policy from time to time. If we make significant changes in the way we treat your personal information, or to the privacy policy, we will provide you notice through the Services or by some other means."
+      },
+      "8": {
+        "heading": "Contact Us",
+        "content": "If you have any questions about this Privacy Policy, please contact us at privacy@ironix.app."
+      }
+    }
+  },
+  "terms": {
+    "metadata": {
+      "title": "Terms of Service - Ironix",
+      "description": "Terms of Service for the Ironix fitness app."
+    },
+    "title": "Terms of Service",
+    "lastUpdated": "Last Updated: August 15, 2026",
+    "sections": {
+      "1": {
+        "heading": "Acceptance",
+        "content": "By accessing or using our Services, you agree to be bound by these Terms. If you do not agree to these Terms, you may not access or use the Services."
+      },
+      "2": {
+        "heading": "License",
+        "content": "Subject to your compliance with these Terms, Ironix grants you a limited, non-exclusive, non-sublicensable, revocable, non-transferable license to access and use the Services on your personal device."
+      },
+      "3": {
+        "heading": "User Conduct",
+        "content": "You agree not to violate any law, contract, intellectual property or other third-party right, and you are solely responsible for your conduct while using our Services."
+      },
+      "4": {
+        "heading": "Subscriptions",
+        "content": "Some parts of the Service are billed on a subscription basis. You will be billed in advance on a recurring and periodic basis."
+      },
+      "5": {
+        "heading": "Intellectual Property",
+        "content": "The Services and its original content, features, and functionality are and will remain the exclusive property of Ironix and its licensors."
+      },
+      "6": {
+        "heading": "Disclaimers",
+        "content": "Your use of the Service is at your sole risk. The Service is provided on an 'AS IS' and 'AS AVAILABLE' basis."
+      },
+      "7": {
+        "heading": "Limitation of Liability",
+        "content": "In no event shall Ironix, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, exemplary, or punitive damages."
+      },
+      "8": {
+        "heading": "Governing Law",
+        "content": "These Terms shall be governed and construed in accordance with the laws of the jurisdiction in which Ironix is established, without regard to its conflict of law provisions."
+      },
+      "9": {
+        "heading": "Changes",
+        "content": "We reserve the right, at our sole discretion, to modify or replace these Terms at any time."
+      },
+      "10": {
+        "heading": "Contact Us",
+        "content": "If you have any questions about these Terms, please contact us at legal@ironix.app."
+      }
+    }
+  }
+}
