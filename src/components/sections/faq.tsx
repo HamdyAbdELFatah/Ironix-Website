@@ -12,19 +12,33 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { generateFAQSchema } from "@/lib/seo/structured-data";
+import type { StaticPageData } from "@/lib/static-pages/static-pages-service";
 
-export function FAQ() {
+interface FAQProps {
+  liveData?: StaticPageData | null;
+}
+
+export function FAQ({ liveData }: FAQProps) {
   const t = useTranslations("faq");
   const shouldReduceMotion = useReducedMotion();
 
-  const faqIds = ["1", "2", "3", "4", "5", "6"];
+  const fallbackIds = ["1", "2", "3", "4", "5", "6"];
 
-  const faqItems = faqIds.map((id) => ({
-    question: t(`questions.${id}.question`),
-    answer: t(`questions.${id}.answer`),
-  }));
+  const items =
+    liveData?.sections && liveData.sections.length > 0
+      ? liveData.sections.map((s, idx) => ({
+          id: s.id || String(idx + 1),
+          question: s.heading,
+          answer: s.content,
+        }))
+      : fallbackIds.map((id) => ({
+          id,
+          question: t(`questions.${id}.question`),
+          answer: t(`questions.${id}.answer`),
+        }));
 
-  const jsonLd = generateFAQSchema(faqItems);
+  const sectionTitle = liveData?.title || t("title");
+  const jsonLd = generateFAQSchema(items.map((i) => ({ question: i.question, answer: i.answer })));
 
   return (
     <SectionWrapper sectionId="faq" dark>
@@ -53,7 +67,7 @@ export function FAQ() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground font-sans tracking-tight mb-4"
         >
-          {t("title")}
+          {sectionTitle}
         </motion.h2>
       </div>
 
@@ -65,17 +79,17 @@ export function FAQ() {
         className="max-w-3xl mx-auto"
       >
         <Accordion className="w-full space-y-4">
-          {faqIds.map((id) => (
+          {items.map((item) => (
             <AccordionItem
-              key={id}
-              value={`item-${id}`}
+              key={item.id}
+              value={`item-${item.id}`}
               className="border border-border/80 bg-card/80 backdrop-blur-sm rounded-2xl px-6 data-[state=open]:border-amber-500/50 data-[state=open]:shadow-lg data-[state=open]:shadow-amber-500/5 transition-all shadow-sm overflow-hidden"
             >
               <AccordionTrigger className="text-left rtl:text-right font-bold text-base sm:text-lg text-foreground hover:text-amber-400 py-5 hover:no-underline cursor-pointer">
-                {t(`questions.${id}.question`)}
+                {item.question}
               </AccordionTrigger>
-              <AccordionContent className="text-sm sm:text-base text-muted-foreground pb-5 leading-relaxed">
-                {t(`questions.${id}.answer`)}
+              <AccordionContent className="text-sm sm:text-base text-muted-foreground pb-5 leading-relaxed whitespace-pre-line">
+                {item.answer}
               </AccordionContent>
             </AccordionItem>
           ))}

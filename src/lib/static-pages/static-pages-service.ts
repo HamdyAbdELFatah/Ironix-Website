@@ -1,8 +1,8 @@
 /**
  * Static & Legal Pages Supabase Fetcher for Ironix-Website
  *
- * Fetches published documents (privacy-policy, terms-of-service) from Supabase `app_content`.
- * Supports ISR caching (`next: { revalidate: 60 }`), fast timeout fallback (1.5s),
+ * Fetches published documents (privacy-policy, terms-of-service, faq) from Supabase `app_content`.
+ * Supports dynamic real-time fetching (`cache: 'no-store'`), generous timeout (4s),
  * Markdown/Structured section rendering, and robust graceful fallback to Next-Intl local messages.
  */
 
@@ -44,21 +44,20 @@ const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGci
  * Fetch a published static page document by contentType and locale.
  */
 export async function getStaticPageDoc(
-  contentType: 'privacy-policy' | 'terms-of-service' | string,
+  contentType: 'privacy-policy' | 'terms-of-service' | 'faq' | string,
   locale: string
 ): Promise<StaticPageData | null> {
   try {
     const url = `${SUPABASE_URL}/rest/v1/app_content?content_type=eq.${encodeURIComponent(contentType)}&locale=eq.${encodeURIComponent(locale)}&is_active=eq.true&select=*`;
     
-    // Use fast 1500ms timeout for instant fallback if network is slow or offline
     const res = await fetch(url, {
       headers: {
         apikey: SUPABASE_ANON_KEY,
         Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
         'Content-Type': 'application/json',
       },
-      next: { revalidate: 60 },
-      signal: AbortSignal.timeout(1500),
+      cache: 'no-store',
+      signal: AbortSignal.timeout(4000),
     });
 
     if (!res.ok) {
@@ -87,22 +86,29 @@ export async function getStaticPageDoc(
       sections = parseMarkdownToSections(row.body);
     }
 
+    const defaultTitle =
+      contentType === 'privacy-policy'
+        ? (locale === 'ar' ? 'سياسة الخصوصية' : 'Privacy Policy')
+        : contentType === 'faq'
+        ? (locale === 'ar' ? 'الأسئلة الشائعة' : 'Frequently Asked Questions')
+        : (locale === 'ar' ? 'شروط الخدمة' : 'Terms of Service');
+
     return {
       id: row.id,
       contentType: row.content_type,
       locale: row.locale,
-      title: row.title || (contentType === 'privacy-policy' ? 'Privacy Policy' : 'Terms of Service'),
+      title: row.title || defaultTitle,
       body: row.body,
-      lastUpdated: metadata.last_updated || (row.updated_at ? row.updated_at.split('T')[0] : '2026-08-16'),
+      lastUpdated: metadata.last_updated || (row.updated_at ? row.updated_at.split('T')[0] : '2026-08-17'),
       version: metadata.version || '1.0',
-      effectiveDate: metadata.effective_date || '2026-08-16',
+      effectiveDate: metadata.effective_date || '2026-08-17',
       summary: metadata.summary || '',
-      contactEmail: metadata.contact_email || (contentType === 'privacy-policy' ? 'privacy@ironix.app' : 'legal@ironix.app'),
+      contactEmail: metadata.contact_email || (contentType === 'privacy-policy' ? 'privacy@ironix.app' : contentType === 'faq' ? 'support@ironix.app' : 'legal@ironix.app'),
       isActive: row.is_active ?? true,
       sections,
     };
-  } catch {
-    // Graceful offline fallback
+  } catch (error) {
+    console.warn(`[static-pages-service] Fallback to local dictionary for ${contentType}/${locale}:`, error);
     return null;
   }
 }

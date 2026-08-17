@@ -2,11 +2,11 @@ import * as React from "react";
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import { Link } from "@/i18n/navigation";
-import { ArrowLeft, Shield, Calendar, Mail, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, Shield, Calendar, Mail } from "lucide-react";
 import { generateBreadcrumbSchema, generateWebPageSchema } from "@/lib/seo/structured-data";
 import { getStaticPageDoc } from "@/lib/static-pages/static-pages-service";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,

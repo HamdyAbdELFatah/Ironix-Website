@@ -6,7 +6,7 @@ import { ArrowLeft, FileText, Calendar, Mail } from "lucide-react";
 import { generateBreadcrumbSchema, generateWebPageSchema } from "@/lib/seo/structured-data";
 import { getStaticPageDoc } from "@/lib/static-pages/static-pages-service";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
