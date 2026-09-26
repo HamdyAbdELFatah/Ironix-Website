@@ -304,93 +304,141 @@
   "privacy": {
     "metadata": {
       "title": "Privacy Policy - Ironix",
-      "description": "Privacy policy for the Ironix fitness app."
+      "description": "How Ironix collects, uses, shares and protects your personal data, and the choices and rights you have."
     },
     "title": "Privacy Policy",
-    "lastUpdated": "Last Updated: August 15, 2026",
+    "lastUpdated": "Last updated: September 25, 2026",
     "sections": {
       "1": {
-        "heading": "Information We Collect",
-        "content": "We collect information you provide directly to us, such as when you create or modify your account, request on-demand services, contact customer support, or otherwise communicate with us."
+        "heading": "Who we are and scope",
+        "content": "This Privacy Policy explains how Ironix (\"Ironix\", \"we\", \"us\") collects, uses, shares and protects personal data when you use the Ironix mobile app for Android and iOS (the \"App\"), visit this website (the \"Website\") or otherwise communicate with us. Together these are the \"Services\". Ironix also operates a web dashboard that is restricted to authorised staff and is not offered to the public.\n\nData controller. The Services are operated by [Legal entity name], registered at [Registered address], company registration number [Company registration number]. Unless this policy says otherwise, we are the controller of the personal data described here.\n\nData protection contact. [Data Protection Officer or EU/UK representative details, if applicable]. You can always reach us at privacy@ironix.app.\n\nHow the App works. Ironix is an offline-first fitness and workout-tracking app. Your data is stored on your device and is synced to our cloud backend only when you are signed in and have consented to sync. You can also use the App as a guest, without an account, in which case your data stays on your device."
       },
       "2": {
-        "heading": "How We Use Information",
-        "content": "We may use the information we collect about you to provide, maintain, and improve our services, including to facilitate payments, send receipts, provide products and services you request, and develop new features."
+        "heading": "Information we collect",
+        "content": "2.1 Information you provide\n\n• Account details: your name or display name, email address and a password if you sign up with email.\n• Social sign-in: if you sign in with Google, Apple, Facebook, Kakao, WeChat, QQ, VK or Yandex, we receive the account identifier and the profile information you authorise that provider to share, typically your name, email address and profile picture.\n• Profile and fitness details: profile photo (avatar), age, gender, height, weight and body-weight history, fitness goal, experience level and training frequency.\n• Workout data: exercises, sets, reps, weight, RPE, duration and notes.\n• Gym membership cards: card name, barcode data, and card image and colours.\n• Body measurements, injury information, and progress-photo details (date, pose, weight and notes). The photo image itself stays on your device. This information is backed up to your account only if you turn on the body-data consent in the App; otherwise it stays on your device.\n• Favourite exercises and the workout routines you create.\n• Preferences: units, language, theme, notification settings and your consent choices.\n• Communications: messages you send to us, for example to support@ironix.app or privacy@ironix.app.\n• AI coach prompts: text you type into the optional AI coach, together with related workout context (see 2.3).\n\n2.2 Information created or collected automatically\n\n• Derived data: experience points (XP), level, streaks, achievements, muscle-recovery statistics and personal records, calculated from your workouts.\n• Analytics and diagnostics: product usage events (PostHog and Firebase Analytics) and crash reports with device and operating-system information (Firebase Crashlytics). These are subject to your consent where the law requires it (see section 3).\n• Push notifications: a push token (Firebase Cloud Messaging or Apple Push Notification service) and your app user ID, stored on our servers so that we can deliver notifications to your device.\n• Subscription status: purchase and entitlement information processed by RevenueCat and linked to your account ID. We never receive your payment card details.\n• Sync information: technical records such as timestamps and deletion markers that keep your devices consistent.\n• Website data: see section 11.\n\n2.3 Information from third parties and optional integrations\n\nThe following apply only if you choose to enable or use them.\n\n• Health Connect (Android) or Apple HealthKit (iOS): the App writes your workouts (type, start and end time, and notes) to the health store on your device.\n• Strava: you link your Strava account through Strava's OAuth flow, and the token exchange is performed by an Ironix server function. What Strava receives and stores is governed by your Strava settings and Strava's privacy policy.\n• Calendar sync: scheduled workouts are synced with Google Calendar or Apple Calendar.\n• AI coach: the text you type and related workout context are sent to a third-party language-model provider, Google Gemini, to generate suggestions. This information is not used for advertising. Please do not enter information that you do not want processed by that provider.\n\n2.4 Device permissions\n\nEvery permission is optional and is requested only when you use the related feature. You can change or withdraw a permission at any time in your device settings, although the related feature may then stop working.\n\n• Camera: to scan gym-card barcodes and to take progress photos.\n• Photo library: to choose avatar and gym-card images and to save summary images.\n• Notifications: for workout reminders, streak alerts and campaign messages.\n• Location: only if you use outdoor tracking or nearby-gym features.\n• Bluetooth: to connect heart-rate monitors.\n• Microphone: to record voice notes."
       },
       "3": {
-        "heading": "Data Sharing",
-        "content": "We may share your information with our affiliates, subsidiaries, and service providers who need access to such information to carry out work on our behalf."
+        "heading": "How we use information and our legal bases",
+        "content": "We use personal data only for the purposes below. Where the EU or UK GDPR applies, we rely on the legal basis shown for each purpose.\n\n• Providing the App: creating and managing your account, authenticating you, syncing your data between devices, managing your subscription status and giving support. Legal basis: performance of a contract (Article 6(1)(b)).\n• Features you request: gym cards, reminders, and optional integrations such as Health Connect, HealthKit, Strava, calendar sync and the AI coach. Legal basis: performance of a contract and, where a feature depends on a device permission or a third-party connection you enable, your consent (Article 6(1)(a)).\n• Product analytics and crash diagnostics: understanding how the App is used and fixing crashes. Legal basis: your consent where the law requires it, and otherwise our legitimate interest in keeping the App reliable and improving it (Article 6(1)(f)). You can opt out in the consent dialog or in Settings.\n• Push notifications and campaign messages: your consent, which you can withdraw in your device or App settings.\n• Health and fitness data: information such as body weight, measurements and injury information can reveal health details, which is a special category of personal data. We process it only on the basis of your explicit consent (Article 9(2)(a)), which you give when you choose to enter it or enable the related feature.\n• Security, fraud prevention and abuse prevention, and enforcing our Terms: our legitimate interests (Article 6(1)(f)).\n• Legal compliance: meeting legal obligations and responding to lawful requests from authorities (Article 6(1)(c)).\n\nWe do not sell your personal data and we do not use it to target advertising. We do not make decisions about you based solely on automated processing that produce legal or similarly significant effects."
       },
       "4": {
-        "heading": "Data Security",
-        "content": "We take reasonable measures to help protect information about you from loss, theft, misuse and unauthorized access, disclosure, alteration and destruction."
+        "heading": "Sharing and processors",
+        "content": "We share personal data only with service providers that help us operate the Services, with platforms you choose to connect, and where the law requires. We do not sell personal data, and we do not use third-party advertising SDKs to target ads. Our main recipients are:\n\n• Supabase: hosted PostgreSQL database, authentication, storage and server functions (region eu-west-1, Ireland). Stores your account, profile, workout, sync and push-token data. Acts as our processor.\n• RevenueCat: processes subscription purchase status. Receives your app user ID (your account ID) and purchase and entitlement data.\n• PostHog: product analytics events, subject to consent where required.\n• Google Firebase: Firebase Analytics, Firebase Crashlytics (crash reports and device and operating-system information) and Firebase Cloud Messaging (push delivery). Apple Push Notification service delivers push notifications on iOS.\n• Apple App Store and Google Play: process purchases and subscriptions under their own terms and privacy policies. They act as independent controllers of your payment information, which we do not receive.\n• Social sign-in providers (Google, Apple, Facebook, Kakao, WeChat, QQ, VK, Yandex): only the provider you choose to sign in with.\n• Strava, Health Connect, Apple HealthKit, Google Calendar and Apple Calendar: only when you enable the integration. These platforms handle data under their own policies.\n• Google Gemini (AI provider): only when you use the AI coach.\n• Vercel: hosting of the Website.\n\nOur authorised staff may access personal data through our restricted admin dashboard only as needed to operate the Services, provide support and keep them secure. We may also disclose information to comply with the law or a valid legal request, to protect the rights, safety and security of our users or the Services, or in connection with a merger, acquisition or sale of assets, in which case we will ensure that this policy continues to protect your data or tell you of any change."
       },
       "5": {
-        "heading": "Your Rights",
-        "content": "You may update, correct or delete information about you at any time by logging into your online account or by contacting us."
+        "heading": "International transfers and safeguards",
+        "content": "Our primary backend is hosted in the EU (Ireland). Some of our providers, such as RevenueCat, PostHog, Google, Vercel and Strava, may process data in the United States or other countries outside your own, where data protection laws may differ.\n\nWhen we transfer personal data from the European Economic Area, the United Kingdom or Switzerland to a country that has not received an adequacy decision, we rely on appropriate safeguards, in particular the European Commission's Standard Contractual Clauses (together with the UK Addendum or International Data Transfer Agreement where applicable), or on the recipient's participation in a recognised framework such as the EU-U.S. Data Privacy Framework. You can request information about these safeguards at privacy@ironix.app."
       },
       "6": {
-        "heading": "Children",
-        "content": "Our services are not directed to children, and we do not knowingly collect personal information from children under 13."
+        "heading": "Retention",
+        "content": "• Account life: we keep your account data for as long as your account exists. Guest data stays on your device until you delete the App or clear its data.\n• Account deletion: you can delete your account in the App under Settings > Delete account. This deletes your account and all server-side data (profile, workouts, sets, gym cards, weight history, body measurements, injury information, progress-photo details, favourite exercises, your routines, gamification data, subscription record and push tokens) and clears local data on your device. Push tokens are removed when the account is deleted.\n• Deletion markers (tombstones): when you delete a workout, measurement, injury, favourite exercise or routine, we keep a deletion marker for up to 180 days so that your other devices learn about the deletion, after which it is permanently purged.\n• Backups: deleted data may remain in encrypted backups of our hosting provider for a limited period until they are overwritten. [Backup retention period].\n• Analytics and diagnostics: retained for the period configured in each provider's account. [Analytics retention period].\n• Support messages: kept for as long as needed to handle your request and any follow-up.\n• Third parties: data held by independent providers, such as app stores, Strava or health platforms, is retained under their own policies."
       },
       "7": {
-        "heading": "Changes",
-        "content": "We may change this privacy policy from time to time. If we make significant changes in the way we treat your personal information, or to the privacy policy, we will provide you notice through the Services or by some other means."
+        "heading": "Your rights",
+        "content": "Depending on where you live, you may have the following rights. We honour them for all users where reasonably possible.\n\nIf you are in the EEA, the United Kingdom or Switzerland:\n\n• Access: get a copy of your personal data and information about how we use it.\n• Rectification: correct inaccurate or incomplete data.\n• Erasure: have your data deleted.\n• Portability: receive your data in a structured, commonly used, machine-readable format.\n• Restriction: ask us to limit how we use your data in certain cases.\n• Objection: object to processing based on our legitimate interests.\n• Withdraw consent: withdraw any consent you gave at any time, without affecting processing that took place before withdrawal.\n• Complaint: lodge a complaint with your local data protection supervisory authority.\n\nIf you are a California resident (CCPA/CPRA) or live in a US state with a similar law, you can request to know and access the personal information we hold, to delete it, to correct it, and to receive a portable copy. You also have the right to opt out of the sale or sharing of personal information (we do not sell or share it for cross-context behavioural advertising), to limit the use of sensitive personal information (we use it only to provide the Services you request), and not to be discriminated against for exercising your rights. The categories of personal information we collect are described in section 2: identifiers, health and fitness information, commercial (subscription) information, app activity, location where you use location features, and audio for voice notes. You may use an authorised agent to make a request.\n\nHow to exercise your rights. You can edit much of your data directly in the App, opt out of analytics in the consent dialog or Settings, and delete your account and server-side data in Settings > Delete account. For any other request, email privacy@ironix.app. We may need to verify your identity first. We respond within 30 days, and if we need more time where the law allows, we will tell you why."
       },
       "8": {
-        "heading": "Contact Us",
-        "content": "If you have any questions about this Privacy Policy, please contact us at privacy@ironix.app."
+        "heading": "Health and fitness data notice",
+        "content": "Ironix is a tracking and motivation tool. It does not provide medical advice, diagnosis or treatment, and it is not a medical device. Please consult a qualified health professional before starting or changing an exercise programme.\n\nHealth-related information you give us, such as body weight, body measurements and injury information, is handled as sensitive data. We process it only with your consent, which you give when you choose to enter it or enable the related feature, and you can withdraw it by deleting the data or your account. We do not use health or fitness data for advertising, we do not sell it, and we do not share it with advertising platforms. Data written to Health Connect or Apple HealthKit is controlled by you through your device's health settings, where you can revoke access at any time."
+      },
+      "9": {
+        "heading": "Security",
+        "content": "We use technical and organisational measures designed to protect your personal data, including encrypted connections, authentication, row-level security that restricts each user to their own rows in our database, and restricted staff access to our admin dashboard. No system is completely secure, so we cannot guarantee absolute security. Please protect your password and your device. If a personal data breach affects you, we will notify you and the relevant authorities as required by law. To report a security concern, contact privacy@ironix.app."
+      },
+      "10": {
+        "heading": "Children",
+        "content": "The Services are not directed to children under 13, or under 16 in the EEA and the UK where the local age of digital consent requires it. We do not knowingly collect personal data from children below that age. If you believe a child has given us personal data, contact privacy@ironix.app and we will delete it."
+      },
+      "11": {
+        "heading": "Cookies and storage on the website",
+        "content": "The Website presents information about the App, download links and legal pages. It does not use advertising, analytics or tracking cookies, and we do not run third-party analytics on the Website. It stores only the following on your device:\n\n• Language preference: a cookie named NEXT_LOCALE, kept for up to one year, set only when you choose a language or accept a suggested language change. It lets the Website open in your language.\n• Theme preference: a local-storage entry named theme that remembers whether you chose light or dark mode. It stays until you clear your browser data.\n• Language suggestion: a session-storage entry named ironix_geo_banner_dismissed that remembers you dismissed the language suggestion. It is removed when you close the browser tab or session.\n\nThese items are needed to provide features you request and contain no personal data beyond your preference, so the Website does not show a cookie banner. You can delete them at any time in your browser settings.\n\nServer logs. Our hosting provider, Vercel, processes technical data such as your IP address, browser type and the pages you request in order to deliver and secure the Website. When you open the Website's root address, your approximate country (derived by the hosting network from your IP address) and your browser language are used momentarily to pick a language; we do not store them."
+      },
+      "12": {
+        "heading": "Changes to this policy",
+        "content": "We may update this Privacy Policy from time to time. The \"Last updated\" date at the top shows when it last changed. If we make material changes, we will notify you in the App or on the Website before they take effect and, where the law requires, ask for your consent again."
+      },
+      "13": {
+        "heading": "Contact",
+        "content": "For privacy questions or to exercise your rights, email privacy@ironix.app. For product help, email support@ironix.app.\n\n[Legal entity name], [Registered address].\n\nIf you are not satisfied with our response, you have the right to complain to your local data protection supervisory authority."
       }
     }
   },
   "terms": {
     "metadata": {
       "title": "Terms of Service - Ironix",
-      "description": "Terms of Service for the Ironix fitness app."
+      "description": "The terms that govern your use of the Ironix fitness app and website, including subscriptions, acceptable use and health disclaimers."
     },
     "title": "Terms of Service",
-    "lastUpdated": "Last Updated: August 15, 2026",
+    "lastUpdated": "Last updated: September 25, 2026",
     "sections": {
       "1": {
-        "heading": "Acceptance",
-        "content": "By accessing or using our Services, you agree to be bound by these Terms. If you do not agree to these Terms, you may not access or use the Services."
+        "heading": "Acceptance and eligibility",
+        "content": "These Terms of Service (\"Terms\") are an agreement between you and [Legal entity name], registered at [Registered address] (\"Ironix\", \"we\", \"us\"). They govern your use of the Ironix mobile app for Android and iOS (the \"App\"), this website (the \"Website\") and related services (together, the \"Services\").\n\nBy downloading, installing, creating an account with or otherwise using the Services, you agree to these Terms and to our Privacy Policy. If you do not agree, do not use the Services.\n\nEligibility. You must be at least 13 years old, or 16 in the EEA and the UK where the local age of digital consent requires it. If you are under the age of majority where you live, you must have your parent's or guardian's permission to use the Services, in particular before buying a subscription. Our admin dashboard is for authorised staff only."
       },
       "2": {
-        "heading": "License",
-        "content": "Subject to your compliance with these Terms, Ironix grants you a limited, non-exclusive, non-sublicensable, revocable, non-transferable license to access and use the Services on your personal device."
+        "heading": "The service and accounts",
+        "content": "Ironix is a fitness and workout-tracking app. It lets you log workouts, follow your progress, store gym membership cards, earn gamification rewards and connect optional integrations. The App is offline-first: your data is stored on your device and is synced to our cloud backend only when you are signed in and have consented to sync.\n\nAccounts. You can create an account with an email address and password, or sign in with a supported social provider (Google, Apple, Facebook, Kakao, WeChat, QQ, VK or Yandex). You can also use the App as a guest without an account. Guest data exists only on your device and is not backed up or synced, so it can be lost if you delete the App or lose the device.\n\nYou are responsible for providing accurate information, keeping your credentials secure and all activity under your account. Tell us promptly at support@ironix.app if you suspect unauthorised use.\n\nWe may add, change or remove features, and some features may be available only on certain platforms, in certain regions or with a paid subscription. Where practical, we will give reasonable notice of material changes that reduce the functionality you have paid for."
       },
       "3": {
-        "heading": "User Conduct",
-        "content": "You agree not to violate any law, contract, intellectual property or other third-party right, and you are solely responsible for your conduct while using our Services."
+        "heading": "Subscriptions, free trials, billing, cancellation and refunds",
+        "content": "Some features require a paid subscription (\"Premium\"). Subscriptions are purchased through the Apple App Store or Google Play (each a \"Store\") under the Store's terms. Ironix does not process your payment and does not receive your card details. RevenueCat processes purchase status for us.\n\n• Prices and taxes: the price, currency and any taxes are shown by the Store before you buy. Prices are set by the Stores and can vary by country.\n• Auto-renewal: subscriptions renew automatically for the same period at the then-current price unless you cancel at least 24 hours before the end of the current period, or earlier if your Store requires it. Payment is charged to your Store account when you confirm the purchase and at each renewal.\n• Free trials and introductory offers: where offered, the length and terms are shown before you sign up. Unless you cancel before the trial ends, you will be charged the subscription price.\n• How to cancel: manage or cancel your subscription in your Store settings. On iOS: Settings > your name > Subscriptions. On Android: Google Play > profile icon > Payments and subscriptions > Subscriptions. Cancellation takes effect at the end of the current paid period, and you keep Premium access until then.\n• Deleting the App or your Ironix account does not cancel a Store subscription. You must cancel it in the Store.\n• Refunds: refunds are handled by Apple or Google under their refund policies, and you must request them from the relevant Store. We cannot refund Store purchases ourselves, but we will help with information you need.\n• Price changes: the Store will notify you of price changes as its rules require, and you may cancel before they take effect.\n\nNothing in this section limits any mandatory consumer rights you have under applicable law, such as statutory rights of withdrawal, which the Store may apply on our behalf."
       },
       "4": {
-        "heading": "Subscriptions",
-        "content": "Some parts of the Service are billed on a subscription basis. You will be billed in advance on a recurring and periodic basis."
+        "heading": "User content and licence",
+        "content": "\"Your Content\" means the data you enter, upload or generate in the Services, including workouts, notes, gym-card data, photos, your avatar and AI coach prompts. You keep ownership of Your Content.\n\nYou grant Ironix a worldwide, non-exclusive, royalty-free licence to host, store, reproduce, process, sync and display Your Content solely to operate, secure and provide the Services to you, including syncing across your devices. This licence ends when Your Content is deleted, subject to the retention periods in our Privacy Policy, such as deletion markers kept for up to 180 days and limited backup retention.\n\nYou are responsible for Your Content and confirm that you have the rights needed to submit it, for example to gym-card images and photos, and that it does not infringe others' rights or break the law.\n\nLicence to use the App. Subject to these Terms, we grant you a limited, personal, non-exclusive, non-transferable, revocable licence to use the App on devices you own or control, for your own non-commercial use, and in line with the Store's usage rules.\n\nFeedback. If you send us ideas or suggestions, we may use them without obligation to you."
       },
       "5": {
-        "heading": "Intellectual Property",
-        "content": "The Services and its original content, features, and functionality are and will remain the exclusive property of Ironix and its licensors."
+        "heading": "Acceptable use",
+        "content": "You agree not to:\n\n• break any law or infringe anyone's rights;\n• access or attempt to access another user's account or data, or our admin dashboard or systems, without authorisation;\n• probe, scan or test the vulnerability of the Services, or bypass security, authentication, subscription or usage limits;\n• reverse engineer, decompile, copy, modify or create derivative works of the App, except as the law allows;\n• scrape or collect data from the Services by automated means, or use bots, scripts or similar tools without our written permission;\n• upload malicious code or interfere with the operation of the Services, our servers or other users;\n• impersonate any person or misrepresent your affiliation;\n• use the Services, including the AI coach, to generate or distribute unlawful, harassing or harmful content, or resell or commercially exploit the Services.\n\nWe may suspend or restrict access if we reasonably believe you have breached this section."
       },
       "6": {
-        "heading": "Disclaimers",
-        "content": "Your use of the Service is at your sole risk. The Service is provided on an 'AS IS' and 'AS AVAILABLE' basis."
+        "heading": "Health disclaimer",
+        "content": "The Services are provided for general fitness tracking and information only. They do not provide medical advice, diagnosis or treatment, and Ironix is not a medical device. Nothing in the Services, including workout statistics, muscle-recovery estimates, recommendations and AI coach responses, replaces the advice of a qualified doctor or other health professional.\n\nConsult your doctor before starting or changing any exercise, nutrition or training programme, especially if you have a medical condition, an injury, or are pregnant. Stop exercising and seek medical help if you feel pain, dizziness or unwell. In an emergency, call your local emergency number.\n\nExercise involves inherent risk of injury. You use the Services and take part in physical activity at your own risk and you assume all risks of injury to yourself. Calculations, estimates and AI-generated suggestions may be inaccurate or incomplete, and you should not rely on them alone. Nothing in this section excludes liability that cannot be excluded by law."
       },
       "7": {
-        "heading": "Limitation of Liability",
-        "content": "In no event shall Ironix, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, exemplary, or punitive damages."
+        "heading": "Third-party services",
+        "content": "The Services work with third-party services, including the Apple App Store and Google Play, RevenueCat, Supabase, social sign-in providers, Health Connect and Apple HealthKit, Strava, Google Calendar and Apple Calendar, Firebase and Apple push services, and Google Gemini for the AI coach. Those services are governed by their own terms and privacy policies, and we are not responsible for them. Integrations are optional and you can disconnect them at any time. Your use of a third-party service is at your own risk."
       },
       "8": {
-        "heading": "Governing Law",
-        "content": "These Terms shall be governed and construed in accordance with the laws of the jurisdiction in which Ironix is established, without regard to its conflict of law provisions."
+        "heading": "Intellectual property",
+        "content": "The Services, including the software, design, text, graphics, models and branding, and the Ironix name and logo, belong to Ironix or its licensors and are protected by intellectual-property laws. Except for the limited licence in section 4, these Terms do not transfer any rights to you. Open-source components are governed by their own licences. You may not use our name or marks without our written permission."
       },
       "9": {
-        "heading": "Changes",
-        "content": "We reserve the right, at our sole discretion, to modify or replace these Terms at any time."
+        "heading": "Termination and account deletion",
+        "content": "You can stop using the Services at any time. You can delete your account in the App under Settings > Delete account. Deletion is permanent and removes your account and all server-side data (profile, workouts, sets, gym cards, weight history, body measurements, injury information, progress-photo details, favourite exercises, your routines, gamification data, subscription record and push tokens) and clears local data on your device. Deletion markers for your synced records (such as workouts, measurements and routines) are kept for up to 180 days so that your other devices learn of the deletion, then permanently purged, as described in our Privacy Policy. Deleting your account does not cancel a Store subscription.\n\nWe may suspend or terminate your access, with notice where practical, if you breach these Terms, if required by law, or to protect the security of the Services or other users. When these Terms end, your licence to use the App ends. Sections that by their nature should survive, such as sections 8 and 10 to 13, will continue to apply."
       },
       "10": {
-        "heading": "Contact Us",
-        "content": "If you have any questions about these Terms, please contact us at legal@ironix.app."
+        "heading": "Disclaimers",
+        "content": "To the maximum extent permitted by law, the Services are provided \"as is\" and \"as available\", without warranties of any kind, whether express or implied, including merchantability, fitness for a particular purpose and non-infringement. We do not warrant that the Services will be uninterrupted, error-free or secure, that syncing will always succeed, or that you will achieve any fitness result. Nothing in these Terms affects rights that consumers have under mandatory law."
+      },
+      "11": {
+        "heading": "Limitation of liability",
+        "content": "To the maximum extent permitted by law, Ironix will not be liable for any indirect, incidental, special, consequential or punitive damages, or for loss of profits, revenue, data or goodwill, arising out of or relating to the Services. Our total liability for any claim relating to the Services is limited to the amount you paid for Premium in the 12 months before the event giving rise to the claim.\n\nNothing in these Terms excludes or limits liability for death or personal injury caused by negligence, for fraud or fraudulent misrepresentation, or for anything else that cannot be excluded or limited by law."
+      },
+      "12": {
+        "heading": "Indemnification",
+        "content": "To the extent permitted by law, you agree to indemnify and hold Ironix and its officers, employees and partners harmless from claims, losses and expenses (including reasonable legal fees) arising from your breach of these Terms, your misuse of the Services, or Your Content. This section does not apply where applicable consumer law does not allow it."
+      },
+      "13": {
+        "heading": "Governing law and general terms",
+        "content": "These Terms are governed by the laws of [Governing law and jurisdiction], and the courts of that jurisdiction will have jurisdiction over disputes, in each case subject to any mandatory consumer-protection rules of the country where you live, which continue to apply and may give you the right to bring proceedings in your local courts.\n\nThese Terms and the Privacy Policy are the entire agreement between you and Ironix about the Services. If a provision is found unenforceable, the rest remains in effect. Our failure to enforce a provision is not a waiver. You may not assign these Terms without our consent, and we may assign them in connection with a merger, acquisition or sale of assets."
+      },
+      "14": {
+        "heading": "Changes to these Terms",
+        "content": "We may update these Terms from time to time. The \"Last updated\" date shows the latest version. For material changes we will give you notice in the App or on the Website before they take effect. If you keep using the Services after the changes take effect, you accept the updated Terms. If you do not agree, stop using the Services and delete your account."
+      },
+      "15": {
+        "heading": "Contact",
+        "content": "For questions about these Terms, email legal@ironix.app. For product help, email support@ironix.app.\n\n[Legal entity name], [Registered address]."
       }
     }
+  },
+  "legal": {
+    "backToHome": "Back to Home",
+    "badge": "LEGAL DOCUMENT",
+    "privacyContactTitle": "Questions about your privacy?",
+    "privacyContactText": "Email our privacy team at",
+    "termsContactTitle": "Questions about our Terms?",
+    "termsContactText": "Email our legal team at"
   }
 }

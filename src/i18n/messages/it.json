@@ -306,91 +306,16 @@
       "title": "Privacy Policy - Ironix",
       "description": "Privacy policy for the Ironix fitness app."
     },
-    "title": "Privacy Policy",
-    "lastUpdated": "Last Updated: August 15, 2026",
-    "sections": {
-      "1": {
-        "heading": "Information We Collect",
-        "content": "We collect information you provide directly to us, such as when you create or modify your account, request on-demand services, contact customer support, or otherwise communicate with us."
-      },
-      "2": {
-        "heading": "How We Use Information",
-        "content": "We may use the information we collect about you to provide, maintain, and improve our services, including to facilitate payments, send receipts, provide products and services you request, and develop new features."
-      },
-      "3": {
-        "heading": "Data Sharing",
-        "content": "We may share your information with our affiliates, subsidiaries, and service providers who need access to such information to carry out work on our behalf."
-      },
-      "4": {
-        "heading": "Data Security",
-        "content": "We take reasonable measures to help protect information about you from loss, theft, misuse and unauthorized access, disclosure, alteration and destruction."
-      },
-      "5": {
-        "heading": "Your Rights",
-        "content": "You may update, correct or delete information about you at any time by logging into your online account or by contacting us."
-      },
-      "6": {
-        "heading": "Children",
-        "content": "Our services are not directed to children, and we do not knowingly collect personal information from children under 13."
-      },
-      "7": {
-        "heading": "Changes",
-        "content": "We may change this privacy policy from time to time. If we make significant changes in the way we treat your personal information, or to the privacy policy, we will provide you notice through the Services or by some other means."
-      },
-      "8": {
-        "heading": "Contact Us",
-        "content": "If you have any questions about this Privacy Policy, please contact us at privacy@ironix.app."
-      }
-    }
+    "title": "Privacy Policy"
   },
   "terms": {
     "metadata": {
       "title": "Terms of Service - Ironix",
       "description": "Terms of Service for the Ironix fitness app."
     },
-    "title": "Terms of Service",
-    "lastUpdated": "Last Updated: August 15, 2026",
-    "sections": {
-      "1": {
-        "heading": "Acceptance",
-        "content": "By accessing or using our Services, you agree to be bound by these Terms. If you do not agree to these Terms, you may not access or use the Services."
-      },
-      "2": {
-        "heading": "License",
-        "content": "Subject to your compliance with these Terms, Ironix grants you a limited, non-exclusive, non-sublicensable, revocable, non-transferable license to access and use the Services on your personal device."
-      },
-      "3": {
-        "heading": "User Conduct",
-        "content": "You agree not to violate any law, contract, intellectual property or other third-party right, and you are solely responsible for your conduct while using our Services."
-      },
-      "4": {
-        "heading": "Subscriptions",
-        "content": "Some parts of the Service are billed on a subscription basis. You will be billed in advance on a recurring and periodic basis."
-      },
-      "5": {
-        "heading": "Intellectual Property",
-        "content": "The Services and its original content, features, and functionality are and will remain the exclusive property of Ironix and its licensors."
-      },
-      "6": {
-        "heading": "Disclaimers",
-        "content": "Your use of the Service is at your sole risk. The Service is provided on an 'AS IS' and 'AS AVAILABLE' basis."
-      },
-      "7": {
-        "heading": "Limitation of Liability",
-        "content": "In no event shall Ironix, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, exemplary, or punitive damages."
-      },
-      "8": {
-        "heading": "Governing Law",
-        "content": "These Terms shall be governed and construed in accordance with the laws of the jurisdiction in which Ironix is established, without regard to its conflict of law provisions."
-      },
-      "9": {
-        "heading": "Changes",
-        "content": "We reserve the right, at our sole discretion, to modify or replace these Terms at any time."
-      },
-      "10": {
-        "heading": "Contact Us",
-        "content": "If you have any questions about these Terms, please contact us at legal@ironix.app."
-      }
-    }
+    "title": "Terms of Service"
+  },
+  "legal": {
+    "englishNotice": "Questo documento è fornito in inglese."
   }
 }

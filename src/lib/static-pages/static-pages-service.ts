@@ -107,8 +107,7 @@ export async function getStaticPageDoc(
       isActive: row.is_active ?? true,
       sections,
     };
-  } catch (error) {
-    console.warn(`[static-pages-service] Fallback to local dictionary for ${contentType}/${locale}:`, error);
+  } catch {
     return null;
   }
 }
