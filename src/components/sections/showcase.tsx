@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
+import { motion, useReducedMotion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useTranslations } from "next-intl";
 import {
   Activity,
@@ -31,8 +31,28 @@ export function Showcase() {
   const [selectedMuscle, setSelectedMuscle] = React.useState<"chest" | "back" | "quads" | "delts">("chest");
   const [anatomyView, setAnatomyView] = React.useState<"front" | "back">("front");
 
-  // GymID Card Skin State
+  // GymID Card Skin State & 3D Tilt
   const [cardSkin, setCardSkin] = React.useState<"gold" | "oled" | "cyan">("gold");
+  const cardMouseX = useMotionValue(0);
+  const cardMouseY = useMotionValue(0);
+  const cardSpringConfig = { damping: 20, stiffness: 200 };
+  const cardRotateX = useSpring(useTransform(cardMouseY, [-0.5, 0.5], [12, -12]), cardSpringConfig);
+  const cardRotateY = useSpring(useTransform(cardMouseX, [-0.5, 0.5], [-12, 12]), cardSpringConfig);
+
+  const handleCardMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (shouldReduceMotion) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    cardMouseX.set(x);
+    cardMouseY.set(y);
+  };
+
+  const handleCardMouseLeave = () => {
+    if (shouldReduceMotion) return;
+    cardMouseX.set(0);
+    cardMouseY.set(0);
+  };
 
   // AI Coach Persona State
   const [selectedPersona, setSelectedPersona] = React.useState<"general" | "mentor" | "villain">("general");
@@ -69,7 +89,10 @@ export function Showcase() {
   };
 
   return (
-    <SectionWrapper sectionId="showcase">
+    <SectionWrapper sectionId="showcase" className="relative overflow-hidden">
+      {/* Dynamic Background Ambient Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[400px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none -z-10 animate-pulse-glow" />
+
       <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
         <motion.div
           initial={shouldReduceMotion ? {} : { opacity: 0, y: 15 }}
@@ -103,79 +126,98 @@ export function Showcase() {
         </motion.p>
       </div>
 
-      {/* Tabs Switcher */}
+      {/* Tabs Switcher with MotionSites Framer Motion Layout Morph */}
       <div className="flex justify-center mb-10">
-        <div className="inline-flex p-1.5 rounded-2xl bg-card border border-border/80 shadow-lg backdrop-blur-md">
+        <div className="inline-flex p-1.5 rounded-2xl bg-neutral-900/90 border border-neutral-800 shadow-2xl backdrop-blur-xl relative">
           <button
             onClick={() => setActiveTab("anatomy")}
             className={cn(
-              "flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all cursor-pointer",
-              activeTab === "anatomy"
-                ? "bg-primary text-primary-foreground shadow-md"
-                : "text-muted-foreground hover:text-foreground"
+              "relative flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-colors cursor-pointer z-10",
+              activeTab === "anatomy" ? "text-neutral-950" : "text-neutral-400 hover:text-white"
             )}
           >
+            {activeTab === "anatomy" && (
+              <motion.div
+                layoutId="showcaseTabPill"
+                className="absolute inset-0 rounded-xl bg-[#F9C023] shadow-lg shadow-amber-500/30 -z-10"
+                transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
+              />
+            )}
             <Activity className="w-4 h-4" />
             <span>3D Anatomy Engine</span>
           </button>
+
           <button
             onClick={() => setActiveTab("gymid")}
             className={cn(
-              "flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all cursor-pointer",
-              activeTab === "gymid"
-                ? "bg-primary text-primary-foreground shadow-md"
-                : "text-muted-foreground hover:text-foreground"
+              "relative flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-colors cursor-pointer z-10",
+              activeTab === "gymid" ? "text-neutral-950" : "text-neutral-400 hover:text-white"
             )}
           >
+            {activeTab === "gymid" && (
+              <motion.div
+                layoutId="showcaseTabPill"
+                className="absolute inset-0 rounded-xl bg-[#F9C023] shadow-lg shadow-amber-500/30 -z-10"
+                transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
+              />
+            )}
             <CreditCard className="w-4 h-4" />
             <span>GymID Wallet</span>
           </button>
+
           <button
             onClick={() => setActiveTab("coach")}
             className={cn(
-              "flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all cursor-pointer",
-              activeTab === "coach"
-                ? "bg-primary text-primary-foreground shadow-md"
-                : "text-muted-foreground hover:text-foreground"
+              "relative flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-colors cursor-pointer z-10",
+              activeTab === "coach" ? "text-neutral-950" : "text-neutral-400 hover:text-white"
             )}
           >
+            {activeTab === "coach" && (
+              <motion.div
+                layoutId="showcaseTabPill"
+                className="absolute inset-0 rounded-xl bg-[#F9C023] shadow-lg shadow-amber-500/30 -z-10"
+                transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
+              />
+            )}
             <Mic className="w-4 h-4" />
             <span>AI Coach Voice</span>
           </button>
         </div>
       </div>
 
-      {/* Interactive Tab Content */}
+      {/* Interactive Tab Content with Dynamic Motion */}
       <AnimatePresence mode="wait">
         {activeTab === "anatomy" && (
           <motion.div
             key="anatomy"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
+            initial={{ opacity: 0, y: 15, filter: "blur(6px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            exit={{ opacity: 0, y: -15, filter: "blur(6px)" }}
             transition={{ duration: 0.4 }}
             className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-card/60 backdrop-blur-md rounded-3xl p-6 sm:p-10 border border-border/80 shadow-2xl"
           >
             {/* Visualizer Stage */}
-            <div className="lg:col-span-6 flex flex-col items-center justify-center relative min-h-[380px] p-6 rounded-2xl bg-neutral-950/80 border border-neutral-800">
+            <div className="lg:col-span-6 flex flex-col items-center justify-center relative min-h-[380px] p-6 rounded-2xl bg-neutral-950/80 border border-neutral-800 group overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-t from-amber-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
               <div className="relative w-full max-w-[280px] h-[320px] flex items-center justify-center">
                 <Image
                   src="/assets/ic_3d_body_dual_overview.png"
                   alt="Ironix 3D Anatomy Visualizer"
                   width={260}
                   height={320}
-                  className="w-full h-full object-contain filter drop-shadow-[0_10px_25px_rgba(249,192,35,0.2)]"
+                  className="w-full h-full object-contain filter drop-shadow-[0_10px_30px_rgba(249,192,35,0.25)] transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
 
               {/* View Rotation Control */}
-              <div className="absolute bottom-4 flex gap-2">
+              <div className="absolute bottom-4 flex gap-2 z-10">
                 <button
                   onClick={() => setAnatomyView("front")}
                   className={cn(
-                    "px-3 py-1 text-xs rounded-full font-bold transition-all cursor-pointer",
+                    "px-3.5 py-1 text-xs rounded-full font-bold transition-all cursor-pointer shadow-sm",
                     anatomyView === "front"
-                      ? "bg-primary text-primary-foreground"
+                      ? "bg-[#F9C023] text-neutral-950 font-black shadow-md shadow-amber-500/20"
                       : "bg-neutral-800 text-neutral-400 hover:text-white"
                   )}
                 >
@@ -184,9 +226,9 @@ export function Showcase() {
                 <button
                   onClick={() => setAnatomyView("back")}
                   className={cn(
-                    "px-3 py-1 text-xs rounded-full font-bold transition-all cursor-pointer",
+                    "px-3.5 py-1 text-xs rounded-full font-bold transition-all cursor-pointer shadow-sm",
                     anatomyView === "back"
-                      ? "bg-primary text-primary-foreground"
+                      ? "bg-[#F9C023] text-neutral-950 font-black shadow-md shadow-amber-500/20"
                       : "bg-neutral-800 text-neutral-400 hover:text-white"
                   )}
                 >
@@ -221,9 +263,9 @@ export function Showcase() {
                         setAnatomyView(m.view);
                       }}
                       className={cn(
-                        "p-3.5 rounded-xl border text-left rtl:text-right transition-all cursor-pointer flex flex-col justify-between",
+                        "p-3.5 rounded-xl border text-left rtl:text-right transition-all cursor-pointer flex flex-col justify-between active:scale-98",
                         isSelected
-                          ? "border-primary bg-primary/10 shadow-md shadow-primary/10"
+                          ? "border-primary bg-primary/10 shadow-lg shadow-primary/15"
                           : "border-border/80 bg-background/50 hover:bg-background hover:border-border"
                       )}
                     >
@@ -256,23 +298,37 @@ export function Showcase() {
         {activeTab === "gymid" && (
           <motion.div
             key="gymid"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
+            initial={{ opacity: 0, y: 15, filter: "blur(6px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            exit={{ opacity: 0, y: -15, filter: "blur(6px)" }}
             transition={{ duration: 0.4 }}
             className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-card/60 backdrop-blur-md rounded-3xl p-6 sm:p-10 border border-border/80 shadow-2xl"
           >
-            {/* GymID Pass Card Visualizer */}
-            <div className="lg:col-span-6 flex flex-col items-center justify-center p-6">
-              <div
+            {/* GymID Pass Card Visualizer with 3D Spring Tilt */}
+            <div className="lg:col-span-6 flex flex-col items-center justify-center p-6 [perspective:1000px]">
+              <motion.div
+                onMouseMove={handleCardMouseMove}
+                onMouseLeave={handleCardMouseLeave}
+                style={
+                  shouldReduceMotion
+                    ? {}
+                    : {
+                        rotateX: cardRotateX,
+                        rotateY: cardRotateY,
+                        transformStyle: "preserve-3d",
+                      }
+                }
                 className={cn(
-                  "w-full max-w-[340px] h-[200px] rounded-2xl p-5 flex flex-col justify-between shadow-2xl transition-all duration-500 relative overflow-hidden border",
-                  cardSkin === "gold" && "bg-gradient-to-br from-amber-600 via-yellow-600 to-neutral-900 border-amber-400/50 shadow-amber-500/20 text-neutral-950",
+                  "w-full max-w-[340px] h-[200px] rounded-2xl p-5 flex flex-col justify-between shadow-2xl transition-all duration-300 relative overflow-hidden border cursor-grab active:cursor-grabbing",
+                  cardSkin === "gold" && "bg-gradient-to-br from-amber-600 via-yellow-600 to-neutral-900 border-amber-400/50 shadow-amber-500/25 text-neutral-950",
                   cardSkin === "oled" && "bg-neutral-950 border-neutral-700 text-white shadow-black/80",
-                  cardSkin === "cyan" && "bg-gradient-to-br from-cyan-600 via-blue-800 to-neutral-950 border-cyan-400/40 text-white"
+                  cardSkin === "cyan" && "bg-gradient-to-br from-cyan-600 via-blue-800 to-neutral-950 border-cyan-400/40 text-white shadow-cyan-500/20"
                 )}
               >
-                <div className="flex justify-between items-center">
+                {/* Holographic Sheen Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-transparent pointer-events-none -z-0 animate-shimmer" />
+
+                <div className="flex justify-between items-center relative z-10">
                   <div className="flex items-center gap-2">
                     <div className="w-6 h-6 rounded-md overflow-hidden bg-neutral-950 border border-amber-400/40 p-0.5 flex items-center justify-center">
                       <Image
@@ -290,7 +346,7 @@ export function Showcase() {
                   <CreditCard className="w-4 h-4" />
                 </div>
 
-                <div className="flex items-center justify-between my-auto">
+                <div className="flex items-center justify-between my-auto relative z-10">
                   <div>
                     <div className="text-[10px] opacity-80 uppercase tracking-wider font-semibold">
                       Member Name
@@ -305,11 +361,11 @@ export function Showcase() {
                   </div>
                 </div>
 
-                <div className="flex justify-between items-center pt-2 border-t border-current/20 text-[10px] font-bold">
+                <div className="flex justify-between items-center pt-2 border-t border-current/20 text-[10px] font-bold relative z-10">
                   <span>NFC TAP READY</span>
                   <span>100% OFFLINE</span>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Skin Chooser */}
               <div className="flex gap-2 mt-6">
@@ -381,15 +437,15 @@ export function Showcase() {
         {activeTab === "coach" && (
           <motion.div
             key="coach"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
+            initial={{ opacity: 0, y: 15, filter: "blur(6px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            exit={{ opacity: 0, y: -15, filter: "blur(6px)" }}
             transition={{ duration: 0.4 }}
             className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-card/60 backdrop-blur-md rounded-3xl p-6 sm:p-10 border border-border/80 shadow-2xl"
           >
             {/* Coach Card Visualizer */}
             <div className="lg:col-span-6 flex flex-col items-center justify-center p-6 bg-neutral-950/80 rounded-2xl border border-neutral-800">
-              <div className="w-full max-w-sm rounded-2xl p-6 bg-gradient-to-br from-neutral-900 to-neutral-950 border border-neutral-800 space-y-4">
+              <div className="w-full max-w-sm rounded-2xl p-6 bg-gradient-to-br from-neutral-900 to-neutral-950 border border-neutral-800 space-y-4 shadow-2xl">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-amber-400/20 text-amber-400 flex items-center justify-center font-bold">
@@ -412,11 +468,11 @@ export function Showcase() {
                 </div>
 
                 {/* Animated Audio Waveform */}
-                <div className="flex items-center justify-center gap-1 h-8">
-                  {[40, 70, 90, 60, 100, 45, 85, 30, 95, 60, 80, 40].map((h, idx) => (
+                <div className="flex items-center justify-center gap-1.5 h-10">
+                  {[40, 75, 95, 60, 100, 50, 85, 35, 95, 65, 80, 45].map((h, idx) => (
                     <div
                       key={idx}
-                      className="w-1 rounded-full bg-amber-400 transition-all duration-300 animate-pulse"
+                      className="w-1 rounded-full bg-gradient-to-t from-amber-500 to-yellow-300 transition-all duration-300 animate-pulse"
                       style={{ height: `${h}%`, animationDelay: `${idx * 0.1}s` }}
                     />
                   ))}
@@ -432,7 +488,7 @@ export function Showcase() {
                     className={cn(
                       "px-3.5 py-1 rounded-full text-xs font-bold transition-all cursor-pointer",
                       selectedPersona === key
-                        ? "bg-primary text-primary-foreground shadow-md"
+                        ? "bg-[#F9C023] text-neutral-950 font-black shadow-md shadow-amber-500/20"
                         : "bg-neutral-800 text-neutral-400 hover:text-white"
                     )}
                   >

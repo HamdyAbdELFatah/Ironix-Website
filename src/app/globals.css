@@ -358,6 +358,28 @@
   transition: opacity 0.5s;
 }
 
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+.noise-overlay {
+  background-image: radial-gradient(rgba(249, 192, 35, 0.05) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
 @media print {
   body {
     @apply bg-white text-black;

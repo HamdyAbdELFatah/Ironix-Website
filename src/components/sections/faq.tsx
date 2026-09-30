@@ -11,7 +11,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { generateFAQSchema } from "@/lib/seo/structured-data";
 import type { StaticPageData } from "@/lib/static-pages/static-pages-service";
 
 interface FAQProps {
@@ -38,16 +37,9 @@ export function FAQ({ liveData }: FAQProps) {
         }));
 
   const sectionTitle = liveData?.title || t("title");
-  const jsonLd = generateFAQSchema(items.map((i) => ({ question: i.question, answer: i.answer })));
 
   return (
     <SectionWrapper sectionId="faq" dark>
-      {/* FAQ Schema for Rich Google Search Snippets */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
       <div className="text-center max-w-3xl mx-auto mb-16">
         <motion.div
           initial={shouldReduceMotion ? {} : { opacity: 0, y: 15 }}

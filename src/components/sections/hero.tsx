@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useTranslations } from "next-intl";
 import {
   Flame,
@@ -37,6 +37,29 @@ export function Hero() {
   const [workoutStarted, setWorkoutStarted] = React.useState<boolean>(false);
   const [audioEnabled, setAudioEnabled] = React.useState<boolean>(false);
   const [lastLoggedWeight, setLastLoggedWeight] = React.useState<number>(40);
+  const [flashSuccess, setFlashSuccess] = React.useState<boolean>(false);
+
+  // 3D Tilt Spring Physics for Phone Stage
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springConfig = { damping: 25, stiffness: 180 };
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [10, -10]), springConfig);
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-10, 10]), springConfig);
+
+  const handlePhoneMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (shouldReduceMotion) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const handlePhoneMouseLeave = () => {
+    if (shouldReduceMotion) return;
+    mouseX.set(0);
+    mouseY.set(0);
+  };
 
   React.useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -52,6 +75,8 @@ export function Hero() {
     setCompletedSets((prev) => (prev < 4 ? prev + 1 : 1));
     setTimerSeconds(60);
     setLastLoggedWeight((prev) => (completedSets === 3 ? 42.5 : prev));
+    setFlashSuccess(true);
+    setTimeout(() => setFlashSuccess(false), 800);
   };
 
   const handleStartWorkout = () => {
@@ -61,13 +86,15 @@ export function Hero() {
     }
   };
 
+  const titleWords = t("title").split(" ");
+
   return (
     <SectionWrapper
       sectionId="hero"
-      className="relative pt-28 pb-16 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-32 overflow-hidden"
+      className="relative pt-28 pb-16 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-32 overflow-hidden noise-overlay"
     >
       {/* Dynamic Background Animated Ambient Glows & Mesh Waves */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[1100px] h-[550px] bg-gradient-to-tr from-amber-500/15 via-yellow-600/10 to-transparent rounded-full blur-[140px] pointer-events-none -z-10 animate-pulse-glow" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[1100px] h-[550px] bg-gradient-to-tr from-amber-500/20 via-yellow-600/15 to-blue-500/10 rounded-full blur-[140px] pointer-events-none -z-10 animate-pulse-glow" />
       <div className="absolute top-1/2 right-4 w-[450px] h-[450px] bg-blue-500/10 rounded-full blur-[130px] pointer-events-none -z-10 animate-float-slow" />
       <div className="absolute -bottom-10 left-10 w-[400px] h-[400px] bg-amber-600/10 rounded-full blur-[120px] pointer-events-none -z-10 animate-float-reverse" />
 
@@ -79,8 +106,8 @@ export function Hero() {
         <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left rtl:lg:text-right">
           {/* Persona Badge with Glowing Border */}
           <motion.div
-            initial={shouldReduceMotion ? {} : { opacity: 0, y: 15 }}
-            animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 15, filter: "blur(6px)" }}
+            animate={shouldReduceMotion ? {} : { opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="mb-6 inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-amber-500/40 bg-amber-500/10 text-amber-400 text-xs sm:text-sm font-bold shadow-lg shadow-amber-500/15 backdrop-blur-md hover:border-amber-400 transition-colors"
           >
@@ -97,24 +124,36 @@ export function Hero() {
             <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping ml-1" />
           </motion.div>
 
-          {/* Main Title */}
-          <motion.h1
-            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-            animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-            className="text-4xl sm:text-6xl lg:text-7xl font-black text-foreground font-sans tracking-tight leading-[1.08] mb-6"
-          >
-            {t("title")}{" "}
-            <span className="text-ironix-gold-gradient block sm:inline">
+          {/* Kinetic Main Title with Staggered Word Reveal */}
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-foreground font-sans tracking-tight leading-[1.08] mb-6">
+            <span className="inline-block">
+              {titleWords.map((word, i) => (
+                <motion.span
+                  key={i}
+                  initial={shouldReduceMotion ? {} : { opacity: 0, y: 25, filter: "blur(8px)" }}
+                  animate={shouldReduceMotion ? {} : { opacity: 1, y: 0, filter: "blur(0px)" }}
+                  transition={{ duration: 0.5, delay: 0.08 * i, ease: "easeOut" }}
+                  className="inline-block mr-2.5 rtl:ml-2.5 rtl:mr-0"
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </span>{" "}
+            <motion.span
+              initial={shouldReduceMotion ? {} : { opacity: 0, scale: 0.95, filter: "blur(8px)" }}
+              animate={shouldReduceMotion ? {} : { opacity: 1, scale: 1, filter: "blur(0px)" }}
+              transition={{ duration: 0.6, delay: 0.35, ease: "easeOut" }}
+              className="text-ironix-gold-gradient block sm:inline animate-gradient-shift"
+            >
               {t("titleAccent")}
-            </span>
-          </motion.h1>
+            </motion.span>
+          </h1>
 
           {/* Subtitle */}
           <motion.p
-            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-            animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20, filter: "blur(6px)" }}
+            animate={shouldReduceMotion ? {} : { opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
             className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-2xl leading-relaxed mb-8 sm:mb-10 font-normal"
           >
             {t("subtitle")}
@@ -124,7 +163,7 @@ export function Hero() {
           <motion.div
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
             animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
             className="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 mb-10 w-full sm:w-auto"
           >
             <AppStoreBadge section="hero" />
@@ -136,19 +175,18 @@ export function Hero() {
           <motion.div
             initial={shouldReduceMotion ? {} : { opacity: 0 }}
             animate={shouldReduceMotion ? {} : { opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
             className="w-full pt-8 border-t border-border/70"
           >
             <SocialProof />
           </motion.div>
         </div>
 
-        {/* Right Column: Smartphone Mockup with 4 Floating Interactive Widgets */}
-        <motion.div
-          initial={shouldReduceMotion ? {} : { opacity: 0, scale: 0.95 }}
-          animate={shouldReduceMotion ? {} : { opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-          className="lg:col-span-5 flex justify-center relative select-none"
+        {/* Right Column: Smartphone Mockup with 3D Spring Tilt & 4 Floating Interactive Widgets */}
+        <div
+          onMouseMove={handlePhoneMouseMove}
+          onMouseLeave={handlePhoneMouseLeave}
+          className="lg:col-span-5 flex justify-center relative select-none py-6 [perspective:1200px]"
         >
           {/* Ambient Glow behind Smartphone */}
           <div className="absolute -inset-6 bg-gradient-to-tr from-amber-500/25 via-yellow-500/15 to-blue-500/15 rounded-[60px] blur-3xl -z-10 animate-pulse-glow" />
@@ -157,7 +195,7 @@ export function Hero() {
               FLOATING WIDGET 1: 7-Day Streak & Progress Circle (Top Left)
              ═══════════════════════════════════════════════════════════ */}
           <div
-            className="hidden sm:flex absolute -top-10 -left-12 z-40 floating-glass-card rounded-2xl p-3.5 items-center gap-3 animate-float-slow transition-transform hover:scale-105"
+            className="hidden sm:flex absolute -top-4 -left-10 z-40 floating-glass-card rounded-2xl p-3.5 items-center gap-3 animate-float-slow transition-transform hover:scale-105"
             id="hero-floating-goal"
           >
             <div className="relative w-12 h-12 flex items-center justify-center">
@@ -201,7 +239,7 @@ export function Hero() {
               FLOATING WIDGET 2: Offline SQLite Status & Radar (Bottom Right)
              ═══════════════════════════════════════════════════════════ */}
           <div
-            className="hidden sm:flex absolute -bottom-8 -right-10 z-40 floating-glass-card rounded-2xl p-3 items-center gap-2.5 animate-float-reverse transition-transform hover:scale-105"
+            className="hidden sm:flex absolute -bottom-6 -right-8 z-40 floating-glass-card rounded-2xl p-3 items-center gap-2.5 animate-float-reverse transition-transform hover:scale-105"
             id="hero-floating-offline"
           >
             <div className="relative w-8 h-8 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
@@ -223,7 +261,7 @@ export function Hero() {
               FLOATING WIDGET 3: Biomechanics & Recovery (Top Right)
              ═══════════════════════════════════════════════════════════ */}
           <div
-            className="hidden md:flex absolute top-20 -right-14 z-30 floating-glass-card rounded-2xl p-2.5 px-3.5 items-center gap-2.5 animate-float-slow transition-transform hover:scale-105"
+            className="hidden md:flex absolute top-20 -right-12 z-30 floating-glass-card rounded-2xl p-2.5 px-3.5 items-center gap-2.5 animate-float-slow transition-transform hover:scale-105"
             id="hero-floating-recovery"
           >
             <div className="w-7 h-7 rounded-lg bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-amber-400">
@@ -239,7 +277,7 @@ export function Hero() {
               FLOATING WIDGET 4: Rep Velocity & Barbell Tracker (Bottom Left)
              ═══════════════════════════════════════════════════════════ */}
           <div
-            className="hidden lg:flex absolute bottom-24 -left-14 z-30 floating-glass-card rounded-2xl p-2.5 px-3.5 items-center gap-2.5 animate-float-reverse transition-transform hover:scale-105"
+            className="hidden lg:flex absolute bottom-24 -left-12 z-30 floating-glass-card rounded-2xl p-2.5 px-3.5 items-center gap-2.5 animate-float-reverse transition-transform hover:scale-105"
             id="hero-floating-velocity"
           >
             <div className="w-7 h-7 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-cyan-400">
@@ -252,10 +290,20 @@ export function Hero() {
           </div>
 
           {/* ═══════════════════════════════════════════════════════════
-              AUTHENTIC IRONIX MOBILE SCREEN MOCKUP
-              Matching HomeScreen.kt exactly
+              AUTHENTIC IRONIX MOBILE SCREEN MOCKUP with 3D Spring Physics
              ═══════════════════════════════════════════════════════════ */}
-          <div className="w-[300px] sm:w-[340px] rounded-[48px] p-3 bg-neutral-950 border-[3px] border-neutral-700/80 shadow-2xl shadow-black/90 relative">
+          <motion.div
+            style={
+              shouldReduceMotion
+                ? {}
+                : {
+                    rotateX,
+                    rotateY,
+                    transformStyle: "preserve-3d",
+                  }
+            }
+            className="w-[300px] sm:w-[340px] rounded-[48px] p-3 bg-neutral-950 border-[3px] border-neutral-700/80 shadow-2xl shadow-black/90 relative transition-transform duration-200"
+          >
             {/* Dynamic Island Notch with Interactive Soundwave & Timer */}
             <div className="absolute top-6 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-full z-30 flex items-center justify-between px-3 shadow-md border border-neutral-800">
               <div className="flex items-center gap-1.5">
@@ -276,6 +324,11 @@ export function Hero() {
 
             {/* Inner Phone Screen */}
             <div className="rounded-[40px] bg-black text-white p-4 pt-12 flex flex-col gap-3.5 overflow-hidden relative border border-neutral-900 min-h-[580px]">
+              {/* Screen Flash on Set Logged */}
+              {flashSuccess && (
+                <div className="absolute inset-0 bg-amber-400/20 z-50 pointer-events-none animate-in fade-in duration-200" />
+              )}
+
               {/* Screen Top Bar matching HomeScreen.kt */}
               <div className="flex items-center justify-between border-b border-neutral-800/80 pb-2.5">
                 <div className="flex items-center gap-2">
@@ -303,7 +356,7 @@ export function Hero() {
                 </Badge>
               </div>
 
-              {/* ── TODAY'S WORKOUT GLASSCARD (HomeScreen.kt) ────────────────── */}
+              {/* ── TODAY'S WORKOUT GLASSCARD ────────────────── */}
               <div className="rounded-2xl p-3.5 bg-gradient-to-br from-neutral-900/95 to-neutral-950 border border-neutral-800 space-y-2.5 shadow-inner relative overflow-hidden group">
                 <div className="flex justify-between items-start">
                   <div>
@@ -319,7 +372,7 @@ export function Hero() {
                   </div>
                 </div>
 
-                {/* Start Workout / Interactive Pill Button (HomeScreen.kt StartWorkoutPill) */}
+                {/* Start Workout / Interactive Pill Button */}
                 <button
                   onClick={handleStartWorkout}
                   className="w-full h-11 px-4 rounded-full bg-[#F9C023] hover:bg-[#E0A800] text-black font-black text-xs tracking-wider uppercase transition-all duration-200 shadow-xl shadow-amber-500/40 hover:shadow-amber-500/60 flex items-center justify-between cursor-pointer active:scale-95 border-0"
@@ -334,7 +387,7 @@ export function Hero() {
               </div>
 
               {/* ── LIVE SET LOGGER INTERACTIVE CARD ────────────────── */}
-              <div className="rounded-2xl p-3.5 bg-neutral-900/95 border border-amber-500/30 space-y-2.5 shadow-lg">
+              <div className="rounded-2xl p-3.5 bg-neutral-900/95 border border-amber-500/30 space-y-2.5 shadow-lg relative overflow-hidden">
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-1.5">
                     <div className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
@@ -357,7 +410,7 @@ export function Hero() {
                   ))}
                 </div>
 
-                {/* Log Button */}
+                {/* Log Button with Particle Sparkle Effect */}
                 <button
                   onClick={handleLogSet}
                   className="w-full py-2.5 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white font-extrabold text-[11px] tracking-wider transition-all border border-neutral-700 flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 shadow-md"
@@ -374,7 +427,7 @@ export function Hero() {
                 </div>
               </div>
 
-              {/* ── WEEKLY PROGRESS 7-DAY PILL STRIP (HomeScreen.kt WeeklyProgressCard) ── */}
+              {/* ── WEEKLY PROGRESS 7-DAY PILL STRIP ── */}
               <div className="rounded-2xl p-3 bg-neutral-900/60 border border-neutral-800 space-y-1.5">
                 <div className="flex justify-between items-center text-[10px]">
                   <span className="font-bold text-neutral-300">Weekly Progress</span>
@@ -406,7 +459,7 @@ export function Hero() {
                 </div>
               </div>
 
-              {/* ── MOUNTAIN CHALLENGE BANNER (HomeScreen.kt ChallengeCard) ── */}
+              {/* ── MOUNTAIN CHALLENGE BANNER ── */}
               <div className="rounded-xl p-2.5 bg-gradient-to-r from-amber-500/15 via-yellow-600/10 to-neutral-900 border border-amber-500/30 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Trophy className="w-4 h-4 text-amber-400" />
@@ -422,8 +475,8 @@ export function Hero() {
                 </span>
               </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </SectionWrapper>
   );

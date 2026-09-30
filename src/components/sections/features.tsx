@@ -19,7 +19,7 @@ import {
   Maximize2,
 } from "lucide-react";
 import { SectionWrapper } from "@/components/shared/section-wrapper";
-import { Card, CardContent } from "@/components/ui/card";
+import { SpotlightCard } from "@/components/shared/spotlight-card";
 import { Badge } from "@/components/ui/badge";
 
 export function Features() {
@@ -39,6 +39,7 @@ export function Features() {
       icon: Zap,
       color: "from-amber-500 via-yellow-500 to-amber-600",
       shadow: "shadow-amber-500/25",
+      spotlight: "rgba(249, 192, 35, 0.16)",
       interactive: (
         <div className="mt-4 p-3 rounded-xl bg-neutral-900/90 border border-neutral-800 space-y-2">
           <div className="flex items-center justify-between">
@@ -67,6 +68,7 @@ export function Features() {
       icon: Activity,
       color: "from-blue-500 to-cyan-500",
       shadow: "shadow-blue-500/25",
+      spotlight: "rgba(33, 150, 243, 0.16)",
       interactive: (
         <div className="mt-4 p-3 rounded-xl bg-neutral-900/90 border border-neutral-800 space-y-2.5">
           <div className="flex items-center justify-between text-[11px]">
@@ -98,6 +100,7 @@ export function Features() {
       icon: Mic,
       color: "from-amber-400 via-orange-500 to-amber-600",
       shadow: "shadow-orange-500/25",
+      spotlight: "rgba(255, 152, 0, 0.16)",
       interactive: (
         <div className="mt-4 p-3 rounded-xl bg-neutral-900/90 border border-neutral-800 space-y-2.5">
           <div className="flex items-center justify-between text-[11px]">
@@ -130,6 +133,7 @@ export function Features() {
       icon: CreditCard,
       color: "from-emerald-500 to-teal-500",
       shadow: "shadow-emerald-500/25",
+      spotlight: "rgba(76, 175, 80, 0.16)",
       interactive: (
         <div className="mt-4 p-3 rounded-xl bg-neutral-900/90 border border-neutral-800 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -152,6 +156,7 @@ export function Features() {
       icon: TrendingUp,
       color: "from-yellow-400 via-amber-500 to-yellow-600",
       shadow: "shadow-yellow-500/25",
+      spotlight: "rgba(249, 192, 35, 0.16)",
       interactive: (
         <div className="mt-4 p-3 rounded-xl bg-neutral-900/90 border border-neutral-800 flex items-center justify-between">
           <div>
@@ -183,6 +188,7 @@ export function Features() {
       icon: Smartphone,
       color: "from-purple-500 to-indigo-500",
       shadow: "shadow-purple-500/25",
+      spotlight: "rgba(156, 39, 176, 0.16)",
       interactive: (
         <div className="mt-4 p-3 rounded-xl bg-neutral-900/90 border border-neutral-800 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -206,7 +212,7 @@ export function Features() {
   return (
     <SectionWrapper sectionId="features" dark className="relative overflow-hidden">
       {/* ═══════════════════════════════════════════════════════════════
-          FLOATING MOTIVATION CARD (Inspired by saving-app-flutter)
+          FLOATING MOTIVATION CARD
          ═══════════════════════════════════════════════════════════════ */}
       <div className="relative max-w-7xl mx-auto mb-12">
         <div className="hidden lg:flex absolute -top-4 right-0 z-30 floating-glass-card rounded-2xl p-4 max-w-sm items-center gap-3.5 animate-float-slow" id="features-floating-message">
@@ -256,8 +262,8 @@ export function Features() {
         </div>
       </div>
 
-      {/* Feature Cards Grid with Interactive Sub-Elements */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      {/* Feature Cards Grid with MotionSites-inspired Spotlight & 3D Tilt */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 [perspective:1000px]">
         {featureItems.map((item, index) => {
           const Icon = item.icon;
           return (
@@ -267,26 +273,29 @@ export function Features() {
               whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
+              className="h-full"
             >
-              <Card className="h-full border-border/80 bg-card/80 backdrop-blur-sm hover:border-amber-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-amber-500/10 hover:-translate-y-1.5 group rounded-2xl overflow-hidden relative flex flex-col justify-between spotlight-card">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-amber-500/0 to-transparent group-hover:via-amber-500 transition-all duration-500" />
-                <CardContent className="p-6 sm:p-7 flex flex-col justify-between h-full">
-                  <div>
-                    <div
-                      className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center text-neutral-950 font-bold mb-5 shadow-lg ${item.shadow} group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <h3 className="text-xl font-bold text-foreground mb-2.5 font-sans group-hover:text-amber-400 transition-colors">
-                      {t(`items.${item.id}.title`)}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {t(`items.${item.id}.description`)}
-                    </p>
+              <SpotlightCard
+                spotlightColor={item.spotlight}
+                enableTilt={true}
+                borderBeam={true}
+                className="h-full p-6 sm:p-7 group"
+              >
+                <div>
+                  <div
+                    className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center text-neutral-950 font-bold mb-5 shadow-lg ${item.shadow} group-hover:scale-110 transition-transform duration-300`}
+                  >
+                    <Icon className="w-6 h-6" />
                   </div>
-                  {item.interactive}
-                </CardContent>
-              </Card>
+                  <h3 className="text-xl font-bold text-foreground mb-2.5 font-sans group-hover:text-amber-400 transition-colors">
+                    {t(`items.${item.id}.title`)}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {t(`items.${item.id}.description`)}
+                  </p>
+                </div>
+                {item.interactive}
+              </SpotlightCard>
             </motion.div>
           );
         })}

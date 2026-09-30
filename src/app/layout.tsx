@@ -1,14 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-sans",
-  display: "swap",
-});
+import {
+  generateSoftwareAppSchema,
+  generateOrganizationSchema,
+  generateProductSchema
+} from "@/lib/seo/structured-data";
 
 export const metadata: Metadata = {
   title: {
@@ -40,9 +37,27 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const appSchema = generateSoftwareAppSchema();
+  const orgSchema = generateOrganizationSchema();
+  const productSchema = generateProductSchema();
+
   return (
-    <html suppressHydrationWarning className={manrope.variable}>
-      <body className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col selection:bg-primary/20 selection:text-primary">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(appSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+        />
+      </head>
+      <body suppressHydrationWarning className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col selection:bg-primary/20 selection:text-primary">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

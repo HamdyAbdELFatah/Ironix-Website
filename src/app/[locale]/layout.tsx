@@ -7,11 +7,6 @@ import { locales, rtlLocales, type Locale } from "@/i18n/config";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/sections/footer";
 import { GeoLanguageBanner } from "@/components/layout/geo-language-banner";
-import {
-  generateSoftwareAppSchema,
-  generateOrganizationSchema,
-  generateProductSchema
-} from "@/lib/seo/structured-data";
 import { generateLocalizedMetadata } from "@/lib/seo/metadata";
 
 export async function generateStaticParams() {
@@ -49,26 +44,8 @@ export default async function LocaleLayout({
   const isRtl = rtlLocales.includes(locale as Locale);
   const direction = isRtl ? "rtl" : "ltr";
 
-  const appSchema = generateSoftwareAppSchema();
-  const orgSchema = generateOrganizationSchema();
-  const productSchema = generateProductSchema();
-
   return (
     <div lang={locale} dir={direction} className="flex flex-col min-h-screen">
-      {/* Structured Data Scripts (JSON-LD) */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(appSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
-      />
-
       <NextIntlClientProvider messages={messages} locale={locale}>
         <Navbar />
         <main id="main-content" className="flex-1">
