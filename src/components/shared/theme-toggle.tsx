@@ -3,9 +3,11 @@
 import * as React from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 export function ThemeToggle({ className }: { className?: string }) {
+  const t = useTranslations("nav");
   const { setTheme, theme, systemTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
 
@@ -24,7 +26,7 @@ export function ThemeToggle({ className }: { className?: string }) {
     <button
       type="button"
       data-testid="theme-toggle"
-      aria-label="Toggle theme"
+      aria-label={t("toggleTheme")}
       onClick={toggleTheme}
       className={cn(
         "w-9 h-9 rounded-full flex items-center justify-center text-foreground hover:text-amber-400 hover:bg-muted/80 transition-colors cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary",

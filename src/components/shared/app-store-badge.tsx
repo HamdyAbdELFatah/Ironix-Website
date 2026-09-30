@@ -8,7 +8,9 @@ interface BadgeProps {
 }
 
 export function AppStoreBadge({ section = "hero", className }: BadgeProps) {
-  const url = APP_CONFIG.utm("ios", section);
+  const url = APP_CONFIG.storeUrl("ios", section);
+  // Hidden until the store listing exists, so the site never links to a 404.
+  if (!url) return null;
 
   return (
     <a

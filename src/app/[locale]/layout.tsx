@@ -1,7 +1,7 @@
 import * as React from "react";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import { locales, rtlLocales, type Locale } from "@/i18n/config";
 import { Navbar } from "@/components/layout/navbar";
@@ -39,6 +39,8 @@ export default async function LocaleLayout({
   if (!hasLocale(locales, locale)) {
     notFound();
   }
+  // Lets next-intl render this route statically (ISR) instead of per request.
+  setRequestLocale(locale);
 
   const messages = await getMessages();
   const isRtl = rtlLocales.includes(locale as Locale);

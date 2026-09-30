@@ -1,19 +1,17 @@
 import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
-import {
-  generateSoftwareAppSchema,
-  generateOrganizationSchema,
-  generateProductSchema
-} from "@/lib/seo/structured-data";
+import { generateSoftwareAppSchema, generateOrganizationSchema } from "@/lib/seo/structured-data";
+import { getStoreProducts } from "@/lib/pricing/catalogue";
+import { APP_CONFIG } from "@/lib/utils/constants";
 
 export const metadata: Metadata = {
   title: {
     template: "%s | Ironix",
     default: "Ironix — Train with Purpose. Progress with Proof.",
   },
-  description: "Premium AI-powered fitness app with offline workout logging, 3D muscle anatomy, digital GymID pass, and gamified battlecards.",
-  metadataBase: new URL("https://ironix.app"),
+  description: APP_CONFIG.description,
+  metadataBase: new URL(APP_CONFIG.url),
   icons: {
     icon: [
       { url: "/icon.png" },
@@ -32,14 +30,13 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const appSchema = generateSoftwareAppSchema();
+  const appSchema = generateSoftwareAppSchema(await getStoreProducts());
   const orgSchema = generateOrganizationSchema();
-  const productSchema = generateProductSchema();
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -51,10 +48,6 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
         />
       </head>
       <body suppressHydrationWarning className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col selection:bg-primary/20 selection:text-primary">

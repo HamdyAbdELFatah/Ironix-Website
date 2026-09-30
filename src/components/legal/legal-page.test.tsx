@@ -10,12 +10,16 @@ vi.mock('@/i18n/navigation', () => ({
   ),
 }));
 
+// The pages call setRequestLocale for static rendering; that API only exists in
+// the server runtime, which jsdom does not emulate.
+vi.mock('next-intl/server', () => ({ setRequestLocale: vi.fn() }));
+
 import PrivacyPage from '@/app/[locale]/privacy-policy/page';
 import TermsPage from '@/app/[locale]/terms-of-service/page';
 
 const pages = [
-  { name: 'privacy', Page: PrivacyPage, en: 'Privacy Policy', ar: 'سياسة الخصوصية', enHeading: /Information we collect/i, arHeading: 'المعلومات التي نجمعها', email: 'privacy@ironix.app' },
-  { name: 'terms', Page: TermsPage, en: 'Terms of Service', ar: 'شروط الاستخدام والخدمة', enHeading: /Subscriptions, free trials/i, arHeading: 'الاشتراكات والتجارب المجانية والفوترة والإلغاء والاسترداد', email: 'legal@ironix.app' },
+  { name: 'privacy', Page: PrivacyPage, en: 'Privacy Policy', ar: 'سياسة الخصوصية', enHeading: /Information we collect/i, arHeading: 'المعلومات التي نجمعها', email: 'hamdy.abdelfattah.mohamed@gmail.com' },
+  { name: 'terms', Page: TermsPage, en: 'Terms of Service', ar: 'شروط الاستخدام والخدمة', enHeading: /Subscriptions, free trials/i, arHeading: 'الاشتراكات والتجارب المجانية والفوترة والإلغاء والاسترداد', email: 'hamdy.abdelfattah.mohamed@gmail.com' },
 ];
 
 type PageComponent = (props: { params: Promise<{ locale: string }> }) => Promise<React.ReactElement>;
@@ -44,13 +48,5 @@ describe.each(pages)('$name page', ({ Page, en, ar, enHeading, arHeading, email 
     expect(screen.getByText('العودة إلى الصفحة الرئيسية')).toBeInTheDocument();
     expect(screen.getByText('آخر تحديث: 25 سبتمبر 2026')).toBeInTheDocument();
     expect(screen.queryByTestId('legal-english-notice')).not.toBeInTheDocument();
-  });
-
-  it('falls back to English with a localized notice for es', async () => {
-    const { container } = await renderPage(Page, 'es');
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(en);
-    expect(screen.getByRole('heading', { name: enHeading })).toBeInTheDocument();
-    expect(screen.getByTestId('legal-english-notice')).toHaveTextContent('Este documento se ofrece en inglés.');
-    expect(container.querySelector('[lang="en"]')).not.toBeNull();
   });
 });

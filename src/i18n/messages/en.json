@@ -1,305 +1,207 @@
 {
   "home": {
     "metadata": {
-      "title": "Ironix — Train with Purpose. Progress with Proof.",
-      "description": "Premium AI-powered fitness app with offline workout logging, 3D muscle anatomy, digital GymID pass, and gamified battlecards."
+      "title": "Ironix — Offline Workout Tracker with a Muscle Recovery Map",
+      "description": "Log every set in seconds, even with no signal, see which muscles are recovered and keep your gym pass on your phone. Free to use, in English and Arabic."
     }
   },
   "nav": {
     "features": "Features",
-    "splitCalculator": "Split Predictor",
-    "comparison": "Comparison",
-    "howItWorks": "How It Works",
+    "howItWorks": "How it works",
     "pricing": "Pricing",
-    "testimonials": "Testimonials",
     "faq": "FAQ",
-    "download": "Download"
+    "getApp": "Get the app",
+    "openMenu": "Open navigation menu",
+    "preferences": "Preferences",
+    "toggleTheme": "Toggle theme",
+    "switchLanguage": "Change language"
   },
   "hero": {
-    "badge": "AI-Powered Fitness",
-    "title": "Train with Purpose.",
-    "titleAccent": "Progress with Proof.",
-    "subtitle": "Log every set, visualize your muscles in 3D, get AI coaching, and carry your gym pass on your wrist — all offline-first.",
-    "ctaDownload": "Download Now",
-    "ctaLearnMore": "Learn More",
-    "liveWorkout": "Live Workout",
-    "set": "Set",
-    "reps": "Reps",
-    "weight": "Weight",
-    "logSet": "Log Set",
-    "restTimer": "Rest Timer",
-    "startWorkout": "Start Workout",
-    "finishWorkout": "Finish Workout"
-  },
-  "socialProof": {
-    "downloads": "50K+",
-    "downloadsLabel": "Downloads",
-    "rating": "4.9",
-    "ratingLabel": "App Rating",
-    "users": "2.6M+",
-    "usersLabel": "Active Users"
+    "badge": "Coming soon to iOS and Android",
+    "title": "Train with purpose.",
+    "titleAccent": "Progress with proof.",
+    "subtitle": "Log every set in seconds, even with no signal. See which muscles are recovered, and keep your gym pass on your phone. Free to use, in English and Arabic.",
+    "points": {
+      "offline": "Works offline",
+      "free": "Free core app",
+      "arabic": "Full Arabic support"
+    },
+    "mock": {
+      "greeting": "Good morning",
+      "offline": "Offline",
+      "todaysWorkout": "Today's workout",
+      "workoutName": "Push day",
+      "workoutMeta": "45 min · 6 exercises",
+      "start": "Start workout",
+      "inProgress": "Workout in progress",
+      "exercise": "Incline dumbbell press",
+      "setOf": "Set {current} of {total}",
+      "logSet": "Log set ({weight} kg × {reps})",
+      "savedOnPhone": "Saved on your phone",
+      "rest": "Rest {seconds}s",
+      "thisWeek": "This week",
+      "streak": "{days}-day streak",
+      "weekdays": "M,T,W,T,F,S,S",
+      "gymPass": "Gym pass ready"
+    }
   },
   "features": {
-    "title": "Unleash Your Potential",
-    "subtitle": "Everything you need to train smarter, lift heavier, and reach your goals faster.",
+    "title": "Everything you need at the gym",
+    "subtitle": "A fast logger and honest progress data, built for people who lift.",
+    "proBadge": "Pro",
     "items": {
       "1": {
-        "title": "Offline-First Logger",
-        "description": "Log sets, reps, weight with zero latency. Works without internet."
+        "title": "Offline workout logger",
+        "description": "Log sets, reps, weight and rest in seconds. Everything is saved on your phone first, so a dead zone at the gym never costs you a set."
       },
       "2": {
-        "title": "3D Muscle Anatomy",
-        "description": "Interactive body heatmaps showing workout intensity and recovery."
+        "title": "Muscle recovery map",
+        "description": "See which muscle groups you trained and how recovered they are before you plan your next session."
       },
       "3": {
-        "title": "AI Voice Coach",
-        "description": "Real-time voice guidance during workouts with adaptive training plans."
+        "title": "Digital gym pass",
+        "description": "Scan your membership barcode or QR code once, then open it from the app or a home-screen widget."
       },
       "4": {
-        "title": "Digital GymID Pass",
-        "description": "Scan into your gym with QR or barcode. Customizable card skins."
+        "title": "Progress and records",
+        "description": "Follow your volume, estimated one-rep max and personal records for every exercise."
       },
       "5": {
-        "title": "Gamification & Battlecards",
-        "description": "Earn XP, maintain streaks, and share styled workout summary cards."
+        "title": "1,376 exercises and ready programs",
+        "description": "Every exercise has an English and Arabic name. Start a ready-made program or build your own routine."
       },
       "6": {
-        "title": "8 Premium Themes",
-        "description": "From Iron Dark to Cyber Neon. Personalize your training experience."
+        "title": "Import and backup",
+        "description": "Bring your history from Strong or Hevy with a CSV file, and back up your workouts to your account."
       }
-    }
-  },
-  "showcase": {
-    "title": "See Ironix in Action",
-    "subtitle": "A beautifully designed interface focused on performance and usability.",
-    "screens": {
-      "1": "Dashboard overview showing daily progress and streaks.",
-      "2": "Workout logger with intuitive interface and clear rest timers."
-    }
-  },
-  "splitCalculator": {
-    "badge": "AI Hypertrophy & Volume Predictor",
-    "title": "Calculate Your Optimal",
-    "titleAccent": "Workout Split",
-    "subtitle": "Configure your training schedule and experience level to preview customized 3D volume targets, projected 1RM strength curves, and 0ms SQLite workout templates.",
-    "step1": "1. Select Routine Architecture",
-    "step2": "2. Training Experience",
-    "blueprintTitle": "Projected Biometric Blueprint",
-    "gainTitle": "Projected 12-Week 1RM Gain",
-    "gainDesc": "Across primary compound lifts over 12 weeks of structured progressive overload.",
-    "weeklyVolume": "Weekly Set Volume",
-    "weeklyVolumeDesc": "Optimal hypertrophy stimulus zone.",
-    "sqliteProof": "0ms Local SQLite Latency",
-    "sqliteProofDesc": "Instantly synced across your devices without cloud delays.",
-    "ctaPlan": "Generate Custom Training Split",
-    "daysPerWeek": "D / WK",
-    "levels": {
-      "beginner": "Beginner (0-1 yr)",
-      "intermediate": "Intermediate (1-3 yrs)",
-      "advanced": "Advanced (3+ yrs)"
-    },
-    "splits": {
-      "ppl": {
-        "name": "Push Pull Legs",
-        "desc": "High-frequency hypertrophy split targeting agonists & antagonists with 72h recovery windows."
-      },
-      "upper_lower": {
-        "name": "Upper / Lower",
-        "desc": "The golden standard for balanced strength progression and dense mechanical tension."
-      },
-      "full_body": {
-        "name": "Full Body 3x",
-        "desc": "Maximum motor unit recruitment per session with high systemic protein synthesis."
-      },
-      "arnold": {
-        "name": "Arnold Mass Split",
-        "desc": "Antagonistic supersets (Chest+Back, Delts+Arms, Legs) for massive pump and aesthetic taper."
-      }
-    }
-  },
-  "comparison": {
-    "badge": "Head-to-Head Architecture",
-    "title": "Why Serious Athletes",
-    "titleAccent": "Choose Ironix",
-    "subtitle": "See how Ironix compares against standard legacy workout apps.",
-    "featureCol": "Feature / Capability",
-    "ironixCol": "Ironix",
-    "hevyCol": "Hevy",
-    "strongCol": "Strong",
-    "appleCol": "Apple Fitness+",
-    "whoopCol": "Whoop",
-    "ctaTitle": "Ready for a faster, smarter tracker?",
-    "ctaSubtitle": "Join over 2.6 million athletes training with zero latency and 3D biomechanics.",
-    "ctaButton": "Download Ironix Now",
-    "features": {
-      "offline": "100% Offline SQLite Architecture",
-      "offlineIronix": "0ms Latency (Room DB)",
-      "offlineHevy": "Cloud Latency (Spinner)",
-      "offlineStrong": "Partial Offline",
-      "anatomy3d": "3D Biomechanics & Muscle Heatmap",
-      "anatomyHevy": "2D SVG Static",
-      "aiCoach": "Multi-Persona AI Voice Gym Coach",
-      "aiCoachApple": "Generic Trainer Videos",
-      "gymId": "GymID Wallet Pass (NFC & Barcode)",
-      "velocity": "Rep Velocity Accelerometer Gauge",
-      "i18nRtl": "Global Multi-Language & Native RTL",
-      "i18nIronix": "19 Locales + Full RTL",
-      "i18nHevy": "5 Locales",
-      "i18nStrong": "8 Locales",
-      "i18nApple": "Selected Regions",
-      "i18nWhoop": "English Only",
-      "founderPass": "Lifetime One-Time Purchase Pass",
-      "founderIronix": "Lifetime $89.99 (Founder)",
-      "founderSubOnly": "Monthly/Yearly Sub Only",
-      "battlecards": "Gamified Workout Battlecards",
-      "themes": "8 Handcrafted Premium Themes"
     }
   },
   "howItWorks": {
-    "title": "Start Training in Minutes",
-    "subtitle": "A seamless journey from downloading the app to crushing your first workout.",
+    "title": "Start training in minutes",
+    "subtitle": "From install to your first logged set in three steps.",
     "steps": {
       "1": {
-        "title": "Download & Personalize",
-        "description": "Get the app and set up your profile, goals, and preferred gym locations."
+        "title": "Set your goal",
+        "description": "Tell Ironix your goal, experience and training days. It takes about two minutes."
       },
       "2": {
-        "title": "Train & Track",
-        "description": "Follow personalized plans or build your own. Log sets instantly, even offline."
+        "title": "Log your workout",
+        "description": "Pick a program or build your own routine, then log each set as you go, online or offline."
       },
       "3": {
-        "title": "Progress & Share",
-        "description": "Visualize your gains with 3D heatmaps and share your battlecards with friends."
+        "title": "See your progress",
+        "description": "Review your volume, records and muscle recovery to plan the next session."
       }
     }
   },
   "pricing": {
-    "badge": "Transparent Pricing • Zero Ads",
-    "title": "Invest in Your",
-    "titleAccent": "Peak Performance",
-    "subtitle": "Start 100% free with local SQLite offline logging, or unlock the full 3D Biomechanics & AI Voice Coach suite.",
-    "monthly": "Monthly Billing",
-    "annual": "Annual Billing",
-    "saveBadge": "Save 42%",
-    "freeTier": {
-      "name": "Core Free",
+    "title": "Simple pricing",
+    "subtitle": "The core app is free, with no limits on logging, routines or history. Pro adds deeper analysis and personalization.",
+    "free": {
+      "name": "Free",
       "price": "$0",
-      "period": "/ forever",
-      "badge": "Essential",
-      "desc": "Everything you need to track workouts offline with zero latency.",
+      "period": "forever",
       "features": [
-        "100% Offline SQLite Logging (0ms)",
-        "Unlimited Workout & Exercise Logs",
-        "Digital GymID Barcode Pass",
-        "Basic Rest Timers & Plate Calculator",
-        "Standard Workout History & Export"
+        "Unlimited workout logging",
+        "Unlimited routines and full history",
+        "Progress charts and personal records",
+        "1,376 exercises and ready programs",
+        "One digital gym pass",
+        "English and Arabic"
       ]
     },
-    "proTier": {
+    "pro": {
       "name": "Ironix Pro",
-      "priceMonthly": "$4.99",
-      "priceAnnual": "$3.33",
-      "period": "/ month",
-      "badge": "Most Popular",
-      "desc": "Full AI coaching, 3D anatomical heatmaps, and unrestricted analytics.",
       "features": [
-        "Everything in Core Free",
-        "3D Interactive Muscle Biomechanics Heatmap",
-        "AI Voice Coach with Custom Personas",
-        "NFC GymID Fast Access & Card Skins",
-        "Rep Velocity Accelerometer Tracking",
-        "Cloud Sync Across Unlimited Devices",
-        "Full 8 Premium Pro Themes"
+        "Everything in Free",
+        "Muscle recovery map and fatigue tracking",
+        "Advanced analytics: one-rep max trends and volume per muscle",
+        "Export your data",
+        "All themes and gym pass skins",
+        "Unlimited gym passes"
       ]
     },
-    "founderTier": {
-      "name": "Founder Pass",
-      "price": "$89.99",
-      "period": "/ one-time lifetime",
-      "badge": "Limited Edition",
-      "desc": "Pay once and get lifetime access to all current and future Ironix Pro features.",
-      "features": [
-        "Lifetime Access to All Ironix Pro Features",
-        "Exclusive Founder Gold App Icon & Badge",
-        "VIP Priority Feature Requests & Beta Access",
-        "Direct Discord Access to Core Dev Team",
-        "Zero Recurring Subscriptions Ever"
-      ]
+    "plans": {
+      "P1M": "Monthly",
+      "P1Y": "Yearly",
+      "LIFETIME": "Lifetime"
     },
-    "guarantee": "30-Day Money-Back Guarantee • Cancel Anytime • No Hidden Fees",
-    "getStarted": "Get Started Free",
-    "startTrial": "Start 7-Day Pro Trial",
-    "getFounder": "Claim Founder Pass"
-  },
-  "testimonials": {
-    "title": "Stories of Strength",
-    "subtitle": "Join thousands of users who have transformed their fitness journey with Ironix.",
-    "reviews": {
-      "1": {
-        "name": "Alex Johnson",
-        "role": "Powerlifter",
-        "content": "The offline logger is a game-changer. My gym has terrible reception, but Ironix never misses a beat."
-      },
-      "2": {
-        "name": "Sarah Miller",
-        "role": "Fitness Enthusiast",
-        "content": "The 3D muscle anatomy helps me understand exactly which muscles I'm targeting. Highly recommended!"
-      },
-      "3": {
-        "name": "David Chen",
-        "role": "Bodybuilder",
-        "content": "I love the battlecards and gamification. It keeps me motivated to maintain my streak every single day."
-      },
-      "4": {
-        "name": "Emma Wilson",
-        "role": "Personal Trainer",
-        "content": "I recommend Ironix to all my clients. The interface is clean, fast, and the AI coach provides solid guidance."
-      }
-    }
+    "periods": {
+      "P1M": "/ month",
+      "P1Y": "/ year",
+      "LIFETIME": "one-time"
+    },
+    "trial": "Free trial included",
+    "bestValue": "Best value",
+    "note": "Prices are in US dollars. The App Store or Google Play shows your price in local currency, and it may be lower in your country. Cancel anytime from your store account.",
+    "unavailable": "Pro prices will be shown here at launch."
   },
   "downloadCta": {
-    "title": "Ready to Transform Your Training?",
-    "subtitle": "Download Ironix today and experience the future of fitness tracking.",
-    "badges": "Available on iOS, Android, and Huawei AppGallery"
+    "title": "Be the first to try Ironix",
+    "subtitle": "Ironix is launching soon on iOS and Android. Leave your email and we will send you one message when it is ready.",
+    "titleLive": "Get Ironix",
+    "subtitleLive": "Available on iOS and Android."
+  },
+  "waitlist": {
+    "label": "Email address",
+    "placeholder": "you@example.com",
+    "submit": "Notify me",
+    "submitting": "Sending…",
+    "success": "You are on the list. We will email you when Ironix launches.",
+    "privacy": "We only use your email to tell you about the launch.",
+    "errors": {
+      "invalid_email": "Please enter a valid email address.",
+      "rate_limited": "Too many sign-ups right now. Please try again in a minute.",
+      "unavailable": "We could not save your email. Please try again later."
+    }
   },
   "faq": {
-    "title": "Frequently Asked Questions",
+    "badge": "FAQ",
+    "title": "Frequently asked questions",
     "questions": {
       "1": {
-        "question": "Is Ironix really offline-first?",
-        "answer": "Yes! You can log your entire workout without an internet connection. Your data will sync automatically once you're back online."
+        "question": "Does Ironix work without internet?",
+        "answer": "Yes. Every set you log is saved on your phone first. When you are back online and signed in, it is backed up to your account."
       },
       "2": {
-        "question": "Is the app free to use?",
-        "answer": "Ironix offers a free tier with essential features. Premium features like 3D anatomy and AI voice coaching require a subscription."
+        "question": "Is Ironix free?",
+        "answer": "Yes. Logging, routines, your full history, progress charts and personal records are free with no limits. Ironix Pro is an optional subscription for the muscle recovery map, advanced analytics, data export and extra themes."
       },
       "3": {
-        "question": "What platforms are supported?",
-        "answer": "Ironix is available on iOS, Android, and Huawei AppGallery."
+        "question": "Which phones does Ironix support?",
+        "answer": "iPhone and Android. Ironix is launching soon, so join the waitlist to hear when it is available."
       },
       "4": {
-        "question": "How does the Digital GymID work?",
-        "answer": "You can add your existing gym membership barcode or QR code into Ironix and use it to scan into your gym directly from the app."
+        "question": "How does the digital gym pass work?",
+        "answer": "Scan the barcode or QR code on your membership card once. Ironix keeps it on your phone so you can show it at the entrance, even offline."
       },
       "5": {
-        "question": "Are my workouts private?",
-        "answer": "Absolutely. We value your privacy. You have full control over what you share and who you share it with."
+        "question": "Can I import my history from another app?",
+        "answer": "Yes. You can import your workout history from Strong or Hevy using their CSV export."
       },
       "6": {
-        "question": "Can I import my data from other apps?",
-        "answer": "Yes, we support importing workout history from major fitness apps via CSV export."
+        "question": "What happens to my data?",
+        "answer": "Your workouts belong to you. You can export them and delete your account at any time, which removes your data from our servers. The privacy policy explains the details."
       }
     }
   },
   "footer": {
     "brand": "Ironix",
     "tagline": "Train with purpose. Progress with proof.",
-    "productLinks": "Product",
-    "companyLinks": "Company",
-    "legalLinks": "Legal",
-    "newsletter": "Subscribe to our newsletter for fitness tips and app updates.",
-    "copyright": "© 2026 Ironix. All rights reserved.",
-    "socialLinks": "Socials"
+    "product": "Product",
+    "legal": "Legal",
+    "contact": "Contact",
+    "links": {
+      "features": "Features",
+      "howItWorks": "How it works",
+      "pricing": "Pricing",
+      "faq": "FAQ",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "waitlistTitle": "Get launch news",
+    "waitlistText": "One email when Ironix launches. Nothing else.",
+    "copyright": "© 2026 Ironix. All rights reserved."
   },
   "privacy": {
     "metadata": {
@@ -311,23 +213,23 @@
     "sections": {
       "1": {
         "heading": "Who we are and scope",
-        "content": "This Privacy Policy explains how Ironix (\"Ironix\", \"we\", \"us\") collects, uses, shares and protects personal data when you use the Ironix mobile app for Android and iOS (the \"App\"), visit this website (the \"Website\") or otherwise communicate with us. Together these are the \"Services\". Ironix also operates a web dashboard that is restricted to authorised staff and is not offered to the public.\n\nData controller. The Services are operated by [Legal entity name], registered at [Registered address], company registration number [Company registration number]. Unless this policy says otherwise, we are the controller of the personal data described here.\n\nData protection contact. [Data Protection Officer or EU/UK representative details, if applicable]. You can always reach us at privacy@ironix.app.\n\nHow the App works. Ironix is an offline-first fitness and workout-tracking app. Your data is stored on your device and is synced to our cloud backend only when you are signed in and have consented to sync. You can also use the App as a guest, without an account, in which case your data stays on your device."
+        "content": "This Privacy Policy explains how Ironix (\"Ironix\", \"we\", \"us\") collects, uses, shares and protects personal data when you use the Ironix mobile app for Android and iOS (the \"App\"), visit this website (the \"Website\") or otherwise communicate with us. Together these are the \"Services\". Ironix also operates a web dashboard that is restricted to authorised staff and is not offered to the public.\n\nData controller. The Services are operated by [Legal entity name], registered at [Registered address], company registration number [Company registration number]. Unless this policy says otherwise, we are the controller of the personal data described here.\n\nData protection contact. [Data Protection Officer or EU/UK representative details, if applicable]. You can always reach us at {email}.\n\nHow the App works. Ironix is an offline-first fitness and workout-tracking app. Your data is stored on your device and is synced to our cloud backend only when you are signed in and have consented to sync. You can also use the App as a guest, without an account, in which case your data stays on your device."
       },
       "2": {
         "heading": "Information we collect",
-        "content": "2.1 Information you provide\n\n• Account details: your name or display name, email address and a password if you sign up with email.\n• Social sign-in: if you sign in with Google, Apple, Facebook, Kakao, WeChat, QQ, VK or Yandex, we receive the account identifier and the profile information you authorise that provider to share, typically your name, email address and profile picture.\n• Profile and fitness details: profile photo (avatar), age, gender, height, weight and body-weight history, fitness goal, experience level and training frequency.\n• Workout data: exercises, sets, reps, weight, RPE, duration and notes.\n• Gym membership cards: card name, barcode data, and card image and colours.\n• Body measurements, injury information, and progress-photo details (date, pose, weight and notes). The photo image itself stays on your device. This information is backed up to your account only if you turn on the body-data consent in the App; otherwise it stays on your device.\n• Favourite exercises and the workout routines you create.\n• Preferences: units, language, theme, notification settings and your consent choices.\n• Communications: messages you send to us, for example to support@ironix.app or privacy@ironix.app.\n• AI coach prompts: text you type into the optional AI coach, together with related workout context (see 2.3).\n\n2.2 Information created or collected automatically\n\n• Derived data: experience points (XP), level, streaks, achievements, muscle-recovery statistics and personal records, calculated from your workouts.\n• Analytics and diagnostics: product usage events (PostHog and Firebase Analytics) and crash reports with device and operating-system information (Firebase Crashlytics). These are subject to your consent where the law requires it (see section 3).\n• Push notifications: a push token (Firebase Cloud Messaging or Apple Push Notification service) and your app user ID, stored on our servers so that we can deliver notifications to your device.\n• Subscription status: purchase and entitlement information processed by RevenueCat and linked to your account ID. We never receive your payment card details.\n• Sync information: technical records such as timestamps and deletion markers that keep your devices consistent.\n• Website data: see section 11.\n\n2.3 Information from third parties and optional integrations\n\nThe following apply only if you choose to enable or use them.\n\n• Health Connect (Android) or Apple HealthKit (iOS): the App writes your workouts (type, start and end time, and notes) to the health store on your device.\n• Strava: you link your Strava account through Strava's OAuth flow, and the token exchange is performed by an Ironix server function. What Strava receives and stores is governed by your Strava settings and Strava's privacy policy.\n• Calendar sync: scheduled workouts are synced with Google Calendar or Apple Calendar.\n• AI coach: the text you type and related workout context are sent to a third-party language-model provider, Google Gemini, to generate suggestions. This information is not used for advertising. Please do not enter information that you do not want processed by that provider.\n\n2.4 Device permissions\n\nEvery permission is optional and is requested only when you use the related feature. You can change or withdraw a permission at any time in your device settings, although the related feature may then stop working.\n\n• Camera: to scan gym-card barcodes and to take progress photos.\n• Photo library: to choose avatar and gym-card images and to save summary images.\n• Notifications: for workout reminders, streak alerts and campaign messages.\n• Location: only if you use outdoor tracking or nearby-gym features.\n• Bluetooth: to connect heart-rate monitors.\n• Microphone: to record voice notes."
+        "content": "2.1 Information you provide\n\n• Account details: your name or display name, email address and a password if you sign up with email.\n• Social sign-in: if you sign in with Google, Apple, Facebook, Kakao, WeChat, QQ, VK or Yandex, we receive the account identifier and the profile information you authorise that provider to share, typically your name, email address and profile picture.\n• Profile and fitness details: profile photo (avatar), age, gender, height, weight and body-weight history, fitness goal, experience level and training frequency.\n• Workout data: exercises, sets, reps, weight, RPE, duration and notes.\n• Gym membership cards: card name, barcode data, and card image and colours.\n• Body measurements, injury information, and progress-photo details (date, pose, weight and notes). The photo image itself stays on your device. This information is backed up to your account only if you turn on the body-data consent in the App; otherwise it stays on your device.\n• Favourite exercises and the workout routines you create.\n• Preferences: units, language, theme, notification settings and your consent choices.\n• Communications: messages you send to us, for example to {email}.\n\n2.2 Information created or collected automatically\n\n• Derived data: experience points (XP), level, streaks, achievements, muscle-recovery statistics and personal records, calculated from your workouts.\n• Analytics and diagnostics: product usage events (PostHog and Firebase Analytics) and crash reports with device and operating-system information (Firebase Crashlytics). These are subject to your consent where the law requires it (see section 3).\n• Push notifications: a push token (Firebase Cloud Messaging or Apple Push Notification service) and your app user ID, stored on our servers so that we can deliver notifications to your device.\n• Subscription status: purchase and entitlement information processed by RevenueCat and linked to your account ID. We never receive your payment card details.\n• Sync information: technical records such as timestamps and deletion markers that keep your devices consistent.\n• Website data: see section 11.\n\n2.3 Information from third parties and optional integrations\n\nThe following apply only if you choose to enable or use them.\n\n• Health Connect (Android) or Apple HealthKit (iOS): the App writes your workouts (type, start and end time, and notes) to the health store on your device.\n• Strava: you link your Strava account through Strava's OAuth flow, and the token exchange is performed by an Ironix server function. What Strava receives and stores is governed by your Strava settings and Strava's privacy policy.\n• Calendar sync: scheduled workouts are synced with Google Calendar or Apple Calendar.\n\n2.4 Device permissions\n\nEvery permission is optional and is requested only when you use the related feature. You can change or withdraw a permission at any time in your device settings, although the related feature may then stop working.\n\n• Camera: to scan gym-card barcodes and to take progress photos.\n• Photo library: to choose avatar and gym-card images and to save summary images.\n• Notifications: for workout reminders, streak alerts and campaign messages.\n• Location: only if you use outdoor tracking or nearby-gym features.\n• Bluetooth: to connect heart-rate monitors.\n• Microphone: to record voice notes."
       },
       "3": {
         "heading": "How we use information and our legal bases",
-        "content": "We use personal data only for the purposes below. Where the EU or UK GDPR applies, we rely on the legal basis shown for each purpose.\n\n• Providing the App: creating and managing your account, authenticating you, syncing your data between devices, managing your subscription status and giving support. Legal basis: performance of a contract (Article 6(1)(b)).\n• Features you request: gym cards, reminders, and optional integrations such as Health Connect, HealthKit, Strava, calendar sync and the AI coach. Legal basis: performance of a contract and, where a feature depends on a device permission or a third-party connection you enable, your consent (Article 6(1)(a)).\n• Product analytics and crash diagnostics: understanding how the App is used and fixing crashes. Legal basis: your consent where the law requires it, and otherwise our legitimate interest in keeping the App reliable and improving it (Article 6(1)(f)). You can opt out in the consent dialog or in Settings.\n• Push notifications and campaign messages: your consent, which you can withdraw in your device or App settings.\n• Health and fitness data: information such as body weight, measurements and injury information can reveal health details, which is a special category of personal data. We process it only on the basis of your explicit consent (Article 9(2)(a)), which you give when you choose to enter it or enable the related feature.\n• Security, fraud prevention and abuse prevention, and enforcing our Terms: our legitimate interests (Article 6(1)(f)).\n• Legal compliance: meeting legal obligations and responding to lawful requests from authorities (Article 6(1)(c)).\n\nWe do not sell your personal data and we do not use it to target advertising. We do not make decisions about you based solely on automated processing that produce legal or similarly significant effects."
+        "content": "We use personal data only for the purposes below. Where the EU or UK GDPR applies, we rely on the legal basis shown for each purpose.\n\n• Providing the App: creating and managing your account, authenticating you, syncing your data between devices, managing your subscription status and giving support. Legal basis: performance of a contract (Article 6(1)(b)).\n• Features you request: gym cards, reminders, and optional integrations such as Health Connect, HealthKit, Strava and calendar sync. Legal basis: performance of a contract and, where a feature depends on a device permission or a third-party connection you enable, your consent (Article 6(1)(a)).\n• Product analytics and crash diagnostics: understanding how the App is used and fixing crashes. Legal basis: your consent where the law requires it, and otherwise our legitimate interest in keeping the App reliable and improving it (Article 6(1)(f)). You can opt out in the consent dialog or in Settings.\n• Push notifications and campaign messages: your consent, which you can withdraw in your device or App settings.\n• Health and fitness data: information such as body weight, measurements and injury information can reveal health details, which is a special category of personal data. We process it only on the basis of your explicit consent (Article 9(2)(a)), which you give when you choose to enter it or enable the related feature.\n• Security, fraud prevention and abuse prevention, and enforcing our Terms: our legitimate interests (Article 6(1)(f)).\n• Legal compliance: meeting legal obligations and responding to lawful requests from authorities (Article 6(1)(c)).\n\nWe do not sell your personal data and we do not use it to target advertising. We do not make decisions about you based solely on automated processing that produce legal or similarly significant effects."
       },
       "4": {
         "heading": "Sharing and processors",
-        "content": "We share personal data only with service providers that help us operate the Services, with platforms you choose to connect, and where the law requires. We do not sell personal data, and we do not use third-party advertising SDKs to target ads. Our main recipients are:\n\n• Supabase: hosted PostgreSQL database, authentication, storage and server functions (region eu-west-1, Ireland). Stores your account, profile, workout, sync and push-token data. Acts as our processor.\n• RevenueCat: processes subscription purchase status. Receives your app user ID (your account ID) and purchase and entitlement data.\n• PostHog: product analytics events, subject to consent where required.\n• Google Firebase: Firebase Analytics, Firebase Crashlytics (crash reports and device and operating-system information) and Firebase Cloud Messaging (push delivery). Apple Push Notification service delivers push notifications on iOS.\n• Apple App Store and Google Play: process purchases and subscriptions under their own terms and privacy policies. They act as independent controllers of your payment information, which we do not receive.\n• Social sign-in providers (Google, Apple, Facebook, Kakao, WeChat, QQ, VK, Yandex): only the provider you choose to sign in with.\n• Strava, Health Connect, Apple HealthKit, Google Calendar and Apple Calendar: only when you enable the integration. These platforms handle data under their own policies.\n• Google Gemini (AI provider): only when you use the AI coach.\n• Vercel: hosting of the Website.\n\nOur authorised staff may access personal data through our restricted admin dashboard only as needed to operate the Services, provide support and keep them secure. We may also disclose information to comply with the law or a valid legal request, to protect the rights, safety and security of our users or the Services, or in connection with a merger, acquisition or sale of assets, in which case we will ensure that this policy continues to protect your data or tell you of any change."
+        "content": "We share personal data only with service providers that help us operate the Services, with platforms you choose to connect, and where the law requires. We do not sell personal data, and we do not use third-party advertising SDKs to target ads. Our main recipients are:\n\n• Supabase: hosted PostgreSQL database, authentication, storage and server functions (region eu-west-1, Ireland). Stores your account, profile, workout, sync and push-token data. Acts as our processor.\n• RevenueCat: processes subscription purchase status. Receives your app user ID (your account ID) and purchase and entitlement data.\n• PostHog: product analytics events, subject to consent where required.\n• Google Firebase: Firebase Analytics, Firebase Crashlytics (crash reports and device and operating-system information) and Firebase Cloud Messaging (push delivery). Apple Push Notification service delivers push notifications on iOS.\n• Apple App Store and Google Play: process purchases and subscriptions under their own terms and privacy policies. They act as independent controllers of your payment information, which we do not receive.\n• Social sign-in providers (Google, Apple, Facebook, Kakao, WeChat, QQ, VK, Yandex): only the provider you choose to sign in with.\n• Strava, Health Connect, Apple HealthKit, Google Calendar and Apple Calendar: only when you enable the integration. These platforms handle data under their own policies.\n• Vercel: hosting of the Website.\n\nOur authorised staff may access personal data through our restricted admin dashboard only as needed to operate the Services, provide support and keep them secure. We may also disclose information to comply with the law or a valid legal request, to protect the rights, safety and security of our users or the Services, or in connection with a merger, acquisition or sale of assets, in which case we will ensure that this policy continues to protect your data or tell you of any change."
       },
       "5": {
         "heading": "International transfers and safeguards",
-        "content": "Our primary backend is hosted in the EU (Ireland). Some of our providers, such as RevenueCat, PostHog, Google, Vercel and Strava, may process data in the United States or other countries outside your own, where data protection laws may differ.\n\nWhen we transfer personal data from the European Economic Area, the United Kingdom or Switzerland to a country that has not received an adequacy decision, we rely on appropriate safeguards, in particular the European Commission's Standard Contractual Clauses (together with the UK Addendum or International Data Transfer Agreement where applicable), or on the recipient's participation in a recognised framework such as the EU-U.S. Data Privacy Framework. You can request information about these safeguards at privacy@ironix.app."
+        "content": "Our primary backend is hosted in the EU (Ireland). Some of our providers, such as RevenueCat, PostHog, Google, Vercel and Strava, may process data in the United States or other countries outside your own, where data protection laws may differ.\n\nWhen we transfer personal data from the European Economic Area, the United Kingdom or Switzerland to a country that has not received an adequacy decision, we rely on appropriate safeguards, in particular the European Commission's Standard Contractual Clauses (together with the UK Addendum or International Data Transfer Agreement where applicable), or on the recipient's participation in a recognised framework such as the EU-U.S. Data Privacy Framework. You can request information about these safeguards at {email}."
       },
       "6": {
         "heading": "Retention",
@@ -335,7 +237,7 @@
       },
       "7": {
         "heading": "Your rights",
-        "content": "Depending on where you live, you may have the following rights. We honour them for all users where reasonably possible.\n\nIf you are in the EEA, the United Kingdom or Switzerland:\n\n• Access: get a copy of your personal data and information about how we use it.\n• Rectification: correct inaccurate or incomplete data.\n• Erasure: have your data deleted.\n• Portability: receive your data in a structured, commonly used, machine-readable format.\n• Restriction: ask us to limit how we use your data in certain cases.\n• Objection: object to processing based on our legitimate interests.\n• Withdraw consent: withdraw any consent you gave at any time, without affecting processing that took place before withdrawal.\n• Complaint: lodge a complaint with your local data protection supervisory authority.\n\nIf you are a California resident (CCPA/CPRA) or live in a US state with a similar law, you can request to know and access the personal information we hold, to delete it, to correct it, and to receive a portable copy. You also have the right to opt out of the sale or sharing of personal information (we do not sell or share it for cross-context behavioural advertising), to limit the use of sensitive personal information (we use it only to provide the Services you request), and not to be discriminated against for exercising your rights. The categories of personal information we collect are described in section 2: identifiers, health and fitness information, commercial (subscription) information, app activity, location where you use location features, and audio for voice notes. You may use an authorised agent to make a request.\n\nHow to exercise your rights. You can edit much of your data directly in the App, opt out of analytics in the consent dialog or Settings, and delete your account and server-side data in Settings > Delete account. For any other request, email privacy@ironix.app. We may need to verify your identity first. We respond within 30 days, and if we need more time where the law allows, we will tell you why."
+        "content": "Depending on where you live, you may have the following rights. We honour them for all users where reasonably possible.\n\nIf you are in the EEA, the United Kingdom or Switzerland:\n\n• Access: get a copy of your personal data and information about how we use it.\n• Rectification: correct inaccurate or incomplete data.\n• Erasure: have your data deleted.\n• Portability: receive your data in a structured, commonly used, machine-readable format.\n• Restriction: ask us to limit how we use your data in certain cases.\n• Objection: object to processing based on our legitimate interests.\n• Withdraw consent: withdraw any consent you gave at any time, without affecting processing that took place before withdrawal.\n• Complaint: lodge a complaint with your local data protection supervisory authority.\n\nIf you are a California resident (CCPA/CPRA) or live in a US state with a similar law, you can request to know and access the personal information we hold, to delete it, to correct it, and to receive a portable copy. You also have the right to opt out of the sale or sharing of personal information (we do not sell or share it for cross-context behavioural advertising), to limit the use of sensitive personal information (we use it only to provide the Services you request), and not to be discriminated against for exercising your rights. The categories of personal information we collect are described in section 2: identifiers, health and fitness information, commercial (subscription) information, app activity, location where you use location features, and audio for voice notes. You may use an authorised agent to make a request.\n\nHow to exercise your rights. You can edit much of your data directly in the App, opt out of analytics in the consent dialog or Settings, and delete your account and server-side data in Settings > Delete account. For any other request, email {email}. We may need to verify your identity first. We respond within 30 days, and if we need more time where the law allows, we will tell you why."
       },
       "8": {
         "heading": "Health and fitness data notice",
@@ -343,11 +245,11 @@
       },
       "9": {
         "heading": "Security",
-        "content": "We use technical and organisational measures designed to protect your personal data, including encrypted connections, authentication, row-level security that restricts each user to their own rows in our database, and restricted staff access to our admin dashboard. No system is completely secure, so we cannot guarantee absolute security. Please protect your password and your device. If a personal data breach affects you, we will notify you and the relevant authorities as required by law. To report a security concern, contact privacy@ironix.app."
+        "content": "We use technical and organisational measures designed to protect your personal data, including encrypted connections, authentication, row-level security that restricts each user to their own rows in our database, and restricted staff access to our admin dashboard. No system is completely secure, so we cannot guarantee absolute security. Please protect your password and your device. If a personal data breach affects you, we will notify you and the relevant authorities as required by law. To report a security concern, contact {email}."
       },
       "10": {
         "heading": "Children",
-        "content": "The Services are not directed to children under 13, or under 16 in the EEA and the UK where the local age of digital consent requires it. We do not knowingly collect personal data from children below that age. If you believe a child has given us personal data, contact privacy@ironix.app and we will delete it."
+        "content": "The Services are not directed to children under 13, or under 16 in the EEA and the UK where the local age of digital consent requires it. We do not knowingly collect personal data from children below that age. If you believe a child has given us personal data, contact {email} and we will delete it."
       },
       "11": {
         "heading": "Cookies and storage on the website",
@@ -359,7 +261,7 @@
       },
       "13": {
         "heading": "Contact",
-        "content": "For privacy questions or to exercise your rights, email privacy@ironix.app. For product help, email support@ironix.app.\n\n[Legal entity name], [Registered address].\n\nIf you are not satisfied with our response, you have the right to complain to your local data protection supervisory authority."
+        "content": "For privacy questions or to exercise your rights, email {email}. For product help, email {email}.\n\n[Legal entity name], [Registered address].\n\nIf you are not satisfied with our response, you have the right to complain to your local data protection supervisory authority."
       }
     }
   },
@@ -377,7 +279,7 @@
       },
       "2": {
         "heading": "The service and accounts",
-        "content": "Ironix is a fitness and workout-tracking app. It lets you log workouts, follow your progress, store gym membership cards, earn gamification rewards and connect optional integrations. The App is offline-first: your data is stored on your device and is synced to our cloud backend only when you are signed in and have consented to sync.\n\nAccounts. You can create an account with an email address and password, or sign in with a supported social provider (Google, Apple, Facebook, Kakao, WeChat, QQ, VK or Yandex). You can also use the App as a guest without an account. Guest data exists only on your device and is not backed up or synced, so it can be lost if you delete the App or lose the device.\n\nYou are responsible for providing accurate information, keeping your credentials secure and all activity under your account. Tell us promptly at support@ironix.app if you suspect unauthorised use.\n\nWe may add, change or remove features, and some features may be available only on certain platforms, in certain regions or with a paid subscription. Where practical, we will give reasonable notice of material changes that reduce the functionality you have paid for."
+        "content": "Ironix is a fitness and workout-tracking app. It lets you log workouts, follow your progress, store gym membership cards, earn gamification rewards and connect optional integrations. The App is offline-first: your data is stored on your device and is synced to our cloud backend only when you are signed in and have consented to sync.\n\nAccounts. You can create an account with an email address and password, or sign in with a supported social provider (Google, Apple, Facebook, Kakao, WeChat, QQ, VK or Yandex). You can also use the App as a guest without an account. Guest data exists only on your device and is not backed up or synced, so it can be lost if you delete the App or lose the device.\n\nYou are responsible for providing accurate information, keeping your credentials secure and all activity under your account. Tell us promptly at {email} if you suspect unauthorised use.\n\nWe may add, change or remove features, and some features may be available only on certain platforms, in certain regions or with a paid subscription. Where practical, we will give reasonable notice of material changes that reduce the functionality you have paid for."
       },
       "3": {
         "heading": "Subscriptions, free trials, billing, cancellation and refunds",
@@ -385,19 +287,19 @@
       },
       "4": {
         "heading": "User content and licence",
-        "content": "\"Your Content\" means the data you enter, upload or generate in the Services, including workouts, notes, gym-card data, photos, your avatar and AI coach prompts. You keep ownership of Your Content.\n\nYou grant Ironix a worldwide, non-exclusive, royalty-free licence to host, store, reproduce, process, sync and display Your Content solely to operate, secure and provide the Services to you, including syncing across your devices. This licence ends when Your Content is deleted, subject to the retention periods in our Privacy Policy, such as deletion markers kept for up to 180 days and limited backup retention.\n\nYou are responsible for Your Content and confirm that you have the rights needed to submit it, for example to gym-card images and photos, and that it does not infringe others' rights or break the law.\n\nLicence to use the App. Subject to these Terms, we grant you a limited, personal, non-exclusive, non-transferable, revocable licence to use the App on devices you own or control, for your own non-commercial use, and in line with the Store's usage rules.\n\nFeedback. If you send us ideas or suggestions, we may use them without obligation to you."
+        "content": "\"Your Content\" means the data you enter, upload or generate in the Services, including workouts, notes, gym-card data, photos and your avatar. You keep ownership of Your Content.\n\nYou grant Ironix a worldwide, non-exclusive, royalty-free licence to host, store, reproduce, process, sync and display Your Content solely to operate, secure and provide the Services to you, including syncing across your devices. This licence ends when Your Content is deleted, subject to the retention periods in our Privacy Policy, such as deletion markers kept for up to 180 days and limited backup retention.\n\nYou are responsible for Your Content and confirm that you have the rights needed to submit it, for example to gym-card images and photos, and that it does not infringe others' rights or break the law.\n\nLicence to use the App. Subject to these Terms, we grant you a limited, personal, non-exclusive, non-transferable, revocable licence to use the App on devices you own or control, for your own non-commercial use, and in line with the Store's usage rules.\n\nFeedback. If you send us ideas or suggestions, we may use them without obligation to you."
       },
       "5": {
         "heading": "Acceptable use",
-        "content": "You agree not to:\n\n• break any law or infringe anyone's rights;\n• access or attempt to access another user's account or data, or our admin dashboard or systems, without authorisation;\n• probe, scan or test the vulnerability of the Services, or bypass security, authentication, subscription or usage limits;\n• reverse engineer, decompile, copy, modify or create derivative works of the App, except as the law allows;\n• scrape or collect data from the Services by automated means, or use bots, scripts or similar tools without our written permission;\n• upload malicious code or interfere with the operation of the Services, our servers or other users;\n• impersonate any person or misrepresent your affiliation;\n• use the Services, including the AI coach, to generate or distribute unlawful, harassing or harmful content, or resell or commercially exploit the Services.\n\nWe may suspend or restrict access if we reasonably believe you have breached this section."
+        "content": "You agree not to:\n\n• break any law or infringe anyone's rights;\n• access or attempt to access another user's account or data, or our admin dashboard or systems, without authorisation;\n• probe, scan or test the vulnerability of the Services, or bypass security, authentication, subscription or usage limits;\n• reverse engineer, decompile, copy, modify or create derivative works of the App, except as the law allows;\n• scrape or collect data from the Services by automated means, or use bots, scripts or similar tools without our written permission;\n• upload malicious code or interfere with the operation of the Services, our servers or other users;\n• impersonate any person or misrepresent your affiliation;\n• use the Services to generate or distribute unlawful, harassing or harmful content, or resell or commercially exploit the Services.\n\nWe may suspend or restrict access if we reasonably believe you have breached this section."
       },
       "6": {
         "heading": "Health disclaimer",
-        "content": "The Services are provided for general fitness tracking and information only. They do not provide medical advice, diagnosis or treatment, and Ironix is not a medical device. Nothing in the Services, including workout statistics, muscle-recovery estimates, recommendations and AI coach responses, replaces the advice of a qualified doctor or other health professional.\n\nConsult your doctor before starting or changing any exercise, nutrition or training programme, especially if you have a medical condition, an injury, or are pregnant. Stop exercising and seek medical help if you feel pain, dizziness or unwell. In an emergency, call your local emergency number.\n\nExercise involves inherent risk of injury. You use the Services and take part in physical activity at your own risk and you assume all risks of injury to yourself. Calculations, estimates and AI-generated suggestions may be inaccurate or incomplete, and you should not rely on them alone. Nothing in this section excludes liability that cannot be excluded by law."
+        "content": "The Services are provided for general fitness tracking and information only. They do not provide medical advice, diagnosis or treatment, and Ironix is not a medical device. Nothing in the Services, including workout statistics, muscle-recovery estimates, and recommendations, replaces the advice of a qualified doctor or other health professional.\n\nConsult your doctor before starting or changing any exercise, nutrition or training programme, especially if you have a medical condition, an injury, or are pregnant. Stop exercising and seek medical help if you feel pain, dizziness or unwell. In an emergency, call your local emergency number.\n\nExercise involves inherent risk of injury. You use the Services and take part in physical activity at your own risk and you assume all risks of injury to yourself. Calculations, estimates and suggestions may be inaccurate or incomplete, and you should not rely on them alone. Nothing in this section excludes liability that cannot be excluded by law."
       },
       "7": {
         "heading": "Third-party services",
-        "content": "The Services work with third-party services, including the Apple App Store and Google Play, RevenueCat, Supabase, social sign-in providers, Health Connect and Apple HealthKit, Strava, Google Calendar and Apple Calendar, Firebase and Apple push services, and Google Gemini for the AI coach. Those services are governed by their own terms and privacy policies, and we are not responsible for them. Integrations are optional and you can disconnect them at any time. Your use of a third-party service is at your own risk."
+        "content": "The Services work with third-party services, including the Apple App Store and Google Play, RevenueCat, Supabase, social sign-in providers, Health Connect and Apple HealthKit, Strava, Google Calendar and Apple Calendar, and Firebase and Apple push services. Those services are governed by their own terms and privacy policies, and we are not responsible for them. Integrations are optional and you can disconnect them at any time. Your use of a third-party service is at your own risk."
       },
       "8": {
         "heading": "Intellectual property",
@@ -429,7 +331,7 @@
       },
       "15": {
         "heading": "Contact",
-        "content": "For questions about these Terms, email legal@ironix.app. For product help, email support@ironix.app.\n\n[Legal entity name], [Registered address]."
+        "content": "For questions about these Terms, email {email}. For product help, email {email}.\n\n[Legal entity name], [Registered address]."
       }
     }
   },

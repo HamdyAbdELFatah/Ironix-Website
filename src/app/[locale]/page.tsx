@@ -1,17 +1,17 @@
 import * as React from "react";
 import { Hero } from "@/components/sections/hero";
 import { Features } from "@/components/sections/features";
-import { Showcase } from "@/components/sections/showcase";
-import { SplitCalculator } from "@/components/sections/split-calculator";
-import { Comparison } from "@/components/sections/comparison";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { Pricing } from "@/components/sections/pricing";
-import { Testimonials } from "@/components/sections/testimonials";
 import { DownloadCta } from "@/components/sections/download-cta";
 import { FAQ } from "@/components/sections/faq";
+import { setRequestLocale } from "next-intl/server";
 import { getStaticPageDoc } from "@/lib/static-pages/static-pages-service";
+import { getStoreProducts } from "@/lib/pricing/catalogue";
 
-export const dynamic = "force-dynamic";
+// ISR: the FAQ and prices come from Supabase and are refreshed every 5 minutes
+// (the dashboard can also revalidate on save) instead of on every request.
+export const revalidate = 300;
 
 export default async function HomePage({
   params,
@@ -19,18 +19,15 @@ export default async function HomePage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const liveFaq = await getStaticPageDoc("faq", locale);
+  setRequestLocale(locale);
+  const [liveFaq, products] = await Promise.all([getStaticPageDoc("faq", locale), getStoreProducts()]);
 
   return (
     <>
       <Hero />
       <Features />
-      <Showcase />
-      <SplitCalculator />
-      <Comparison />
       <HowItWorks />
-      <Pricing />
-      <Testimonials />
+      <Pricing products={products} />
       <DownloadCta />
       <FAQ liveData={liveFaq} />
     </>

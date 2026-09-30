@@ -14,9 +14,7 @@ import {
 } from "@/components/ui/sheet";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
 import { LocaleSwitcher } from "@/components/layout/locale-switcher";
-import { AppStoreBadge } from "@/components/shared/app-store-badge";
-import { GooglePlayBadge } from "@/components/shared/google-play-badge";
-import { AppGalleryBadge } from "@/components/shared/app-gallery-badge";
+import { GetTheApp } from "@/components/shared/get-the-app";
 import { scrollToSection } from "@/lib/utils/helpers";
 
 interface MobileNavProps {
@@ -29,11 +27,8 @@ export function MobileNav({ isHome = true }: MobileNavProps) {
 
   const navLinks = [
     { label: t("features"), sectionId: "features", href: "/#features" },
-    { label: t("splitCalculator"), sectionId: "split-calculator", href: "/#split-calculator" },
-    { label: t("comparison"), sectionId: "comparison", href: "/#comparison" },
     { label: t("howItWorks"), sectionId: "how-it-works", href: "/#how-it-works" },
     { label: t("pricing"), sectionId: "pricing", href: "/#pricing" },
-    { label: t("testimonials"), sectionId: "testimonials", href: "/#testimonials" },
     { label: t("faq"), sectionId: "faq", href: "/#faq" },
   ];
 
@@ -50,7 +45,7 @@ export function MobileNav({ isHome = true }: MobileNavProps) {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
         className="w-10 h-10 rounded-full lg:hidden text-foreground hover:text-primary inline-flex items-center justify-center cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary"
-        aria-label="Open navigation menu"
+        aria-label={t("openMenu")}
       >
         <Menu className="h-5 w-5" />
       </SheetTrigger>
@@ -103,7 +98,7 @@ export function MobileNav({ isHome = true }: MobileNavProps) {
         <div className="space-y-4 pt-6 border-t border-border/50">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold uppercase text-muted-foreground tracking-wider">
-              Preferences
+              {t("preferences")}
             </span>
             <div className="flex items-center gap-2">
               <ThemeToggle />
@@ -111,11 +106,7 @@ export function MobileNav({ isHome = true }: MobileNavProps) {
             </div>
           </div>
 
-          <div className="flex flex-col gap-2">
-            <AppStoreBadge section="mobile-menu" className="w-full justify-center" />
-            <GooglePlayBadge section="mobile-menu" className="w-full justify-center" />
-            <AppGalleryBadge section="mobile-menu" className="w-full justify-center" />
-          </div>
+          <GetTheApp section="mobile-menu" />
         </div>
       </SheetContent>
     </Sheet>

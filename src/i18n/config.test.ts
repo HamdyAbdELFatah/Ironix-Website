@@ -2,25 +2,21 @@ import { describe, it, expect } from 'vitest';
 import { locales, rtlLocales, defaultLocale, localeNames } from './config';
 
 describe('i18n Configuration', () => {
-  it('includes English as default locale', () => {
+  it('uses English as the default locale', () => {
     expect(defaultLocale).toBe('en');
-    expect(locales).toContain('en');
   });
 
-  it('includes Arabic in RTL locales', () => {
-    expect(rtlLocales).toContain('ar');
-    expect(locales).toContain('ar');
+  it('publishes only the fully translated locales', () => {
+    expect([...locales]).toEqual(['en', 'ar']);
   });
 
-  it('defines human-readable names for all 19 supported locales', () => {
+  it('marks Arabic as RTL', () => {
+    expect(rtlLocales).toEqual(['ar']);
+  });
+
+  it('has a display name for every locale', () => {
     locales.forEach((locale) => {
-      expect(localeNames[locale]).toBeDefined();
-      expect(typeof localeNames[locale]).toBe('string');
       expect(localeNames[locale].length).toBeGreaterThan(0);
     });
-  });
-
-  it('has at least 19 locales supported', () => {
-    expect(locales.length).toBeGreaterThanOrEqual(19);
   });
 });

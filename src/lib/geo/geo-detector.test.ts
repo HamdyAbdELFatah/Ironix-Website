@@ -1,10 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import {
-  detectLocaleFromCountry,
-  parseAcceptLanguage,
-  detectBestLocale,
-  COUNTRY_TO_LOCALE_MAP
-} from './geo-detector';
+import { detectLocaleFromCountry, parseAcceptLanguage, detectBestLocale } from './geo-detector';
 
 describe('Geolocation & Device Language Auto-Detection', () => {
   it('maps Arab countries to "ar"', () => {
@@ -14,60 +9,33 @@ describe('Geolocation & Device Language Auto-Detection', () => {
     expect(detectLocaleFromCountry('kw')).toBe('ar');
   });
 
-  it('maps Hispanic countries to "es"', () => {
-    expect(detectLocaleFromCountry('ES')).toBe('es');
-    expect(detectLocaleFromCountry('MX')).toBe('es');
-    expect(detectLocaleFromCountry('AR')).toBe('es');
+  it('maps English-speaking countries to "en"', () => {
+    expect(detectLocaleFromCountry('US')).toBe('en');
+    expect(detectLocaleFromCountry('GB')).toBe('en');
   });
 
-  it('maps Francophone countries to "fr"', () => {
-    expect(detectLocaleFromCountry('FR')).toBe('fr');
-    expect(detectLocaleFromCountry('SN')).toBe('fr');
-  });
-
-  it('maps DACH countries to "de"', () => {
-    expect(detectLocaleFromCountry('DE')).toBe('de');
-    expect(detectLocaleFromCountry('AT')).toBe('de');
-  });
-
-  it('returns null for unknown country codes', () => {
+  it('returns null for countries without a published locale', () => {
+    expect(detectLocaleFromCountry('DE')).toBeNull();
     expect(detectLocaleFromCountry('XYZ')).toBeNull();
     expect(detectLocaleFromCountry(null)).toBeNull();
     expect(detectLocaleFromCountry('')).toBeNull();
   });
 
-  it('parses complex Accept-Language headers with weighted priorities', () => {
-    expect(parseAcceptLanguage('fr-CA,fr;q=0.8,en;q=0.6')).toBe('fr');
+  it('picks the first published language from Accept-Language', () => {
     expect(parseAcceptLanguage('ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7')).toBe('ar');
-    expect(parseAcceptLanguage('de-DE,de;q=0.9,en;q=0.5')).toBe('de');
-    expect(parseAcceptLanguage('es-MX,es;q=0.9,en;q=0.8')).toBe('es');
-    expect(parseAcceptLanguage('zh-CN,zh;q=0.9,en;q=0.8')).toBe('zh');
+    expect(parseAcceptLanguage('fr-CA,fr;q=0.8,en;q=0.6')).toBe('en');
+    expect(parseAcceptLanguage('de-DE,de;q=0.9')).toBeNull();
   });
 
-  it('respects hierarchy: User Cookie > Non-English Country > Accept-Language > Country Fallback > Default', () => {
-    // Case 1: User has manual cookie override "de", even if IP is in Saudi Arabia
-    expect(
-      detectBestLocale({ country: 'SA', acceptLanguage: 'ar-EG' }, 'de')
-    ).toBe('de');
+  it('respects hierarchy: cookie > Arabic country > Accept-Language > country > default', () => {
+    expect(detectBestLocale({ country: 'SA', acceptLanguage: 'ar-EG' }, 'en')).toBe('en');
+    expect(detectBestLocale({ country: 'SA', acceptLanguage: 'en-US,en;q=0.9' }, null)).toBe('ar');
+    expect(detectBestLocale({ country: 'US', acceptLanguage: 'ar,en;q=0.5' }, null)).toBe('ar');
+    expect(detectBestLocale({ country: 'DE', acceptLanguage: 'de-DE' }, null)).toBe('en');
+    expect(detectBestLocale({ country: null, acceptLanguage: null }, null)).toBe('en');
+  });
 
-    // Case 2: Specific localized country header (SA) overrides default English browser accept-language
-    expect(
-      detectBestLocale({ country: 'SA', acceptLanguage: 'en-US,en;q=0.9' }, null)
-    ).toBe('ar');
-
-    // Case 3: Specific localized country header (ES) overrides default English browser accept-language
-    expect(
-      detectBestLocale({ country: 'ES', acceptLanguage: 'en-US,en;q=0.9' }, null)
-    ).toBe('es');
-
-    // Case 4: US country or no country, German Accept-Language header activates "de"
-    expect(
-      detectBestLocale({ country: 'US', acceptLanguage: 'de-DE,de;q=0.9,en;q=0.5' }, null)
-    ).toBe('de');
-
-    // Case 5: No signals provided, falls back to default "en"
-    expect(
-      detectBestLocale({ country: null, acceptLanguage: null }, null)
-    ).toBe('en');
+  it('ignores a stale cookie for a locale that is no longer published', () => {
+    expect(detectBestLocale({ country: 'US', acceptLanguage: 'en' }, 'de')).toBe('en');
   });
 });

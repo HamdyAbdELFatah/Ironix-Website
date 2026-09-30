@@ -1,95 +1,80 @@
 import { test, expect } from '@playwright/test';
 
+// Claims that must never reappear on the site (audit 2026-09-30).
+const FORBIDDEN = [/2\.6M/, /50K\+/, /128,?400/, /AI Voice Coach/i, /Rep Velocity/i, /NFC/, /Money-Back/i, /ironix\.app/];
+
 test.describe('Ironix Landing Page - Home', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/en');
     await page.waitForLoadState('networkidle');
   });
 
-  test('renders hero headline, brand title and download badges', async ({ page }) => {
+  test('renders the hero with the waitlist while stores are not live', async ({ page }) => {
     await expect(page).toHaveTitle(/Ironix/i);
-
-    const heading = page.locator('h1');
-    await expect(heading).toBeVisible();
-    await expect(heading).toContainText(/Train with Purpose/i);
-
-    const appStoreBadge = page.getByRole('link', { name: /Download Ironix on Apple App Store/i }).first();
-    const googlePlayBadge = page.getByRole('link', { name: /Get Ironix on Google Play/i }).first();
-    const appGalleryBadge = page.getByRole('link', { name: /Explore Ironix on Huawei AppGallery/i }).first();
-
-    await expect(appStoreBadge).toBeVisible();
-    await expect(appStoreBadge).toHaveAttribute('href', /apps\.apple\.com/);
-
-    await expect(googlePlayBadge).toBeVisible();
-    await expect(googlePlayBadge).toHaveAttribute('href', /play\.google\.com\/store\/apps\/details\?id=com\.ironix/);
-
-    await expect(appGalleryBadge).toBeVisible();
-    await expect(appGalleryBadge).toHaveAttribute('href', /appgallery\.huawei\.com/);
+    await expect(page.locator('h1')).toContainText(/Train with purpose/i);
+    await expect(page.locator('#hero').getByRole('button', { name: /Notify me/i })).toBeVisible();
+    await expect(page.getByRole('link', { name: /App Store|Google Play|AppGallery/i })).toHaveCount(0);
   });
 
-  test('interacts with the live phone set logger mockup', async ({ page }) => {
-    // Initial state shows Set 2 of 4
+  test('contains none of the removed marketing claims', async ({ page }) => {
+    const text = await page.locator('body').innerText();
+    for (const pattern of FORBIDDEN) expect(text).not.toMatch(pattern);
+  });
+
+  test('the phone mockup logger responds to taps', async ({ page }) => {
     await expect(page.getByText(/Set 2 of 4/i)).toBeVisible();
-
-    const logButton = page.getByRole('button', { name: /Log Set/i });
-    await expect(logButton).toBeVisible();
-
-    // Click to log set -> increments to Set 3 of 4
-    await logButton.click();
+    await page.getByText(/Log set \(20 kg × 10\)/i).click();
     await expect(page.getByText(/Set 3 of 4/i)).toBeVisible();
   });
 
-  test('displays all 6 core features', async ({ page }) => {
-    const featuresSection = page.locator('#features');
-    await featuresSection.scrollIntoViewIfNeeded();
-    await expect(featuresSection).toBeVisible();
-
-    await expect(featuresSection.getByRole('heading', { name: 'Offline-First Logger' })).toBeVisible();
-    await expect(featuresSection.getByRole('heading', { name: '3D Muscle Anatomy' })).toBeVisible();
-    await expect(featuresSection.getByRole('heading', { name: 'AI Voice Coach' })).toBeVisible();
-    await expect(featuresSection.getByRole('heading', { name: 'Digital GymID Pass' })).toBeVisible();
-    await expect(featuresSection.getByRole('heading', { name: 'Gamification & Battlecards' })).toBeVisible();
-    await expect(featuresSection.getByRole('heading', { name: '8 Premium Themes' })).toBeVisible();
+  test('lists the six shipped features', async ({ page }) => {
+    const features = page.locator('#features');
+    await features.scrollIntoViewIfNeeded();
+    await expect(features.getByRole('listitem')).toHaveCount(6);
+    await expect(features.getByRole('heading', { name: 'Offline workout logger' })).toBeVisible();
+    await expect(features.getByRole('heading', { name: 'Muscle recovery map' })).toBeVisible();
   });
 
-  test('switches tabs in the interactive showcase', async ({ page }) => {
-    const showcaseSection = page.locator('#showcase');
-    await showcaseSection.scrollIntoViewIfNeeded();
-    await expect(showcaseSection).toBeVisible();
-
-    // Switch to GymID Wallet tab
-    const gymIdTab = page.getByRole('button', { name: /GymID Wallet/i });
-    await gymIdTab.click();
-    await expect(page.getByText(/IRONIX GYMID PASS/i)).toBeVisible();
-
-    // Switch to AI Coach tab
-    const coachTab = page.getByRole('button', { name: /AI Coach/i });
-    await coachTab.click();
-    await expect(page.getByText(/Choose Your Trainer's Voice/i)).toBeVisible();
+  test('shows Free and Pro plans', async ({ page }) => {
+    const pricing = page.locator('#pricing');
+    await pricing.scrollIntoViewIfNeeded();
+    await expect(pricing.getByRole('heading', { name: 'Free' })).toBeVisible();
+    await expect(pricing.getByRole('heading', { name: /Ironix Pro/ })).toBeVisible();
+    await expect(pricing.getByText('Unlimited workout logging')).toBeVisible();
   });
 
-  test('expands and collapses FAQ accordion items', async ({ page }) => {
-    const faqSection = page.locator('#faq');
-    await faqSection.scrollIntoViewIfNeeded();
-    await expect(faqSection).toBeVisible();
-
-    const firstQuestion = faqSection.getByText(/Is Ironix really offline-first\?/i);
-    await expect(firstQuestion).toBeVisible();
-    await firstQuestion.click();
-
-    await expect(page.getByText(/You can log your entire workout without an internet connection/i)).toBeVisible();
+  test('expands FAQ items', async ({ page }) => {
+    const faq = page.locator('#faq');
+    await faq.scrollIntoViewIfNeeded();
+    await faq.getByText('Does Ironix work without internet?').click();
+    await expect(page.getByText(/Every set you log is saved on your phone first/i)).toBeVisible();
   });
 
-  test('submits newsletter subscription form', async ({ page }) => {
+  test('rejects an invalid waitlist email without calling the server', async ({ page }) => {
+    let rpcCalls = 0;
+    await page.route('**/rest/v1/rpc/join_waitlist', (route) => {
+      rpcCalls++;
+      return route.fulfill({ json: { ok: true } });
+    });
     const footer = page.locator('footer');
     await footer.scrollIntoViewIfNeeded();
+    await footer.getByRole('textbox').fill('not-an-email');
+    await footer.getByRole('button', { name: /Notify me/i }).click();
+    await expect(footer.getByText(/valid email address/i)).toBeVisible();
+    expect(rpcCalls).toBe(0);
+  });
 
-    const emailInput = page.getByPlaceholder(/athlete@example.com/i);
-    await emailInput.fill('tester@ironix.app');
-
-    const submitBtn = page.locator('footer form button[type="submit"]');
-    await submitBtn.click();
-
-    await expect(page.getByText(/Thank you! You are subscribed/i)).toBeVisible();
+  test('joins the waitlist', async ({ page }) => {
+    let body: Record<string, unknown> | null = null;
+    await page.route('**/rest/v1/rpc/join_waitlist', async (route) => {
+      body = route.request().postDataJSON();
+      await route.fulfill({ json: { ok: true } });
+    });
+    const footer = page.locator('footer');
+    await footer.scrollIntoViewIfNeeded();
+    await footer.getByRole('textbox').fill('tester@example.com');
+    await footer.getByRole('button', { name: /Notify me/i }).click();
+    await expect(footer.getByText(/You are on the list/i)).toBeVisible();
+    expect(body).toMatchObject({ p_email: 'tester@example.com', p_locale: 'en', p_source: 'footer' });
   });
 });

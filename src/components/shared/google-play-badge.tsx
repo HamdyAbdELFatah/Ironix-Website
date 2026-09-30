@@ -8,7 +8,9 @@ interface BadgeProps {
 }
 
 export function GooglePlayBadge({ section = "hero", className }: BadgeProps) {
-  const url = APP_CONFIG.utm("android", section);
+  const url = APP_CONFIG.storeUrl("android", section);
+  // Hidden until the store listing exists, so the site never links to a 404.
+  if (!url) return null;
 
   return (
     <a

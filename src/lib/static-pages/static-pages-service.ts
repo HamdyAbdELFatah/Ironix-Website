@@ -2,9 +2,16 @@
  * Static & Legal Pages Supabase Fetcher for Ironix-Website
  *
  * Fetches published documents (privacy-policy, terms-of-service, faq) from Supabase `app_content`.
- * Supports dynamic real-time fetching (`cache: 'no-store'`), generous timeout (4s),
- * Markdown/Structured section rendering, and robust graceful fallback to Next-Intl local messages.
+ * Responses are cached with ISR (see STATIC_PAGES_REVALIDATE_SECONDS) and tagged so the
+ * dashboard can revalidate on save; any failure returns null and the caller falls back
+ * to the Next-Intl local messages.
  */
+
+import { getSupabasePublicConfig, supabaseHeaders } from '@/lib/supabase/public-config';
+import { APP_CONFIG } from '@/lib/utils/constants';
+
+export const STATIC_PAGES_REVALIDATE_SECONDS = 300;
+export const STATIC_PAGES_CACHE_TAG = 'static-pages';
 
 export interface StaticPageSection {
   id: string;
@@ -19,7 +26,7 @@ export interface StaticPageMetadata {
   summary?: string;
   contact_email?: string;
   sections?: StaticPageSection[];
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export interface StaticPageData {
@@ -37,9 +44,6 @@ export interface StaticPageData {
   sections: StaticPageSection[];
 }
 
-const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://tcvnfbrqxwsdpvfsrhaq.supabase.co';
-const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRjdm5mYnJxeHdzZHB2ZnNyaGFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY5MzA1ODksImV4cCI6MjA4MjUwNjU4OX0.9GkPvHSm6MvOyRuAvl5ra1Rw9fCZEWYx5rbp-oCHtzo';
-
 /**
  * Fetch a published static page document by contentType and locale.
  */
@@ -47,16 +51,14 @@ export async function getStaticPageDoc(
   contentType: 'privacy-policy' | 'terms-of-service' | 'faq' | string,
   locale: string
 ): Promise<StaticPageData | null> {
+  const config = getSupabasePublicConfig();
+  if (!config) return null;
   try {
-    const url = `${SUPABASE_URL}/rest/v1/app_content?content_type=eq.${encodeURIComponent(contentType)}&locale=eq.${encodeURIComponent(locale)}&is_active=eq.true&select=*`;
+    const url = `${config.url}/rest/v1/app_content?content_type=eq.${encodeURIComponent(contentType)}&locale=eq.${encodeURIComponent(locale)}&is_active=eq.true&select=*`;
     
     const res = await fetch(url, {
-      headers: {
-        apikey: SUPABASE_ANON_KEY,
-        Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      cache: 'no-store',
+      headers: supabaseHeaders(config),
+      next: { revalidate: STATIC_PAGES_REVALIDATE_SECONDS, tags: [STATIC_PAGES_CACHE_TAG] },
       signal: AbortSignal.timeout(4000),
     });
 
@@ -103,7 +105,7 @@ export async function getStaticPageDoc(
       version: metadata.version || '1.0',
       effectiveDate: metadata.effective_date || '2026-08-17',
       summary: metadata.summary || '',
-      contactEmail: metadata.contact_email || (contentType === 'privacy-policy' ? 'privacy@ironix.app' : contentType === 'faq' ? 'support@ironix.app' : 'legal@ironix.app'),
+      contactEmail: metadata.contact_email || APP_CONFIG.support.email,
       isActive: row.is_active ?? true,
       sections,
     };

@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { APP_CONFIG } from '@/lib/utils/constants';
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/api/',
     },
-    sitemap: 'https://ironix.app/sitemap.xml',
+    sitemap: `${APP_CONFIG.url}/sitemap.xml`,
   };
 }

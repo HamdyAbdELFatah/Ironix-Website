@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Globe, Check } from "lucide-react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { locales, localeNames, type Locale } from "@/i18n/config";
 import {
@@ -15,6 +15,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 
 export function LocaleSwitcher({ className }: { className?: string }) {
+  const t = useTranslations("nav");
   const currentLocale = useLocale() as Locale;
   const router = useRouter();
   const pathname = usePathname();
@@ -36,7 +37,7 @@ export function LocaleSwitcher({ className }: { className?: string }) {
           "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-foreground/80 hover:text-foreground hover:bg-muted font-medium transition-colors cursor-pointer text-xs uppercase tracking-wider outline-none focus-visible:ring-2 focus-visible:ring-primary",
           className
         )}
-        aria-label="Switch Language"
+        aria-label={t("switchLanguage")}
       >
         <Globe className="h-4 w-4 text-primary" />
         <span className="font-semibold">{currentLocale}</span>

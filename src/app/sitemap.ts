@@ -1,7 +1,9 @@
 import type { MetadataRoute } from "next";
 import { locales } from "@/i18n/config";
 
-const host = "https://ironix.app";
+import { APP_CONFIG } from "@/lib/utils/constants";
+
+const host = APP_CONFIG.url;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];

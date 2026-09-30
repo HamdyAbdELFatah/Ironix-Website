@@ -23,11 +23,8 @@ export function Navbar() {
 
   const navLinks = [
     { label: t("features"), sectionId: "features", href: "/#features" },
-    { label: t("splitCalculator"), sectionId: "split-calculator", href: "/#split-calculator" },
-    { label: t("comparison"), sectionId: "comparison", href: "/#comparison" },
     { label: t("howItWorks"), sectionId: "how-it-works", href: "/#how-it-works" },
     { label: t("pricing"), sectionId: "pricing", href: "/#pricing" },
-    { label: t("testimonials"), sectionId: "testimonials", href: "/#testimonials" },
     { label: t("faq"), sectionId: "faq", href: "/#faq" },
   ];
 
@@ -69,9 +66,6 @@ export function Navbar() {
                 IRONIX
                 <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block animate-pulse" />
               </span>
-              <span className="text-[9px] uppercase tracking-[0.25em] text-muted-foreground font-bold">
-                WORKOUT OS
-              </span>
             </div>
           </Link>
 
@@ -108,7 +102,7 @@ export function Navbar() {
               className="gap-2 px-5 rounded-full bg-primary hover:bg-amber-400 text-primary-foreground font-bold shadow-lg shadow-amber-500/25 transition-transform hover:scale-105 active:scale-95 cursor-pointer relative overflow-hidden"
             >
               <Download className="w-4 h-4" />
-              <span>{t("download")}</span>
+              <span>{t("getApp")}</span>
             </Button>
           </div>
 

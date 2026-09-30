@@ -1,4 +1,5 @@
 import { defaultLocale, locales, type Locale } from '@/i18n/config';
+import { APP_CONFIG } from '@/lib/utils/constants';
 
 /**
  * Legal documents (Privacy Policy and Terms of Service).
@@ -45,10 +46,10 @@ export interface LegalMetadata {
 
 type Messages = Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 
-const CONTACT_EMAIL: Record<LegalDocType, string> = {
-  privacy: 'privacy@ironix.app',
-  terms: 'legal@ironix.app',
-};
+/** Legal copy writes the contact address as `{email}`; it is filled from APP_CONFIG. */
+function withContactEmail(text: string): string {
+  return text.replaceAll('{email}', APP_CONFIG.support.email);
+}
 
 function normalizeLocale(locale: string): Locale {
   return (locales as readonly string[]).includes(locale) ? (locale as Locale) : defaultLocale;
@@ -94,7 +95,7 @@ export async function getLegalDocument(
     .map((id) => ({
       id,
       heading: section.sections[id].heading,
-      content: section.sections[id].content,
+      content: withContactEmail(section.sections[id].content),
     }));
 
   let notice: string | null = null;
@@ -115,7 +116,7 @@ export async function getLegalDocument(
       badge: legal.badge,
       contactTitle: legal[`${doc}ContactTitle`],
       contactText: legal[`${doc}ContactText`],
-      contactEmail: CONTACT_EMAIL[doc],
+      contactEmail: APP_CONFIG.support.email,
     },
     notice,
   };

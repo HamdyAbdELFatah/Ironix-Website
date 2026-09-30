@@ -1,9 +1,10 @@
 import * as React from "react";
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/legal/legal-page";
+import { setRequestLocale } from "next-intl/server";
 import { getLegalDocument, getLegalMetadata } from "@/lib/legal/legal-content";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export async function generateMetadata({
   params,
@@ -21,6 +22,7 @@ export default async function TermsPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const doc = await getLegalDocument("terms", locale);
   return <LegalPage type="terms" doc={doc} />;
 }

@@ -39,13 +39,12 @@ test.describe('Ironix Legal & Policy Pages', () => {
     await expect(page.locator('h1')).toContainText(/شروط الخدمة|شروط الاستخدام/i);
   });
 
-  test('falls back to English with a notice for other locales (es)', async ({ page }) => {
-    await page.goto('/es/privacy-policy');
-    await expect(page.getByTestId('legal-english-notice')).toContainText(/inglés/i);
-    await expect(page.locator('h1')).toContainText(/Privacy Policy/i);
-
-    await page.goto('/es/terms-of-service');
-    await expect(page.getByTestId('legal-english-notice')).toContainText(/inglés/i);
-    await expect(page.locator('h1')).toContainText(/Terms of Service/i);
+  test('shows the real support address, never ironix.app', async ({ page }) => {
+    for (const path of ['/en/privacy-policy', '/ar/terms-of-service']) {
+      await page.goto(path);
+      const text = await page.locator('main').innerText();
+      expect(text).toContain('hamdy.abdelfattah.mohamed@gmail.com');
+      expect(text).not.toContain('ironix.app');
+    }
   });
 });

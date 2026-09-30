@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { locales } from '@/i18n/config';
+import { APP_CONFIG } from '@/lib/utils/constants';
 import {
   getLegalDocument,
   getLegalMetadata,
@@ -8,14 +9,12 @@ import {
 } from './legal-content';
 
 const DOCS: LegalDocType[] = ['privacy', 'terms'];
-const FALLBACK_LOCALES = locales.filter((l) => l !== 'en' && l !== 'ar');
 
 describe('legal content resolution', () => {
-  it('serves en and ar natively and everything else from English', () => {
+  it('serves every published locale natively', () => {
     expect(resolveLegalContentLocale('en')).toBe('en');
     expect(resolveLegalContentLocale('ar')).toBe('ar');
-    for (const l of FALLBACK_LOCALES) expect(resolveLegalContentLocale(l)).toBe('en');
-    expect(FALLBACK_LOCALES).toHaveLength(17);
+    for (const l of locales) expect(resolveLegalContentLocale(l)).toBe(l);
   });
 
   it.each(DOCS)('%s: English document is complete and ordered', async (doc) => {
@@ -46,19 +45,6 @@ describe('legal content resolution', () => {
     expect(tokens(en).length).toBeGreaterThan(0);
   });
 
-  it.each(DOCS)('%s: fallback locales render the English text with a notice', async (doc) => {
-    const en = await getLegalDocument(doc, 'en');
-    for (const l of FALLBACK_LOCALES) {
-      const d = await getLegalDocument(doc, l);
-      expect(d.isFallback).toBe(true);
-      expect(d.contentLocale).toBe('en');
-      expect(d.sections).toEqual(en.sections);
-      expect(d.title).toBe(en.title);
-      expect(d.notice).toBeTruthy();
-    }
-    expect((await getLegalDocument(doc, 'es')).notice).toBe('Este documento se ofrece en inglés.');
-  });
-
   it('unknown locales fall back to English', async () => {
     const d = await getLegalDocument('privacy', 'xx');
     expect(d.locale).toBe('en');
@@ -81,21 +67,24 @@ describe('legal content resolution', () => {
       expect(JSON.stringify(messages.privacy) + JSON.stringify(messages.terms)).not.toMatch(
         /on-demand services|facilitate payments|Last Updated: August/
       );
-      if (l !== 'en' && l !== 'ar') {
-        expect(messages.privacy.sections).toBeUndefined();
-        expect(messages.terms.sections).toBeUndefined();
-      }
     }
   });
 
   it('describes the real product and avoids unsupported claims', async () => {
     const privacy = (await getLegalDocument('privacy', 'en')).sections.map((s) => s.content).join('\n');
-    for (const term of ['Supabase', 'RevenueCat', 'PostHog', 'Firebase', 'Strava', 'Gemini', '180 days', 'privacy@ironix.app', 'Standard Contractual Clauses']) {
+    for (const term of ['Supabase', 'RevenueCat', 'PostHog', 'Firebase', '180 days', APP_CONFIG.support.email, 'Standard Contractual Clauses']) {
       expect(privacy).toContain(term);
     }
     const terms = (await getLegalDocument('terms', 'en')).sections.map((s) => s.content).join('\n');
-    for (const term of ['auto-renew', 'legal@ironix.app', '[Governing law and jurisdiction]', 'Settings > Delete account']) {
+    for (const term of ['auto-renew', APP_CONFIG.support.email, '[Governing law and jurisdiction]', 'Settings > Delete account']) {
       expect(terms.toLowerCase()).toContain(term.toLowerCase());
+    }
+  });
+
+  it.each(['en', 'ar'])('%s: never mentions features the app does not ship or a domain we do not own', async (locale) => {
+    for (const doc of DOCS) {
+      const text = (await getLegalDocument(doc, locale)).sections.map((s) => s.content).join('\n');
+      expect(text).not.toMatch(/Gemini|AI coach|مدرب الذكاء الاصطناعي|ironix\.app|\{email\}/);
     }
   });
 });

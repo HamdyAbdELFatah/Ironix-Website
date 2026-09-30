@@ -49,7 +49,7 @@ export function FAQ({ liveData }: FAQProps) {
           className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-xs font-semibold mb-4"
         >
           <HelpCircle className="w-3.5 h-3.5" />
-          <span>HELP & FREQUENTLY ASKED QUESTIONS</span>
+          <span>{t("badge")}</span>
         </motion.div>
 
         <motion.h2

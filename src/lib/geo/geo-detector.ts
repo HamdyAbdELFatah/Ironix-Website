@@ -1,67 +1,14 @@
 import { Locale, locales, defaultLocale } from '../../i18n/config';
 
-// Comprehensive ISO 3166-1 alpha-2 country to supported Locale mapping
+// Country -> published locale. Countries not listed fall through to the
+// browser language and then the default (en).
 export const COUNTRY_TO_LOCALE_MAP: Record<string, Locale> = {
-  // Middle East & North Africa (Arabic)
+  // Arabic-speaking markets
   SA: 'ar', AE: 'ar', EG: 'ar', KW: 'ar', QA: 'ar', OM: 'ar', BH: 'ar',
   IQ: 'ar', JO: 'ar', LB: 'ar', MA: 'ar', DZ: 'ar', TN: 'ar', LY: 'ar',
   YE: 'ar', SD: 'ar', SY: 'ar', PS: 'ar', SO: 'ar', MR: 'ar',
 
-  // Hispanic / Latin America & Spain (Spanish)
-  ES: 'es', MX: 'es', CO: 'es', AR: 'es', PE: 'es', VE: 'es', CL: 'es',
-  GT: 'es', EC: 'es', CU: 'es', BO: 'es', DO: 'es', HN: 'es', PY: 'es',
-  SV: 'es', NI: 'es', CR: 'es', PA: 'es', UY: 'es', PR: 'es', GQ: 'es',
-
-  // France & Francophone (French)
-  FR: 'fr', BE: 'fr', CH: 'fr', SN: 'fr', CI: 'fr', CM: 'fr', CD: 'fr',
-  MG: 'fr', ML: 'fr', NE: 'fr', BF: 'fr', GN: 'fr', RW: 'fr', HT: 'fr',
-
-  // DACH Region (German)
-  DE: 'de', AT: 'de', LI: 'de',
-
-  // Brazil, Portugal & Lusophone (Portuguese)
-  BR: 'pt', PT: 'pt', AO: 'pt', MZ: 'pt', CV: 'pt', GW: 'pt',
-
-  // Russia & CIS (Russian)
-  RU: 'ru', KZ: 'ru', BY: 'ru', KG: 'ru', TJ: 'ru',
-
-  // Greater China (Chinese)
-  CN: 'zh', TW: 'zh', HK: 'zh', MO: 'zh', SG: 'zh',
-
-  // Japan (Japanese)
-  JP: 'ja',
-
-  // South Korea (Korean)
-  KR: 'ko',
-
-  // Italy (Italian)
-  IT: 'it', SM: 'it', VA: 'it',
-
-  // Netherlands & Flanders (Dutch)
-  NL: 'nl',
-
-  // Poland (Polish)
-  PL: 'pl',
-
-  // Turkey (Turkish)
-  TR: 'tr', CY: 'tr',
-
-  // Indonesia (Indonesian)
-  ID: 'id',
-
-  // Thailand (Thai)
-  TH: 'th',
-
-  // Vietnam (Vietnamese)
-  VN: 'vi',
-
-  // Ukraine (Ukrainian)
-  UA: 'uk',
-
-  // India (Hindi)
-  IN: 'hi',
-
-  // English Dominant / Default
+  // English-dominant markets
   US: 'en', GB: 'en', CA: 'en', AU: 'en', NZ: 'en', IE: 'en', ZA: 'en',
 };
 
@@ -112,7 +59,7 @@ export function parseAcceptLanguage(header?: string | null): Locale | null {
  * Detects best locale given request headers
  * Precedence:
  * 1. Saved User Cookie Override (NEXT_LOCALE)
- * 2. Geolocation Country Header for localized non-English markets (SA, ES, FR, DE, etc.)
+ * 2. Geolocation Country Header for Arabic-speaking markets (SA, EG, AE, ...)
  * 3. Browser / Device Accept-Language header
  * 4. Geolocation Country Header fallback (US, GB, etc.)
  * 5. Default Locale Fallback (en)
@@ -129,13 +76,13 @@ export function detectBestLocale(
     return savedCookieLocale as Locale;
   }
 
-  // 2. Specific localized country header (e.g. SA -> ar, ES -> es, DE -> de)
+  // 2. Specific localized country header (e.g. SA -> ar)
   const countryLocale = detectLocaleFromCountry(headers.country);
   if (countryLocale && countryLocale !== defaultLocale) {
     return countryLocale;
   }
 
-  // 3. Browser / Device Accept-Language header (e.g. de-DE, ar, fr)
+  // 3. Browser / Device Accept-Language header (e.g. ar-EG, en-US)
   const browserLocale = parseAcceptLanguage(headers.acceptLanguage);
   if (browserLocale) {
     return browserLocale;

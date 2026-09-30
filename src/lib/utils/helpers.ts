@@ -7,7 +7,7 @@ export function formatNumber(n: number): string {
 }
 
 export function isRtlLocale(locale: string): boolean {
-  return rtlLocales.includes(locale as any);
+  return (rtlLocales as readonly string[]).includes(locale);
 }
 
 export function getLocaleDirection(locale: string): 'ltr' | 'rtl' {

@@ -1,17 +1,18 @@
 import { Metadata } from 'next';
-import { locales, defaultLocale, Locale } from '../../i18n/config';
+import { locales } from '../../i18n/config';
 import { APP_CONFIG } from '../utils/constants';
 
 export function generateLocalizedMetadata(
   locale: string,
   page: 'home' | 'privacy' | 'terms',
-  translations: any
+  translations: (key: string) => string
 ): Metadata {
   const title = translations(`${page}.metadata.title`) || APP_CONFIG.name;
   const description = translations(`${page}.metadata.description`) || APP_CONFIG.description;
-  const pathSuffix = page === 'home' ? '' : `/${page}`;
+  const PAGE_PATHS = { home: '', privacy: '/privacy-policy', terms: '/terms-of-service' } as const;
+  const pathSuffix = PAGE_PATHS[page];
   
-  // 19 language hreflang alternates + x-default
+  // hreflang alternates for every published locale + x-default
   const languages: Record<string, string> = {
     'x-default': `${APP_CONFIG.url}/en${pathSuffix}`,
   };
@@ -26,24 +27,13 @@ export function generateLocalizedMetadata(
   return {
     title,
     description,
-    keywords: [
-      'Ironix',
-      'Workout OS',
-      'Offline Workout Tracker',
-      'Room SQLite Fitness App',
-      '3D Muscle Biomechanics Heatmap',
-      'AI Gym Voice Coach',
-      'Barbell Velocity Tracker',
-      'GymID Wallet Pass',
-      'Hypertrophy Training Log',
-      'Powerlifting Tracker 0ms Latency',
-      'Progressive Overload 1RM',
-      'NFC Gym Pass',
-      'Best Gym App Android iOS HarmonyOS'
-    ],
-    authors: [{ name: 'Ironix Systems', url: APP_CONFIG.url }],
-    creator: 'Ironix Systems',
-    publisher: 'Ironix Systems',
+    keywords:
+      locale === 'ar'
+        ? ['آيرونكس', 'تطبيق تمارين', 'متتبع تمارين الجيم', 'تسجيل التمارين دون إنترنت', 'تعافي العضلات', 'بطاقة النادي الرقمية']
+        : ['Ironix', 'workout tracker', 'gym log', 'offline workout tracker', 'muscle recovery', 'digital gym pass', 'Arabic workout app'],
+    authors: [{ name: APP_CONFIG.name, url: APP_CONFIG.url }],
+    creator: APP_CONFIG.name,
+    publisher: APP_CONFIG.name,
     formatDetection: {
       email: false,
       address: false,
@@ -64,7 +54,7 @@ export function generateLocalizedMetadata(
           url: `${APP_CONFIG.url}/assets/logo.png`,
           width: 1024,
           height: 1024,
-          alt: `${APP_CONFIG.name} - Offline Workout OS & 3D Biomechanics`
+          alt: APP_CONFIG.name
         }
       ],
       locale,
@@ -76,7 +66,6 @@ export function generateLocalizedMetadata(
       title,
       description,
       images: [`${APP_CONFIG.url}/assets/logo.png`],
-      creator: '@ironix_app'
     },
     robots: {
       index: true,
@@ -90,13 +79,7 @@ export function generateLocalizedMetadata(
       },
     },
     other: {
-      'geo.region': 'US',
-      'geo.placename': 'Global Workout Tracking',
-      'geo.position': '37.7749;-122.4194',
-      'ICBM': '37.7749, -122.4194',
-      'apple-itunes-app': 'app-id=6740000000',
-      'google-play-app': 'app-id=com.ironix',
-      'application-name': 'Ironix Workout OS',
+      'application-name': APP_CONFIG.name,
       'msapplication-TileColor': '#0A0A0A',
     }
   };

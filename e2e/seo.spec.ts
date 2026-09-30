@@ -1,23 +1,26 @@
 import { test, expect } from '@playwright/test';
 
+const SITE = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, '') || 'https://ironix-website.vercel.app';
+
 test.describe('Ironix SEO & Metadata Endpoints', () => {
-  test('serves valid robots.txt', async ({ request }) => {
-    const response = await request.get('/robots.txt');
-    expect(response.ok()).toBeTruthy();
-    const text = await response.text();
+  test('serves robots.txt pointing at our own sitemap', async ({ request }) => {
+    const text = await (await request.get('/robots.txt')).text();
     expect(text.toLowerCase()).toContain('user-agent: *');
-    expect(text).toContain('Sitemap: https://ironix.app/sitemap.xml');
+    expect(text).toContain(`Sitemap: ${SITE}/sitemap.xml`);
   });
 
-  test('serves valid sitemap.xml with 19 locale entries', async ({ request }) => {
-    const response = await request.get('/sitemap.xml');
-    expect(response.ok()).toBeTruthy();
-    const text = await response.text();
-    expect(text).toContain('<urlset');
-    expect(text).toContain('https://ironix.app/en');
-    expect(text).toContain('https://ironix.app/ar');
-    expect(text).toContain('https://ironix.app/es');
-    expect(text).toContain('https://ironix.app/de');
-    expect(text).toContain('https://ironix.app/fr');
+  test('sitemap lists only the published locales on our own host', async ({ request }) => {
+    const text = await (await request.get('/sitemap.xml')).text();
+    expect(text).toContain(`${SITE}/en`);
+    expect(text).toContain(`${SITE}/ar`);
+    expect(text).not.toContain(`${SITE}/es`);
+    expect(text).not.toContain('ironix.app');
+  });
+
+  test('home page JSON-LD carries no fabricated rating', async ({ page }) => {
+    await page.goto('/en');
+    const jsonLd = (await page.locator('script[type="application/ld+json"]').allTextContents()).join('\n');
+    expect(jsonLd).toContain('SoftwareApplication');
+    expect(jsonLd).not.toMatch(/aggregateRating|ratingValue|reviewCount/);
   });
 });
