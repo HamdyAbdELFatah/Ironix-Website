@@ -116,7 +116,7 @@
         "Everything in Free",
         "Muscle recovery map and fatigue tracking",
         "Advanced analytics: one-rep max trends and volume per muscle",
-        "Export your data",
+        "Spreadsheet export (CSV)",
         "All themes and gym pass skins",
         "Unlimited gym passes"
       ]
@@ -165,7 +165,7 @@
       },
       "2": {
         "question": "Is Ironix free?",
-        "answer": "Yes. Logging, routines, your full history, progress charts and personal records are free with no limits. Ironix Pro is an optional subscription for the muscle recovery map, advanced analytics, data export and extra themes."
+        "answer": "Yes. Logging, routines, your full history, progress charts and personal records are free with no limits. Ironix Pro is an optional subscription for the muscle recovery map, advanced analytics, spreadsheet (CSV) export and extra themes."
       },
       "3": {
         "question": "Which phones does Ironix support?",
@@ -181,7 +181,7 @@
       },
       "6": {
         "question": "What happens to my data?",
-        "answer": "Your workouts belong to you. You can export them and delete your account at any time, which removes your data from our servers. The privacy policy explains the details."
+        "answer": "Your workouts belong to you. You can download all of them for free and delete your account at any time, which removes your data from our servers. The privacy policy explains the details."
       }
     }
   },
