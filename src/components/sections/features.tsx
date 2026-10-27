@@ -29,7 +29,7 @@ export function Features() {
         </p>
       </div>
 
-      <ul className="grid grid-cols-1 border-t border-border/80 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4">
         {FEATURES.map(({ id, icon: Icon, pro }, index) => (
           <motion.li
             key={id}
@@ -37,10 +37,10 @@ export function Features() {
             whileInView={shouldReduceMotion ? {} : { opacity: 1, transform: "translateY(0)" }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.5, delay: index * 0.055, ease: [0.23, 1, 0.32, 1] }}
-            className="min-w-0 border-b border-border/80 py-6 sm:px-5 sm:py-7 lg:px-6 lg:py-8"
+            className="feature-card group relative min-w-0 rounded-3xl border border-border/75 p-5 sm:p-6 lg:min-h-[15.5rem] lg:p-7"
           >
             <div className="mb-5 flex items-center justify-between gap-4">
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-primary/25 bg-primary/10 text-amber-800 dark:text-amber-300">
+              <span className="feature-card__icon inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-primary/25 bg-primary/10 text-amber-800 dark:text-amber-300">
                 <Icon className="h-5 w-5" aria-hidden="true" />
               </span>
               {pro && (

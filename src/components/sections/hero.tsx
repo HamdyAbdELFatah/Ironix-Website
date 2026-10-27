@@ -87,7 +87,7 @@ export function Hero() {
           <div aria-hidden="true" className="hero-plate-orbit absolute left-1/2 top-[46%] aspect-square w-[90%] -translate-x-1/2 -translate-y-1/2 rounded-full" />
           <div aria-hidden="true" className="absolute left-1/2 top-[46%] aspect-square w-[68%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-3xl" />
 
-          <div className="relative w-[min(62vw,15.5rem)] rounded-[2.55rem] border-[6px] border-neutral-900 bg-neutral-950 p-1.5 shadow-[0_34px_80px_-28px_rgba(0,0,0,0.62)] ring-1 ring-black/25 sm:w-[17rem] lg:w-[18rem]">
+          <div className="hero-phone-shell relative w-[min(62vw,15.5rem)] rounded-[2.55rem] border-[6px] border-neutral-900 bg-neutral-950 p-1.5 shadow-[0_34px_80px_-28px_rgba(0,0,0,0.62)] ring-1 ring-black/25 sm:w-[17rem] lg:w-[18rem]">
             <div className="relative aspect-[411/891] overflow-hidden rounded-[2rem] bg-white">
               <Image
                 src={PREVIEW_IMAGES[locale]}

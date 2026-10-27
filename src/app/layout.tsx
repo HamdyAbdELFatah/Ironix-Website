@@ -23,8 +23,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#FAFAFA" },
-    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+    { media: "(prefers-color-scheme: light)", color: "#F7F6F2" },
+    { media: "(prefers-color-scheme: dark)", color: "#101216" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -55,7 +55,6 @@ export default async function RootLayout({
           attribute="class"
           defaultTheme="light"
           enableSystem={false}
-          disableTransitionOnChange
         >
           {children}
         </ThemeProvider>

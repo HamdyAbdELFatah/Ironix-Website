@@ -38,7 +38,7 @@ export function AppScreenshots() {
   }, [activeScreenshot]);
 
   return (
-    <SectionWrapper sectionId="screenshots" className="bg-[#11110f] text-white">
+    <SectionWrapper sectionId="screenshots" className="showcase-surface text-white">
       <div className="mb-12 flex flex-col gap-5 sm:mb-14 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
         <div className="max-w-2xl text-start">
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-amber-400 sm:text-sm">
@@ -61,7 +61,7 @@ export function AppScreenshots() {
               aria-label={t("openScreenshot", { screen: t("items." + id + ".label") })}
               aria-haspopup="dialog"
               onClick={() => setActiveScreenshot(id)}
-              className="screenshot-stage group relative flex h-[29rem] w-full items-center justify-center overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#191916] p-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-4 focus-visible:ring-offset-[#11110f] sm:h-[34rem] sm:rounded-[2rem] sm:p-8"
+              className="screenshot-stage group relative flex h-[29rem] w-full items-center justify-center overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.035] p-5 shadow-[0_22px_60px_-48px_rgba(0,0,0,0.9)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-4 focus-visible:ring-offset-[#171819] sm:h-[34rem] sm:rounded-[2rem] sm:p-8"
             >
               <span aria-hidden="true" className="screenshot-stage__halo absolute inset-0" />
               <span aria-hidden="true" className="screenshot-stage__grid absolute inset-0 opacity-30" />

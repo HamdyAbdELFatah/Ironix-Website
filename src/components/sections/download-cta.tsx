@@ -11,8 +11,8 @@ export function DownloadCta() {
   return (
     <section id="download" className="px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="relative isolate overflow-hidden rounded-[2rem] bg-[#11110f] px-6 py-12 text-center sm:rounded-[2.5rem] sm:px-12 sm:py-16 lg:px-20 lg:py-20">
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(249,192,35,0.18),transparent_55%)]" />
+        <div className="download-panel relative isolate overflow-hidden rounded-[2rem] px-6 py-12 text-center ring-1 ring-white/[0.06] sm:rounded-[2.5rem] sm:px-12 sm:py-16 lg:px-20 lg:py-20">
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(249,192,35,0.1),transparent_58%)]" />
           <div aria-hidden="true" className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-amber-400/70 to-transparent sm:inset-x-16" />
           <div className="relative mx-auto flex max-w-3xl flex-col items-center gap-5">
             <h2 className="text-balance text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">

@@ -45,7 +45,7 @@ export function MobileNav({ isHome = true }: MobileNavProps) {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
-        className="w-10 h-10 rounded-full lg:hidden text-foreground hover:text-primary inline-flex items-center justify-center cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        className="inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full text-foreground transition-colors hover:bg-muted hover:text-primary lg:hidden outline-none focus-visible:ring-2 focus-visible:ring-primary"
         aria-label={t("openMenu")}
       >
         <Menu className="h-5 w-5" />
