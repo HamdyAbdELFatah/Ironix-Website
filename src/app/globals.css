@@ -141,243 +141,94 @@
   }
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   ADVANCED ANIMATIONS & MOTION SYSTEM
-   ═══════════════════════════════════════════════════════════════ */
-
-@keyframes float-slow {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-12px) rotate(0.5deg);
-  }
+/* Focused motion and surfaces for the Ironix landing page. */
+:root {
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-@keyframes float-reverse {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(12px) rotate(-0.5deg);
-  }
+.ironix-hero-field {
+  background-image:
+    radial-gradient(ellipse at 74% 38%, rgba(212, 160, 23, 0.1), transparent 28rem),
+    radial-gradient(rgba(140, 105, 18, 0.045) 1px, transparent 1px);
+  background-size: auto, 26px 26px;
 }
 
-@keyframes float-gentle {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
+.dark .ironix-hero-field {
+  background-image:
+    radial-gradient(ellipse at 74% 38%, rgba(249, 192, 35, 0.12), transparent 28rem),
+    radial-gradient(rgba(249, 192, 35, 0.045) 1px, transparent 1px);
 }
 
-@keyframes pulse-glow {
-  0%, 100% {
-    opacity: 0.35;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.08);
-  }
+.hero-plate-orbit {
+  border: 1px solid rgba(185, 135, 10, 0.18);
+  background: radial-gradient(
+    circle,
+    transparent 0 34%,
+    rgba(185, 135, 10, 0.08) 34.2% 34.5%,
+    transparent 34.7% 54%,
+    rgba(185, 135, 10, 0.12) 54.2% 54.5%,
+    transparent 54.7% 75%,
+    rgba(185, 135, 10, 0.09) 75.2% 75.5%,
+    transparent 75.7%
+  );
 }
 
-@keyframes shimmer-sweep {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
+.screenshot-stage {
+  transition: border-color 220ms var(--ease-out-strong), background-color 220ms var(--ease-out-strong);
 }
 
-@keyframes scan-line {
-  0% {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(200%);
-    opacity: 0;
-  }
+.screenshot-stage__halo {
+  background: radial-gradient(ellipse at 50% 44%, rgba(222, 164, 19, 0.14), transparent 54%);
 }
 
-@keyframes border-beam {
-  0% {
-    offset-distance: 0%;
-  }
-  100% {
-    offset-distance: 100%;
-  }
+.screenshot-stage__grid {
+  background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-position: center;
+  background-size: 46px 46px;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 76%);
 }
 
-@keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+.screenshot-dialog[open]::backdrop {
+  animation: screenshot-backdrop-in 220ms ease-out both;
 }
 
-@keyframes marquee-reverse {
-  0% {
-    transform: translateX(-50%);
+.screenshot-dialog[open] .screenshot-dialog__content {
+  animation: screenshot-dialog-in 280ms var(--ease-out-strong) both;
+}
+
+@keyframes screenshot-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes screenshot-dialog-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes geo-banner-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .screenshot-stage:hover {
+    border-color: rgba(249, 192, 35, 0.38);
+    background-color: #1d1c17;
   }
-  100% {
-    transform: translateX(0%);
+
+  .screenshot-stage:hover .screenshot-stage__device {
+    transform: translateY(-4px);
   }
 }
 
-@keyframes soundwave {
-  0%, 100% {
-    height: 20%;
-  }
-  50% {
-    height: 100%;
-  }
-}
-
-@keyframes radar-ping {
-  0% {
-    transform: scale(0.9);
-    opacity: 0.8;
-  }
-  100% {
-    transform: scale(2.2);
-    opacity: 0;
-  }
-}
-
-.animate-float-slow {
-  animation: float-slow 5s ease-in-out infinite;
-}
-
-.animate-float-reverse {
-  animation: float-reverse 6s ease-in-out infinite;
-}
-
-.animate-float-gentle {
-  animation: float-gentle 4s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 4s ease-in-out infinite;
-}
-
-.animate-shimmer {
-  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0) 100%);
-  background-size: 200% 100%;
-  animation: shimmer-sweep 2.5s infinite;
-}
-
-.animate-scan-line {
-  animation: scan-line 2.5s ease-in-out infinite;
-}
-
-.animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 30s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
-}
-
-.animate-marquee-reverse {
-  display: flex;
-  width: max-content;
-  animation: marquee-reverse 30s linear infinite;
-}
-
-.animate-marquee-reverse:hover {
-  animation-play-state: paused;
-}
-
-.animate-radar {
-  animation: radar-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
-
-/* Glassmorphic and Metallic Gold Utilities matching Ironix mobile tokens */
-.bg-ironix-gold-gradient {
-  background: linear-gradient(135deg, #FFD95A 0%, #F9C023 50%, #B28200 100%);
-}
-
-.text-ironix-gold-gradient {
-  background: linear-gradient(135deg, #FFF0B3 0%, #F9C023 60%, #D4A017 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.border-ironix-gold {
-  border-color: rgba(249, 192, 35, 0.35);
-}
-
-.shadow-ironix-gold {
-  box-shadow: 0 8px 32px -8px rgba(249, 192, 35, 0.25);
-}
-
-.glass-surface {
-  background: rgba(18, 18, 18, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.floating-glass-card {
-  background: rgba(20, 20, 24, 0.85);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(249, 192, 35, 0.25);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 25px -5px rgba(249, 192, 35, 0.15);
-}
-
-.floating-glass-card:hover {
-  border-color: rgba(249, 192, 35, 0.5);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 35px -5px rgba(249, 192, 35, 0.3);
-}
-
-.spotlight-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.spotlight-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(249, 192, 35, 0.6), transparent);
-  transition: opacity 0.5s;
-}
-
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.animate-gradient-shift {
-  background-size: 200% 200%;
-  animation: gradient-shift 6s ease infinite;
-}
-
-.noise-overlay {
-  background-image: radial-gradient(rgba(249, 192, 35, 0.05) 1px, transparent 0);
-  background-size: 24px 24px;
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .geo-language-banner { animation: none; }
+  .screenshot-dialog[open]::backdrop,
+  .screenshot-dialog[open] .screenshot-dialog__content { animation: none; }
+  .screenshot-stage__device { transition-duration: 1ms; }
 }
 
 @media print {

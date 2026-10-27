@@ -1,13 +1,10 @@
 "use client";
 
-import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Activity, Database, Dumbbell, TrendingUp, Wallet, WifiOff } from "lucide-react";
 import { SectionWrapper } from "@/components/shared/section-wrapper";
 
-// Only features that ship in the app. `pro` marks the ones behind Ironix Pro,
-// matching the Free vs Pro split in the pricing section and the in-app paywall.
 const FEATURES = [
   { id: "1", icon: WifiOff, pro: false },
   { id: "2", icon: Activity, pro: true },
@@ -22,36 +19,38 @@ export function Features() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <SectionWrapper sectionId="features">
-      <div className="text-center max-w-3xl mx-auto mb-14">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight mb-4 text-balance">
+    <SectionWrapper sectionId="features" className="py-20 sm:py-24 lg:py-32">
+      <div className="mb-10 flex flex-col gap-4 text-start sm:mb-12 lg:mb-14 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
+        <h2 className="max-w-2xl text-balance text-3xl font-black leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
           {t("title")}
         </h2>
-        <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">{t("subtitle")}</p>
+        <p className="max-w-lg text-sm leading-7 text-muted-foreground sm:text-base lg:pb-1">
+          {t("subtitle")}
+        </p>
       </div>
 
-      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <ul className="grid grid-cols-1 border-t border-border/80 sm:grid-cols-2 lg:grid-cols-3">
         {FEATURES.map(({ id, icon: Icon, pro }, index) => (
           <motion.li
             key={id}
-            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-            whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: index * 0.06 }}
-            className="rounded-2xl border border-border/80 bg-card/70 p-6 flex flex-col gap-3"
+            initial={shouldReduceMotion ? {} : { opacity: 0, transform: "translateY(12px)" }}
+            whileInView={shouldReduceMotion ? {} : { opacity: 1, transform: "translateY(0)" }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.5, delay: index * 0.055, ease: [0.23, 1, 0.32, 1] }}
+            className="min-w-0 border-b border-border/80 py-6 sm:px-5 sm:py-7 lg:px-6 lg:py-8"
           >
-            <div className="flex items-center justify-between">
-              <span className="w-11 h-11 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-500 flex items-center justify-center">
-                <Icon className="w-5 h-5" aria-hidden />
+            <div className="mb-5 flex items-center justify-between gap-4">
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-primary/25 bg-primary/10 text-amber-800 dark:text-amber-300">
+                <Icon className="h-5 w-5" aria-hidden="true" />
               </span>
               {pro && (
-                <span className="text-[10px] font-black px-2 py-0.5 rounded-full bg-amber-400 text-neutral-950">
+                <span className="rounded-full bg-primary/15 px-3 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-amber-800 dark:text-amber-300">
                   {t("proBadge")}
                 </span>
               )}
             </div>
-            <h3 className="text-lg font-bold text-foreground">{t(`items.${id}.title`)}</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">{t(`items.${id}.description`)}</p>
+            <h3 className="text-lg font-bold leading-snug text-foreground sm:text-xl">{t("items." + id + ".title")}</h3>
+            <p className="mt-2 max-w-sm text-sm leading-7 text-muted-foreground">{t("items." + id + ".description")}</p>
           </motion.li>
         ))}
       </ul>

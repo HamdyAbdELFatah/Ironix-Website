@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { BarChart3, Dumbbell, Target } from "lucide-react";
@@ -17,30 +16,37 @@ export function HowItWorks() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <SectionWrapper sectionId="how-it-works" dark>
-      <div className="text-center max-w-3xl mx-auto mb-14">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight mb-4 text-balance">
+    <SectionWrapper sectionId="how-it-works" className="bg-muted/35 py-20 sm:py-24 lg:py-32">
+      <div className="mb-10 flex flex-col gap-4 text-start sm:mb-12 lg:mb-14 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
+        <h2 className="max-w-2xl text-balance text-3xl font-black leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
           {t("title")}
         </h2>
-        <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">{t("subtitle")}</p>
+        <p className="max-w-lg text-sm leading-7 text-muted-foreground sm:text-base lg:pb-1">
+          {t("subtitle")}
+        </p>
       </div>
 
-      <ol className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <ol className="grid grid-cols-1 border-y border-border/80 md:grid-cols-3">
         {STEPS.map(({ id, icon: Icon }, index) => (
           <motion.li
             key={id}
-            initial={shouldReduceMotion ? {} : { opacity: 0, y: 24 }}
-            whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.45, delay: index * 0.1 }}
-            className="relative rounded-3xl border border-border/80 bg-card/70 p-6 flex flex-col items-center text-center gap-3"
+            initial={shouldReduceMotion ? {} : { opacity: 0, transform: "translateY(14px)" }}
+            whileInView={shouldReduceMotion ? {} : { opacity: 1, transform: "translateY(0)" }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.55, delay: index * 0.09, ease: [0.23, 1, 0.32, 1] }}
+            className="relative flex min-w-0 flex-col items-start py-7 sm:py-8 md:px-6 md:py-10 lg:px-8 lg:py-12"
           >
-            <span className="text-xs font-black text-amber-500 tabular-nums">{String(index + 1).padStart(2, "0")}</span>
-            <span className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 text-neutral-950 flex items-center justify-center shadow-lg shadow-amber-500/20">
-              <Icon className="w-7 h-7" aria-hidden />
-            </span>
-            <h3 className="text-xl font-bold text-foreground">{t(`steps.${id}.title`)}</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">{t(`steps.${id}.description`)}</p>
+            {index > 0 && <span aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-border/80 md:inset-y-0 md:inset-x-auto md:start-0 md:h-auto md:w-px" />}
+            <div className="mb-7 flex w-full items-center justify-between gap-4">
+              <span className="font-mono text-5xl font-bold leading-none tracking-[-0.08em] text-primary/80 sm:text-6xl">
+                0{index + 1}
+              </span>
+              <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-foreground text-background">
+                <Icon className="h-5 w-5" aria-hidden="true" />
+              </span>
+            </div>
+            <h3 className="text-xl font-extrabold leading-snug text-foreground sm:text-2xl">{t("steps." + id + ".title")}</h3>
+            <p className="mt-3 max-w-sm text-sm leading-7 text-muted-foreground">{t("steps." + id + ".description")}</p>
           </motion.li>
         ))}
       </ol>

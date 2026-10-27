@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useSyncExternalStore } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { Globe, X, Check } from 'lucide-react';
 import { locales, Locale } from '../../i18n/config';
-import { detectLocaleFromCountry, parseAcceptLanguage } from '../../lib/geo/geo-detector';
+import { parseAcceptLanguage } from '../../lib/geo/geo-detector';
 
 // Written in the *suggested* language, since that is the one the visitor reads.
 const BANNER_COPY: Record<Locale, { question: string; detail: string; switch: string; dismiss: string }> = {
@@ -27,35 +27,28 @@ interface GeoLanguageBannerProps {
 }
 
 export function GeoLanguageBanner({ currentLocale }: GeoLanguageBannerProps) {
-  const [suggestedLocale, setSuggestedLocale] = useState<Locale | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
 
-  useEffect(() => {
-    // Check if dismissed in this session
-    const dismissed = sessionStorage.getItem('ironix_geo_banner_dismissed');
-    if (dismissed) return;
-
-    // Detect browser language
-    if (typeof window !== 'undefined' && window.navigator) {
+  const suggestedLocale = useSyncExternalStore(
+    () => () => {},
+    () => {
+      if (sessionStorage.getItem('ironix_geo_banner_dismissed')) return null;
       const browserLang = parseAcceptLanguage(window.navigator.languages?.join(',') || window.navigator.language);
-      
-      if (browserLang && browserLang !== currentLocale && locales.includes(browserLang)) {
-        setSuggestedLocale(browserLang);
-        setIsVisible(true);
-      }
-    }
-  }, [currentLocale]);
+      return browserLang && browserLang !== currentLocale && locales.includes(browserLang) ? browserLang : null;
+    },
+    () => null
+  );
 
-  if (!isVisible || !suggestedLocale) return null;
+  if (dismissed || !suggestedLocale) return null;
   const copy = BANNER_COPY[suggestedLocale];
 
   const handleSwitch = () => {
     // Save preference cookie
     document.cookie = `NEXT_LOCALE=${suggestedLocale}; path=/; max-age=31536000; SameSite=Lax`;
     sessionStorage.setItem('ironix_geo_banner_dismissed', 'true');
-    setIsVisible(false);
+    setDismissed(true);
 
     // Switch URL locale prefix
     const pathWithoutLocale = pathname.replace(`/${currentLocale}`, '') || '/';
@@ -64,29 +57,29 @@ export function GeoLanguageBanner({ currentLocale }: GeoLanguageBannerProps) {
 
   const handleDismiss = () => {
     sessionStorage.setItem('ironix_geo_banner_dismissed', 'true');
-    setIsVisible(false);
+    setDismissed(true);
   };
 
   return (
     <div
-      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-lg animate-in fade-in slide-in-from-bottom-4 duration-300"
+      className="geo-language-banner fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-4 z-50 w-[min(82vw,20rem)] animate-[geo-banner-enter_300ms_cubic-bezier(0.23,1,0.32,1)_both]"
       id="geo-language-banner"
     >
-      <div className="rounded-2xl p-3.5 sm:p-4 bg-neutral-950/90 backdrop-blur-xl border border-amber-500/30 shadow-2xl shadow-black/80 flex items-center justify-between gap-3">
+        <div className="flex items-center justify-between gap-3 rounded-2xl border border-amber-500/30 bg-neutral-950/95 p-3.5 shadow-xl shadow-black/35 backdrop-blur-xl sm:p-4">
         <div className="flex items-center gap-3" lang={suggestedLocale} dir={suggestedLocale === 'ar' ? 'rtl' : 'ltr'}>
           <div className="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
             <Globe className="w-4 h-4" />
           </div>
-          <div className="text-left rtl:text-right">
+          <div className="text-start">
             <p className="text-xs font-bold text-white leading-tight">{copy.question}</p>
-            <p className="text-[10px] text-neutral-400 mt-0.5">{copy.detail}</p>
+            <p className="mt-0.5 hidden text-[10px] text-neutral-400 sm:block">{copy.detail}</p>
           </div>
         </div>
 
         <div className="flex items-center gap-1.5 shrink-0">
           <button
             onClick={handleSwitch}
-            className="px-3 py-1.5 rounded-xl bg-[#F9C023] hover:bg-[#E0A800] text-neutral-950 text-xs font-black transition-all active:scale-95 shadow-md shadow-amber-500/20 flex items-center gap-1 cursor-pointer"
+            className="flex cursor-pointer items-center gap-1 rounded-xl bg-[#F9C023] px-3 py-1.5 text-xs font-black text-neutral-950 shadow-md shadow-amber-500/20 transition-colors hover:bg-[#E0A800]"
             id="geo-banner-switch-btn"
           >
             <Check className="w-3.5 h-3.5 stroke-[3]" />

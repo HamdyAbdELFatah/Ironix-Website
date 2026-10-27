@@ -26,8 +26,8 @@ export function AppScreenshots() {
   const locale: Locale = useLocale() === "ar" ? "ar" : "en";
   const [activeScreenshot, setActiveScreenshot] = useState<ScreenshotId | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const activeLabel = activeScreenshot ? t(`items.${activeScreenshot}.label`) : "";
-  const activeAlt = activeScreenshot ? t(`items.${activeScreenshot}.alt`) : "";
+  const activeLabel = activeScreenshot ? t("items." + activeScreenshot + ".label") : "";
+  const activeAlt = activeScreenshot ? t("items." + activeScreenshot + ".alt") : "";
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -38,57 +38,69 @@ export function AppScreenshots() {
   }, [activeScreenshot]);
 
   return (
-    <SectionWrapper sectionId="screenshots" className="bg-card/35">
-      <div className="mx-auto mb-11 max-w-3xl text-center sm:mb-14">
-        <p className="mb-4 inline-flex rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-bold tracking-wide text-primary">
-          {t("eyebrow")}
-        </p>
-        <h2 className="mb-4 text-balance text-3xl font-black tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-          {t("title")}
-        </h2>
-        <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+    <SectionWrapper sectionId="screenshots" className="bg-[#11110f] text-white">
+      <div className="mb-12 flex flex-col gap-5 sm:mb-14 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
+        <div className="max-w-2xl text-start">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-amber-400 sm:text-sm">
+            {t("eyebrow")}
+          </p>
+          <h2 className="text-balance text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
+            {t("title")}
+          </h2>
+        </div>
+        <p className="max-w-lg text-start text-sm leading-7 text-white/65 sm:text-base lg:pb-1">
           {t("subtitle")}
         </p>
       </div>
 
-      <ul className="mx-auto grid max-w-5xl items-start gap-5 sm:grid-cols-2 lg:gap-8">
-        {SCREEN_IDS.map((id) => (
+      <ul className="mx-auto grid max-w-6xl items-start gap-x-8 gap-y-12 lg:grid-cols-2 lg:gap-x-12">
+        {SCREEN_IDS.map((id, index) => (
           <li key={id} className="min-w-0">
-            <article className="h-full overflow-hidden rounded-[2rem] border border-border/80 bg-card p-3 shadow-lg shadow-black/5 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
-              <button
-                type="button"
-                aria-label={t("openScreenshot", { screen: t(`items.${id}.label`) })}
-                aria-haspopup="dialog"
-                onClick={() => setActiveScreenshot(id)}
-                className="group relative flex min-h-[390px] w-full items-center justify-center overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-800 p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-card sm:min-h-[480px]"
-              >
-                <span aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(249,192,35,0.16),transparent_55%)]" />
-                <span className="relative rounded-[2rem] border-[5px] border-neutral-950 bg-neutral-950 p-1 shadow-2xl shadow-black/40 ring-1 ring-white/10 transition-transform duration-300 group-hover:scale-[1.015]">
-                  <Image
-                    src={SCREENSHOT_FILES[locale][id]}
-                    alt={t(`items.${id}.alt`)}
-                    width={411}
-                    height={891}
-                    sizes="(max-width: 640px) 78vw, (max-width: 1024px) 42vw, 28vw"
-                    className="h-auto max-h-[470px] w-auto max-w-[min(70vw,270px)] rounded-[1.55rem] object-contain sm:max-h-[540px]"
-                  />
-                </span>
-                <span className="absolute bottom-4 end-4 inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-neutral-950/80 px-3 py-2 text-xs font-bold text-white shadow-lg backdrop-blur-sm">
-                  <Maximize2 className="h-3.5 w-3.5" aria-hidden="true" />
-                  {t("zoom")}
-                </span>
-              </button>
-              <div className="px-2 pb-2 pt-4 text-start">
-                <h3 className="text-lg font-extrabold text-foreground">{t(`items.${id}.label`)}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{t(`items.${id}.summary`)}</p>
+            <button
+              type="button"
+              aria-label={t("openScreenshot", { screen: t("items." + id + ".label") })}
+              aria-haspopup="dialog"
+              onClick={() => setActiveScreenshot(id)}
+              className="screenshot-stage group relative flex h-[29rem] w-full items-center justify-center overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#191916] p-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-4 focus-visible:ring-offset-[#11110f] sm:h-[34rem] sm:rounded-[2rem] sm:p-8"
+            >
+              <span aria-hidden="true" className="screenshot-stage__halo absolute inset-0" />
+              <span aria-hidden="true" className="screenshot-stage__grid absolute inset-0 opacity-30" />
+              <span className="screenshot-stage__device relative rounded-[2rem] border-[5px] border-black bg-black p-1.5 shadow-[0_30px_75px_-28px_rgba(0,0,0,0.9)] ring-1 ring-white/15 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]">
+                <Image
+                  src={SCREENSHOT_FILES[locale][id]}
+                  alt={t("items." + id + ".alt")}
+                  width={411}
+                  height={891}
+                  sizes="(max-width: 640px) 62vw, (max-width: 1024px) 34vw, 300px"
+                  className="h-auto max-h-[24.5rem] w-auto max-w-[min(62vw,14rem)] rounded-[1.45rem] object-contain sm:max-h-[29rem] sm:max-w-[17rem]"
+                />
+              </span>
+              <span className="absolute bottom-4 end-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/60 px-3 py-2 text-xs font-semibold text-white/85 backdrop-blur sm:bottom-5 sm:end-5">
+                <Maximize2 className="h-3.5 w-3.5 text-amber-400" aria-hidden="true" />
+                {t("zoom")}
+              </span>
+              <span dir="ltr" aria-hidden="true" className="absolute start-5 top-5 font-mono text-[11px] font-medium tracking-[0.16em] text-white/40 sm:start-7 sm:top-7">
+                {String(index + 1).padStart(2, "0")} / 02
+              </span>
+            </button>
+
+            <div className="mt-5 flex items-start justify-between gap-5 border-b border-white/15 pb-5">
+              <div>
+                <h3 className="text-lg font-bold text-white sm:text-xl">{t("items." + id + ".label")}</h3>
+                <p className="mt-1.5 max-w-md text-sm leading-6 text-white/60">
+                  {t("items." + id + ".summary")}
+                </p>
               </div>
-            </article>
+              <span aria-hidden="true" className="mt-1 hidden h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/20 text-amber-400 sm:inline-flex">
+                <Maximize2 className="h-3.5 w-3.5" />
+              </span>
+            </div>
           </li>
         ))}
       </ul>
 
-      <p className="mx-auto mt-6 flex max-w-3xl items-start justify-center gap-2 text-center text-sm leading-relaxed text-muted-foreground">
-        <Info className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+      <p className="mx-auto mt-6 flex max-w-3xl items-start gap-2 text-start text-xs leading-6 text-white/50 sm:mt-8 sm:text-sm">
+        <Info className="mt-1 h-4 w-4 shrink-0 text-amber-400" aria-hidden="true" />
         <span>{t("sampleDataNote")}</span>
       </p>
 
@@ -100,17 +112,17 @@ export function AppScreenshots() {
         onClick={(event) => {
           if (event.target === event.currentTarget) setActiveScreenshot(null);
         }}
-        className="fixed inset-0 m-auto max-h-[92dvh] max-w-[94vw] overflow-visible bg-transparent p-0 text-foreground backdrop:bg-neutral-950/85 backdrop:backdrop-blur-sm"
+        className="screenshot-dialog fixed inset-0 m-auto max-h-[92dvh] max-w-[94vw] overflow-visible bg-transparent p-0 text-foreground backdrop:bg-neutral-950/90 backdrop:backdrop-blur-sm"
       >
         {activeScreenshot && (
-          <div className="relative rounded-[2.5rem] border-[6px] border-neutral-900 bg-neutral-950 p-2 shadow-2xl shadow-black/50">
+          <div className="screenshot-dialog__content relative rounded-[2.5rem] border-[6px] border-neutral-900 bg-neutral-950 p-2 shadow-2xl shadow-black/60">
             <h2 id="screenshot-dialog-title" className="sr-only">{activeLabel}</h2>
             <button
               type="button"
               autoFocus
               aria-label={t("closeScreenshot")}
               onClick={() => setActiveScreenshot(null)}
-              className="absolute -end-3 -top-3 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-neutral-900 text-white shadow-lg transition-colors hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              className="absolute -end-3 -top-3 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-neutral-900 text-white transition-colors hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
               <X className="h-5 w-5" aria-hidden="true" />
             </button>
