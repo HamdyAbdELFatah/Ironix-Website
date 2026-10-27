@@ -67,8 +67,9 @@ describe('Helpers Utility Functions', () => {
 
     it('gracefully does nothing if element is missing', () => {
       const scrollToMock = vi.spyOn(window, 'scrollTo');
+      scrollToMock.mockClear();
       scrollToSection('non-existent-section');
-      // Should not throw
+      expect(scrollToMock).not.toHaveBeenCalled();
     });
   });
 });

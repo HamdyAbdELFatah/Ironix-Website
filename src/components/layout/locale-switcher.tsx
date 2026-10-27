@@ -11,8 +11,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
+
+function saveLocalePreference(locale: Locale) {
+  document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=31536000; SameSite=Lax`;
+}
 
 export function LocaleSwitcher({ className }: { className?: string }) {
   const t = useTranslations("nav");
@@ -23,7 +26,7 @@ export function LocaleSwitcher({ className }: { className?: string }) {
 
   function onSelectLocale(nextLocale: Locale) {
     if (nextLocale === currentLocale) return;
-    document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000; SameSite=Lax`;
+    saveLocalePreference(nextLocale);
     startTransition(() => {
       router.replace(pathname, { locale: nextLocale });
     });
@@ -34,7 +37,7 @@ export function LocaleSwitcher({ className }: { className?: string }) {
       <DropdownMenuTrigger
         disabled={isPending}
         className={cn(
-          "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-foreground/80 hover:text-foreground hover:bg-muted font-medium transition-colors cursor-pointer text-xs uppercase tracking-wider outline-none focus-visible:ring-2 focus-visible:ring-primary",
+          "inline-flex min-h-11 items-center gap-2 px-3 py-1.5 rounded-full text-foreground/80 hover:text-foreground hover:bg-muted font-medium transition-colors cursor-pointer text-xs uppercase tracking-wider outline-none focus-visible:ring-2 focus-visible:ring-primary",
           className
         )}
         aria-label={t("switchLanguage")}
@@ -47,9 +50,9 @@ export function LocaleSwitcher({ className }: { className?: string }) {
         className="w-56 p-1 bg-card/95 backdrop-blur-xl border-border/80 shadow-2xl rounded-2xl"
       >
         <div className="px-3 py-2 text-xs font-semibold text-muted-foreground border-b border-border/50">
-          Select Language
+          {t("switchLanguage")}
         </div>
-        <ScrollArea className="h-64 py-1">
+        <div className="py-1">
           {locales.map((loc) => {
             const isSelected = loc === currentLocale;
             return (
@@ -73,7 +76,7 @@ export function LocaleSwitcher({ className }: { className?: string }) {
               </DropdownMenuItem>
             );
           })}
-        </ScrollArea>
+        </div>
       </DropdownMenuContent>
     </DropdownMenu>
   );

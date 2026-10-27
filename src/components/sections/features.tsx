@@ -29,7 +29,7 @@ export function Features() {
         </p>
       </div>
 
-      <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4">
+      <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
         {FEATURES.map(({ id, icon: Icon, pro }, index) => (
           <motion.li
             key={id}
@@ -37,7 +37,7 @@ export function Features() {
             whileInView={shouldReduceMotion ? {} : { opacity: 1, transform: "translateY(0)" }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.5, delay: index * 0.055, ease: [0.23, 1, 0.32, 1] }}
-            className="feature-card group relative min-w-0 rounded-3xl border border-border/75 p-5 sm:p-6 lg:min-h-[15.5rem] lg:p-7"
+            className={`feature-card group relative min-w-0 overflow-hidden rounded-3xl border border-border/75 p-6 sm:p-7 ${index < 2 ? "feature-card--featured sm:col-span-2 lg:col-span-2 lg:min-h-[16rem]" : "lg:min-h-[16rem]"}`}
           >
             <div className="mb-5 flex items-center justify-between gap-4">
               <span className="feature-card__icon inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-primary/25 bg-primary/10 text-amber-800 dark:text-amber-300">
@@ -51,6 +51,7 @@ export function Features() {
             </div>
             <h3 className="text-lg font-bold leading-snug text-foreground sm:text-xl">{t("items." + id + ".title")}</h3>
             <p className="mt-2 max-w-sm text-sm leading-7 text-muted-foreground">{t("items." + id + ".description")}</p>
+            {index < 2 && <span aria-hidden="true" className={`feature-card__mark feature-card__mark--${index === 0 ? "offline" : "recovery"}`} />}
           </motion.li>
         ))}
       </ul>

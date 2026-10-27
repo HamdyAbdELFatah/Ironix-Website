@@ -143,6 +143,9 @@
     scroll-behavior: smooth;
     background: var(--background);
   }
+  section[id] {
+    scroll-margin-top: 6rem;
+  }
 }
 
 /* Focused motion and surfaces for the Ironix landing page. */
@@ -153,15 +156,14 @@
 .ironix-hero-field {
   isolation: isolate;
   background-image:
-    radial-gradient(ellipse at 74% 38%, rgba(185, 135, 25, 0.13), transparent 30rem),
-    radial-gradient(rgba(140, 105, 18, 0.055) 1px, transparent 1px);
-  background-size: auto, 26px 26px;
+    radial-gradient(ellipse at 75% 48%, rgba(185, 135, 25, 0.12), transparent 32rem),
+    linear-gradient(to bottom, transparent 78%, color-mix(in srgb, var(--primary) 3%, transparent));
 }
 
 .dark .ironix-hero-field {
   background-image:
-    radial-gradient(ellipse at 72% 40%, rgba(242, 194, 76, 0.16), transparent 32rem),
-    radial-gradient(rgba(242, 194, 76, 0.055) 1px, transparent 1px);
+    radial-gradient(ellipse at 72% 45%, rgba(242, 194, 76, 0.13), transparent 32rem),
+    linear-gradient(to bottom, transparent 78%, color-mix(in srgb, var(--primary) 3%, transparent));
 }
 
 .ironix-hero-field::before {
@@ -191,6 +193,17 @@
   box-shadow: 0 38px 100px -28px rgba(0, 0, 0, 0.72), 0 0 42px rgba(242, 194, 76, 0.14);
 }
 
+.hero-secondary-phone {
+  transform-origin: center bottom;
+  transition: transform 400ms var(--ease-out-strong);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero-product-stage:hover .hero-secondary-phone {
+    transform: rotate(11deg) translateY(-5px);
+  }
+}
+
 .feature-card {
   background:
     radial-gradient(ellipse at 100% 0%, color-mix(in srgb, var(--primary) 8%, transparent), transparent 15rem),
@@ -199,20 +212,38 @@
   transition: transform 260ms var(--ease-out-strong), border-color 260ms var(--ease-out-strong), box-shadow 260ms var(--ease-out-strong), background-color 260ms ease;
 }
 
-.feature-card__icon {
-  transition: transform 260ms var(--ease-out-strong), background-color 260ms ease, color 260ms ease;
+.feature-card--featured {
+  background:
+    radial-gradient(ellipse at 100% 0%, color-mix(in srgb, var(--primary) 14%, transparent), transparent 23rem),
+    var(--card);
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .feature-card:hover {
-    transform: translateY(-4px);
-    border-color: color-mix(in srgb, var(--primary) 42%, var(--border));
-    box-shadow: 0 18px 45px -30px color-mix(in srgb, var(--primary) 45%, transparent), 0 14px 30px -24px rgba(0, 0, 0, 0.22);
-  }
+.feature-card--featured h3,
+.feature-card--featured p,
+.feature-card--featured > div {
+  position: relative;
+  z-index: 1;
+}
 
-  .feature-card:hover .feature-card__icon {
-    transform: translateY(-2px) rotate(-4deg);
-  }
+.feature-card__mark {
+  position: absolute;
+  inset-inline-end: -3rem;
+  bottom: -5rem;
+  width: 13rem;
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--primary) 18%, transparent);
+  border-radius: 50%;
+  pointer-events: none;
+  background: repeating-radial-gradient(circle, transparent 0 25px, color-mix(in srgb, var(--primary) 9%, transparent) 26px 27px);
+  opacity: 0.8;
+}
+
+.feature-card__mark--recovery {
+  inset-inline-end: -1rem;
+  bottom: -7rem;
+  width: 15rem;
+  background: radial-gradient(circle, color-mix(in srgb, var(--primary) 10%, transparent), transparent 65%);
+  box-shadow: 0 0 0 1.5rem color-mix(in srgb, var(--primary) 4%, transparent), 0 0 0 3rem color-mix(in srgb, var(--primary) 3%, transparent);
 }
 
 .showcase-surface {
@@ -293,6 +324,10 @@
     rgba(185, 135, 10, 0.09) 75.2% 75.5%,
     transparent 75.7%
   );
+}
+
+@media (max-width: 639px) {
+  .hero-plate-orbit { width: 100%; }
 }
 
 .screenshot-stage {
