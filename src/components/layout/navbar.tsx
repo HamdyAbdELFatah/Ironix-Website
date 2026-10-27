@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { Download, Sparkles } from "lucide-react";
+import { Download } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useScrollPosition } from "@/hooks/use-scroll-position";
@@ -23,6 +23,7 @@ export function Navbar() {
 
   const navLinks = [
     { label: t("features"), sectionId: "features", href: "/#features" },
+    { label: t("screenshots"), sectionId: "screenshots", href: "/#screenshots" },
     { label: t("howItWorks"), sectionId: "how-it-works", href: "/#how-it-works" },
     { label: t("pricing"), sectionId: "pricing", href: "/#pricing" },
     { label: t("faq"), sectionId: "faq", href: "/#faq" },

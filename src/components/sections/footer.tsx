@@ -12,6 +12,7 @@ import { APP_CONFIG } from "@/lib/utils/constants";
 
 const SECTION_LINKS = [
   { key: "features", sectionId: "features" },
+  { key: "screenshots", sectionId: "screenshots" },
   { key: "howItWorks", sectionId: "how-it-works" },
   { key: "pricing", sectionId: "pricing" },
   { key: "faq", sectionId: "faq" },

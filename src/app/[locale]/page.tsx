@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Hero } from "@/components/sections/hero";
 import { Features } from "@/components/sections/features";
+import { AppScreenshots } from "@/components/sections/app-screenshots";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { Pricing } from "@/components/sections/pricing";
 import { DownloadCta } from "@/components/sections/download-cta";
@@ -26,6 +27,7 @@ export default async function HomePage({
     <>
       <Hero />
       <Features />
+      <AppScreenshots />
       <HowItWorks />
       <Pricing products={products} />
       <DownloadCta />

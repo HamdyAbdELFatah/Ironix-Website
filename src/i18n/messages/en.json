@@ -7,6 +7,7 @@
   },
   "nav": {
     "features": "Features",
+    "screenshots": "Screenshots",
     "howItWorks": "How it works",
     "pricing": "Pricing",
     "faq": "FAQ",
@@ -73,6 +74,30 @@
       "6": {
         "title": "Import and backup",
         "description": "Bring your history from Strong or Hevy with a CSV file, and back up your workouts to your account."
+      }
+    }
+  },
+  "screenshots": {
+    "eyebrow": "A look inside Ironix",
+    "title": "Built for the moments between sets.",
+    "subtitle": "See the real screens you’ll use to choose a plan, shape a workout and load the bar.",
+    "selectorLabel": "Choose an app screen",
+    "sampleDataNote": "Captured from the app. Any workout values shown are sample data.",
+    "items": {
+      "library": {
+        "label": "Program library",
+        "summary": "Browse plans and exercises",
+        "alt": "Ironix app showing the workout program library"
+      },
+      "workout": {
+        "label": "Start a workout",
+        "summary": "Choose a plan or begin from scratch",
+        "alt": "Ironix app showing workout setup options"
+      },
+      "calculator": {
+        "label": "Plate calculator",
+        "summary": "Build a barbell load plate by plate",
+        "alt": "Ironix plate calculator showing a sample 100 kilogram setup"
       }
     }
   },
@@ -193,6 +218,7 @@
     "contact": "Contact",
     "links": {
       "features": "Features",
+      "screenshots": "Screenshots",
       "howItWorks": "How it works",
       "pricing": "Pricing",
       "faq": "FAQ",
