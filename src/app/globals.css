@@ -364,11 +364,6 @@
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-@keyframes geo-banner-enter {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 @media (hover: hover) and (pointer: fine) {
   .screenshot-stage:hover {
     border-color: rgba(249, 192, 35, 0.38);
@@ -383,7 +378,6 @@
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-  .geo-language-banner { animation: none; }
   .screenshot-dialog[open]::backdrop,
   .screenshot-dialog[open] .screenshot-dialog__content { animation: none; }
   .screenshot-stage__device { transition-duration: 1ms; }

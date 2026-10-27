@@ -6,7 +6,6 @@ import type { Metadata } from "next";
 import { locales, rtlLocales, type Locale } from "@/i18n/config";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/sections/footer";
-import { GeoLanguageBanner } from "@/components/layout/geo-language-banner";
 import { generateLocalizedMetadata } from "@/lib/seo/metadata";
 
 export async function generateStaticParams() {
@@ -54,7 +53,6 @@ export default async function LocaleLayout({
           {children}
         </main>
         <Footer />
-        <GeoLanguageBanner currentLocale={locale as Locale} />
       </NextIntlClientProvider>
     </div>
   );
