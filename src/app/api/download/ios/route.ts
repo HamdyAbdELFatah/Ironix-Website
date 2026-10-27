@@ -1,5 +1,4 @@
 const APP_BUNDLE_ID = 'com.ironix';
-const APP_STORE_SEARCH_URL = 'https://apps.apple.com/search?term=Ironix';
 
 interface AppStoreSearchResult {
   bundleId?: string;
@@ -46,5 +45,15 @@ export async function GET(request: Request) {
     // Apple's lookup service is temporarily unavailable.
   }
 
-  return Response.redirect(APP_STORE_SEARCH_URL, 307);
+  const referer = request.headers.get('referer');
+  let locale = 'en';
+  if (referer) {
+    try {
+      const path = new URL(referer).pathname;
+      if (path === '/ar' || path.startsWith('/ar/')) locale = 'ar';
+    } catch {
+      // Keep the English fallback for malformed referrer values.
+    }
+  }
+  return Response.redirect(new URL(`/${locale}#download`, request.url), 307);
 }
