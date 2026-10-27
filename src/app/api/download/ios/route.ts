@@ -41,8 +41,7 @@ export async function GET(request: Request) {
       }
     }
   } catch {
-    // Fall back to App Store search when the listing is not indexed yet or
-    // Apple's lookup service is temporarily unavailable.
+    // Keep visitors on the website until the listing is available.
   }
 
   const referer = request.headers.get('referer');
