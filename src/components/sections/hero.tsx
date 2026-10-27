@@ -94,7 +94,7 @@ export function Hero() {
                 alt={screenshots("items.library.alt")}
                 width={411}
                 height={891}
-                priority
+                loading="eager"
                 sizes="(max-width: 640px) 68vw, (max-width: 1024px) 288px, 304px"
                 className="absolute inset-0 h-full w-full object-cover"
               />
