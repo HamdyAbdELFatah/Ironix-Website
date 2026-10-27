@@ -16,11 +16,19 @@ function envOr(value: string | undefined, fallback: string): string {
 const SITE_URL = envOr(process.env.NEXT_PUBLIC_SITE_URL, 'https://ironix-website.vercel.app').replace(/\/+$/, '');
 const SUPPORT_EMAIL = envOr(process.env.NEXT_PUBLIC_SUPPORT_EMAIL, 'hamdy.abdelfattah.mohamed@gmail.com');
 
-// Empty until the listings are live: an empty URL hides the store badge and the
-// page shows the waitlist instead, so the site never links to a 404.
+// Android's package URL becomes live with its Google Play listing. iOS resolves
+// the public App Store URL from the bundle ID when a visitor clicks the badge.
+// Explicit environment values still let a deployment override or disable links.
+function storeUrl(value: string | undefined, fallback: string): string {
+  return value === undefined ? fallback : value.trim();
+}
+
 const STORE_URLS: Record<StorePlatform, string> = {
-  ios: envOr(process.env.NEXT_PUBLIC_APP_STORE_URL, ''),
-  android: envOr(process.env.NEXT_PUBLIC_GOOGLE_PLAY_URL, ''),
+  ios: storeUrl(process.env.NEXT_PUBLIC_APP_STORE_URL, '/api/download/ios'),
+  android: storeUrl(
+    process.env.NEXT_PUBLIC_GOOGLE_PLAY_URL,
+    'https://play.google.com/store/apps/details?id=com.ironix'
+  ),
 };
 
 export const APP_CONFIG = {
@@ -33,7 +41,7 @@ export const APP_CONFIG = {
   hasAnyStoreListing(): boolean {
     return Object.values(STORE_URLS).some((url) => url.length > 0);
   },
-  /** Store URL tagged with UTM parameters, or null while the listing isn't published. */
+  /** Store URL tagged with UTM parameters, or null when a platform is disabled. */
   storeUrl(platform: StorePlatform, section: string): string | null {
     const base = STORE_URLS[platform];
     if (!base) return null;

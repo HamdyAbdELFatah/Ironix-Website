@@ -18,7 +18,7 @@
     "switchLanguage": "Change language"
   },
   "hero": {
-    "badge": "Coming soon to iOS and Android",
+    "badge": "Get the app on iOS and Android",
     "title": "Train with purpose.",
     "titleAccent": "Progress with proof.",
     "subtitle": "Log every set in seconds, even with no signal. See which muscles are recovered, and keep your gym pass on your phone. Free to use, in English and Arabic.",
@@ -192,7 +192,7 @@
       },
       "3": {
         "question": "Which phones does Ironix support?",
-        "answer": "iPhone and Android. Ironix is launching soon, so join the waitlist to hear when it is available."
+        "answer": "Ironix is available on iPhone and Android. Use the download button for your device to get it from the store."
       },
       "4": {
         "question": "How does the digital gym pass work?",
@@ -223,8 +223,8 @@
       "privacy": "Privacy Policy",
       "terms": "Terms of Service"
     },
-    "waitlistTitle": "Get launch news",
-    "waitlistText": "One email when Ironix launches. Nothing else.",
+    "downloadTitle": "Download the app",
+    "downloadText": "Choose the store for your device and start training with Ironix.",
     "copyright": "© 2026 Ironix. All rights reserved."
   },
   "privacy": {

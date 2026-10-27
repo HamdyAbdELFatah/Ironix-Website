@@ -9,7 +9,7 @@ interface BadgeProps {
 
 export function GooglePlayBadge({ section = "hero", className }: BadgeProps) {
   const url = APP_CONFIG.storeUrl("android", section);
-  // Hidden until the store listing exists, so the site never links to a 404.
+  // An empty URL means this platform has been explicitly disabled.
   if (!url) return null;
 
   return (

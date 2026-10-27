@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { LocaleSwitcher } from "@/components/layout/locale-switcher";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
-import { WaitlistForm } from "@/components/shared/waitlist-form";
+import { GetTheApp } from "@/components/shared/get-the-app";
 import { scrollToSection } from "@/lib/utils/helpers";
 import { APP_CONFIG } from "@/lib/utils/constants";
 
@@ -76,9 +76,9 @@ export function Footer() {
           </nav>
 
           <div className="lg:col-span-4 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider">{t("waitlistTitle")}</h4>
-            <p className="text-xs text-muted-foreground leading-relaxed">{t("waitlistText")}</p>
-            <WaitlistForm source="footer" compact />
+            <h4 className="text-xs font-bold uppercase tracking-wider">{t("downloadTitle")}</h4>
+            <p className="text-xs text-muted-foreground leading-relaxed">{t("downloadText")}</p>
+            <GetTheApp section="footer" className="items-start gap-2 [&>a]:w-full" />
           </div>
         </div>
 

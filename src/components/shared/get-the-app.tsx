@@ -7,7 +7,7 @@ import { GooglePlayBadge } from "@/components/shared/google-play-badge";
 import { WaitlistForm } from "@/components/shared/waitlist-form";
 import { cn } from "@/lib/utils";
 
-/** Store badges once a listing is live; until then, the launch waitlist. */
+/** Store badges when destinations are configured; use the waitlist if disabled. */
 export function GetTheApp({ section, className }: { section: string; className?: string }) {
   if (!APP_CONFIG.hasAnyStoreListing()) {
     return <WaitlistForm source={section} className={className} />;
