@@ -3,31 +3,62 @@
 import * as React from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { useTranslations } from "next-intl";
-import { CheckCircle2, ChevronRight, Flame, Languages, ShieldCheck, WifiOff, Wallet } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import { CheckCircle2, ChevronRight, Languages, ShieldCheck, WifiOff } from "lucide-react";
 import { SectionWrapper } from "@/components/shared/section-wrapper";
 import { GetTheApp } from "@/components/shared/get-the-app";
-import { Badge } from "@/components/ui/badge";
 
 const TOTAL_SETS = 4;
-const TRAINED_DAYS = 4;
+
+const PREVIEW_IMAGES = {
+  en: {
+    programs: "/assets/app-screenshots/programs-en.png",
+    calculator: "/assets/app-screenshots/plate-calculator-en-dark.png",
+  },
+  ar: {
+    programs: "/assets/app-screenshots/programs-ar.png",
+    calculator: "/assets/app-screenshots/plate-calculator-ar.png",
+  },
+} as const;
+
+function PreviewPhone({
+  src,
+  alt,
+  className,
+  priority = false,
+}: {
+  src: string;
+  alt: string;
+  className: string;
+  priority?: boolean;
+}) {
+  return (
+    <div
+      className={`rounded-[2.6rem] border-[6px] border-neutral-900 bg-neutral-950 p-1.5 shadow-2xl shadow-black/30 ring-1 ring-black/15 ${className}`}
+    >
+      <div className="relative aspect-[411/891] overflow-hidden rounded-[2rem] bg-background">
+        <Image
+          src={src}
+          alt={alt}
+          width={411}
+          height={891}
+          priority={priority}
+          sizes="(max-width: 640px) 68vw, 270px"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      </div>
+      <span aria-hidden="true" className="absolute left-1/2 top-2 h-1.5 w-14 -translate-x-1/2 rounded-full bg-neutral-950" />
+    </div>
+  );
+}
 
 export function Hero() {
   const t = useTranslations("hero");
+  const screenshots = useTranslations("screenshots");
+  const locale = useLocale() === "ar" ? "ar" : "en";
   const shouldReduceMotion = useReducedMotion();
-
-  // Illustrative demo of the logger: labels are localized, numbers are sample values.
   const [completedSets, setCompletedSets] = React.useState(2);
-  const [workoutStarted, setWorkoutStarted] = React.useState(false);
-  const [restSeconds, setRestSeconds] = React.useState(60);
-
-  React.useEffect(() => {
-    if (shouldReduceMotion) return;
-    const id = setInterval(() => setRestSeconds((s) => (s > 1 ? s - 1 : 60)), 1000);
-    return () => clearInterval(id);
-  }, [shouldReduceMotion]);
-
-  const weekdays = t("mock.weekdays").split(",");
+  const images = PREVIEW_IMAGES[locale];
 
   const reveal = (delay: number) =>
     shouldReduceMotion
@@ -41,157 +72,113 @@ export function Hero() {
   return (
     <SectionWrapper
       sectionId="hero"
-      className="relative pt-28 pb-16 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-28 overflow-hidden noise-overlay"
+      className="relative overflow-hidden pt-28 pb-12 noise-overlay sm:pt-36 sm:pb-20 lg:pt-40 lg:pb-24"
     >
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[1100px] h-[550px] bg-gradient-to-tr from-amber-500/20 via-yellow-600/15 to-blue-500/10 rounded-full blur-[140px] pointer-events-none -z-10" />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-1/3 -z-10 h-[26rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-tr from-amber-500/15 via-yellow-500/10 to-sky-500/10 blur-[120px]"
+      />
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-        <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-start">
+      <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-4">
+        <div className="flex flex-col items-center text-center lg:col-span-6 lg:items-start lg:text-start">
           <motion.div
             {...reveal(0)}
-            className="mb-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-500/40 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs sm:text-sm font-bold"
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary sm:text-sm"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-primary" />
             <span>{t("badge")}</span>
           </motion.div>
 
           <motion.h1
             {...reveal(0.05)}
-            className="text-4xl sm:text-6xl lg:text-7xl font-black text-foreground tracking-tight leading-[1.1] mb-6 text-balance"
+            className="mb-5 text-balance text-4xl font-black leading-[1.12] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
           >
             {t("title")} <span className="text-ironix-gold-gradient block sm:inline">{t("titleAccent")}</span>
           </motion.h1>
 
           <motion.p
             {...reveal(0.15)}
-            className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-2xl leading-relaxed mb-8"
+            className="mb-7 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl"
           >
             {t("subtitle")}
           </motion.p>
 
-          <motion.div {...reveal(0.25)} className="w-full flex justify-center lg:justify-start mb-8">
+          <motion.div {...reveal(0.25)} className="mb-7 flex w-full justify-center lg:justify-start">
             <GetTheApp section="hero" />
           </motion.div>
 
           <motion.ul
             {...reveal(0.35)}
-            className="flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-3 text-sm font-semibold text-muted-foreground"
+            className="flex flex-wrap justify-center gap-x-5 gap-y-3 text-sm font-semibold text-muted-foreground lg:justify-start"
           >
             <li className="flex items-center gap-2">
-              <WifiOff className="w-4 h-4 text-amber-500" aria-hidden />
+              <WifiOff className="h-4 w-4 text-amber-500" aria-hidden="true" />
               {t("points.offline")}
             </li>
             <li className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-500" aria-hidden />
+              <ShieldCheck className="h-4 w-4 text-emerald-500" aria-hidden="true" />
               {t("points.free")}
             </li>
             <li className="flex items-center gap-2">
-              <Languages className="w-4 h-4 text-blue-500" aria-hidden />
+              <Languages className="h-4 w-4 text-sky-500" aria-hidden="true" />
               {t("points.arabic")}
             </li>
           </motion.ul>
         </div>
 
-        {/* Phone mockup of the workout logger (decorative, sample data). */}
-        <div className="lg:col-span-5 flex justify-center select-none py-6" aria-hidden>
-          <div className="w-[300px] sm:w-[340px] rounded-[48px] p-3 bg-neutral-950 border-[3px] border-neutral-700/80 shadow-2xl shadow-black/60 relative">
-            <div className="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-6 bg-black rounded-full z-10 border border-neutral-800" />
+        <div className="relative mx-auto h-[560px] w-full max-w-[520px] select-none sm:h-[620px] lg:col-span-6 lg:mx-0 lg:justify-self-end">
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-[8%] top-[12%] h-[70%] rounded-full bg-primary/15 blur-[90px]"
+          />
 
-            <div className="rounded-[40px] bg-black text-white p-4 pt-12 flex flex-col gap-3.5 border border-neutral-900 min-h-[560px]">
-              <div className="flex items-center justify-between border-b border-neutral-800/80 pb-2.5">
-                <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-lg overflow-hidden border border-amber-400/40 bg-neutral-950 flex items-center justify-center p-0.5">
-                    <Image src="/assets/logo.png" alt="" width={28} height={28} className="w-full h-full object-contain" />
-                  </div>
-                  <span className="text-xs font-bold text-neutral-300">{t("mock.greeting")}</span>
-                </div>
-                <Badge
-                  variant="outline"
-                  className="text-[9px] border-amber-500/40 text-amber-400 px-2 py-0.5 bg-amber-500/10 flex items-center gap-1"
-                >
-                  <WifiOff className="w-2.5 h-2.5" />
-                  <span>{t("mock.offline")}</span>
-                </Badge>
-              </div>
+          <PreviewPhone
+            src={images.calculator}
+            alt=""
+            className="absolute end-0 top-[12%] z-0 w-[42%] rotate-[9deg] opacity-90 sm:w-[39%]"
+          />
+          <PreviewPhone
+            src={images.programs}
+            alt={screenshots("items.library.alt")}
+            priority
+            className="absolute left-1/2 top-[2%] z-10 w-[58%] -translate-x-1/2 sm:w-[54%]"
+          />
 
-              <div className="rounded-2xl p-3.5 bg-gradient-to-br from-neutral-900/95 to-neutral-950 border border-neutral-800 space-y-2.5">
-                <span className="text-[10px] font-black text-amber-400 block">{t("mock.todaysWorkout")}</span>
-                <h4 className="text-sm font-black">{t("mock.workoutName")}</h4>
-                <span className="text-[10px] text-neutral-400 block">{t("mock.workoutMeta")}</span>
-                <button
-                  type="button"
-                  tabIndex={-1}
-                  onClick={() => setWorkoutStarted((v) => !v)}
-                  className="w-full h-11 px-4 rounded-full bg-[#F9C023] text-black font-black text-xs flex items-center justify-between cursor-pointer active:scale-95 transition-transform"
-                >
-                  <span>{workoutStarted ? t("mock.inProgress") : t("mock.start")}</span>
-                  <span className="w-7 h-7 rounded-full bg-neutral-950 text-[#F9C023] flex items-center justify-center">
-                    <ChevronRight className="w-4 h-4 stroke-[3] rtl:rotate-180" />
-                  </span>
-                </button>
+          <div className="absolute bottom-4 start-0 z-20 w-[min(74%,300px)] rounded-2xl border border-border/80 bg-card/95 p-4 shadow-2xl shadow-black/20 backdrop-blur-xl sm:bottom-6 sm:p-5">
+            <div className="mb-3 flex items-center justify-between gap-3">
+              <div className="min-w-0">
+                <p className="truncate text-sm font-extrabold text-foreground">{t("mock.exercise")}</p>
+                <p className="mt-0.5 text-xs font-semibold text-primary">
+                  {t("mock.setOf", { current: completedSets, total: TOTAL_SETS })}
+                </p>
               </div>
-
-              <div className="rounded-2xl p-3.5 bg-neutral-900/95 border border-amber-500/30 space-y-2.5">
-                <div className="flex justify-between items-center gap-2">
-                  <span className="text-[11px] font-bold">{t("mock.exercise")}</span>
-                  <span className="text-[10px] text-amber-400 font-bold whitespace-nowrap">
-                    {t("mock.setOf", { current: completedSets, total: TOTAL_SETS })}
-                  </span>
-                </div>
-                <div className="w-full h-1.5 flex gap-1">
-                  {Array.from({ length: TOTAL_SETS }, (_, i) => (
-                    <div
-                      key={i}
-                      className={`h-full flex-1 rounded-full transition-colors duration-500 ${i < completedSets ? "bg-amber-400" : "bg-neutral-800"}`}
-                    />
-                  ))}
-                </div>
-                <button
-                  type="button"
-                  tabIndex={-1}
-                  onClick={() => {
-                    setCompletedSets((n) => (n < TOTAL_SETS ? n + 1 : 1));
-                    setRestSeconds(60);
-                  }}
-                  className="w-full py-2.5 rounded-xl bg-neutral-800 hover:bg-neutral-700 font-extrabold text-[11px] border border-neutral-700 flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 transition-transform"
-                >
-                  <CheckCircle2 className="w-3.5 h-3.5 text-amber-400" />
-                  <span>{t("mock.logSet", { weight: 20, reps: 10 })}</span>
-                </button>
-                <div className="flex items-center justify-between text-[9px] text-neutral-400">
-                  <span className="flex items-center gap-1 text-emerald-400">
-                    <ShieldCheck className="w-3 h-3" /> {t("mock.savedOnPhone")}
-                  </span>
-                  <span className="text-amber-400">{t("mock.rest", { seconds: restSeconds })}</span>
-                </div>
-              </div>
-
-              <div className="rounded-2xl p-3 bg-neutral-900/60 border border-neutral-800 space-y-1.5">
-                <div className="flex justify-between items-center text-[10px]">
-                  <span className="font-bold text-neutral-300">{t("mock.thisWeek")}</span>
-                  <span className="text-amber-400 font-bold flex items-center gap-1">
-                    <Flame className="w-3 h-3 fill-amber-400" /> {t("mock.streak", { days: TRAINED_DAYS })}
-                  </span>
-                </div>
-                <div className="flex items-center justify-between pt-1">
-                  {weekdays.map((day, i) => (
-                    <div key={i} className="flex flex-col items-center gap-1">
-                      <div
-                        className={`w-3.5 h-7 rounded-full flex items-center justify-center ${i < TRAINED_DAYS ? "bg-amber-400 text-neutral-950" : "bg-neutral-800"}`}
-                      >
-                        {i < TRAINED_DAYS && <CheckCircle2 className="w-2.5 h-2.5 stroke-[3]" />}
-                      </div>
-                      <span className="text-[8px] font-bold text-neutral-400">{day}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="rounded-xl p-2.5 bg-gradient-to-r from-amber-500/15 to-neutral-900 border border-amber-500/30 flex items-center gap-2">
-                <Wallet className="w-4 h-4 text-amber-400" />
-                <span className="text-[10px] font-bold">{t("mock.gymPass")}</span>
-              </div>
+              <span className="shrink-0 rounded-full bg-primary/10 px-2.5 py-1 text-[10px] font-bold text-primary">
+                {t("mock.sampleData")}
+              </span>
             </div>
+            <div className="mb-3 flex gap-1.5" aria-hidden="true">
+              {Array.from({ length: TOTAL_SETS }, (_, index) => (
+                <span
+                  key={index}
+                  className={`h-1.5 flex-1 rounded-full ${index < completedSets ? "bg-primary" : "bg-muted"}`}
+                />
+              ))}
+            </div>
+            <button
+              type="button"
+              onClick={() => setCompletedSets((current) => (current < TOTAL_SETS ? current + 1 : 1))}
+              className="flex min-h-11 w-full items-center justify-between rounded-xl bg-neutral-950 px-3 text-start text-xs font-extrabold text-white transition-transform active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >
+              <span className="flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4 text-amber-400" aria-hidden="true" />
+                {t("mock.logSet", { weight: 20, reps: 10 })}
+              </span>
+              <ChevronRight className="h-4 w-4 shrink-0 rtl:rotate-180" aria-hidden="true" />
+            </button>
+            <p className="mt-2 flex items-center gap-1.5 text-[11px] font-medium text-muted-foreground">
+              <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" aria-hidden="true" />
+              {t("mock.savedOnPhone")}
+            </p>
           </div>
         </div>
       </div>

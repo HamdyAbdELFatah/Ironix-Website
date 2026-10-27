@@ -38,15 +38,15 @@ export function Navbar() {
 
   return (
     <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-background/85 backdrop-blur-xl border-b border-border/80 py-3 shadow-xl shadow-black/20"
-          : "bg-transparent py-5"
-      )}
+      className="fixed inset-x-0 top-0 z-50 py-3 transition-all duration-300 sm:py-4"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+      <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">
+        <div
+          className={cn(
+            "flex items-center justify-between rounded-full border border-border/80 bg-background/90 px-3 py-2 backdrop-blur-xl transition-all duration-300 sm:px-5",
+            isScrolled ? "shadow-xl shadow-black/10" : "shadow-lg shadow-black/5"
+          )}
+        >
           {/* Authentic Mobile App Logo */}
           <Link
             href="/"
@@ -71,7 +71,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 bg-card/80 backdrop-blur-md px-4 py-1.5 rounded-full border border-border/80 shadow-inner">
+          <nav className="hidden items-center gap-1 lg:flex">
             {navLinks.map((link) =>
               isHome ? (
                 <button
@@ -100,7 +100,7 @@ export function Navbar() {
             <Button
               size="sm"
               onClick={() => scrollToSection("download")}
-              className="gap-2 px-5 rounded-full bg-primary hover:bg-amber-400 text-primary-foreground font-bold shadow-lg shadow-amber-500/25 transition-transform hover:scale-105 active:scale-95 cursor-pointer relative overflow-hidden"
+              className="relative cursor-pointer gap-2 overflow-hidden rounded-full px-5 font-bold text-primary-foreground shadow-lg shadow-amber-500/20 transition-transform hover:scale-105 hover:bg-amber-400 active:scale-95"
             >
               <Download className="w-4 h-4" />
               <span>{t("getApp")}</span>

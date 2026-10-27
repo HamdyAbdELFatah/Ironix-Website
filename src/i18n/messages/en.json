@@ -38,6 +38,7 @@
       "exercise": "Incline dumbbell press",
       "setOf": "Set {current} of {total}",
       "logSet": "Log set ({weight} kg × {reps})",
+      "sampleData": "Sample values",
       "savedOnPhone": "Saved on your phone",
       "rest": "Rest {seconds}s",
       "thisWeek": "This week",
@@ -80,19 +81,16 @@
   "screenshots": {
     "eyebrow": "A look inside Ironix",
     "title": "Built for the moments between sets.",
-    "subtitle": "See the real screens you’ll use to choose a plan, shape a workout and load the bar.",
-    "selectorLabel": "Choose an app screen",
+    "subtitle": "Explore a training plan, then see exactly how to load the bar for your next lift.",
     "sampleDataNote": "Captured from the app. Any workout values shown are sample data.",
+    "zoom": "View full screen",
+    "openScreenshot": "Open {screen} screenshot",
+    "closeScreenshot": "Close screenshot",
     "items": {
       "library": {
-        "label": "Program library",
-        "summary": "Browse plans and exercises",
-        "alt": "Ironix app showing the workout program library"
-      },
-      "workout": {
-        "label": "Start a workout",
-        "summary": "Choose a plan or begin from scratch",
-        "alt": "Ironix app showing workout setup options"
+        "label": "Program details",
+        "summary": "See the workout plan and each session at a glance",
+        "alt": "Ironix showing a strength program with its weekly training sessions"
       },
       "calculator": {
         "label": "Plate calculator",
