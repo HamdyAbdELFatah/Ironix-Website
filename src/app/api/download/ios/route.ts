@@ -29,7 +29,7 @@ export async function GET(request: Request) {
   }
 
   try {
-    const response = await fetch(searchUrl, { next: { revalidate: 3600 } });
+    const response = await fetch(searchUrl, { next: { revalidate: 300 } });
     if (response.ok) {
       const data = (await response.json()) as AppStoreSearchResponse;
       const listing = data.results?.find(
